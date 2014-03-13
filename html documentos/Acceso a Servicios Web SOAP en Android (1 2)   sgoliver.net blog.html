@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://www.sgoliver.net/blog/?p=2571 -->
+<html lang="es-ES"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Acceso a Servicios Web SOAP en Android (1/2) | sgoliver.net blog</title>
+
+<link rel="stylesheet" type="text/css" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/style.css" media="all">
+<link rel="pingback" href="http://www.sgoliver.net/blog/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="sgoliver.net blog » Feed" href="http://www.sgoliver.net/blog/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="sgoliver.net blog » RSS de los comentarios" href="http://www.sgoliver.net/blog/?feed=comments-rss2">
+
+			<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script type="text/javascript" async="" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/ga.js"></script><script type="text/javascript">//<![CDATA[
+			// Google Analytics for WordPress by Yoast v4.2.8 | http://yoast.com/wordpress/google-analytics/
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-90545-2']);
+							_gaq.push(['_trackPageview']);
+			(function () {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+			//]]></script>
+			<link rel="alternate" type="application/rss+xml" title="sgoliver.net blog » Acceso a Servicios Web SOAP en Android (1/2) RSS de los comentarios" href="http://www.sgoliver.net/blog/?feed=rss2&p=2571">
+<link rel="stylesheet" id="woo-layout-css" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-responsive-layout-css" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/generator.php" type="text/css" media="screen">
+<link rel="stylesheet" id="woo-layout-dynamic-css" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/saved_resource" type="text/css" media="all">
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/jquery.min.js"></script>
+<script type="text/javascript">try{jQuery.noConflict();}catch(e){};</script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/jquery.t-countdown.min.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/saved_resource(1)"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/third-party.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/jquery.flexslider.min.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/slides.min.jquery.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/feedback.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/general.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.sgoliver.net/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.sgoliver.net/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Alternativas para leer y escribir XML (y otros ficheros) en Android" href="http://www.sgoliver.net/blog/?p=2544">
+<link rel="next" title="Acceso a Servicios Web SOAP en Android (2/2)" href="http://www.sgoliver.net/blog/?p=2594">
+<meta name="generator" content="WordPress 3.5">
+
+<!-- All in One SEO Pack 1.6.15.3 by Michael Torbert of Semper Fi Web Design[72,143] -->
+<meta name="description" content="En este primer artículo que vamos a dedicar a los servicios web dentro del Curso de Programación Android nos vamos a centrar en los servicios web que utilizan">
+<link rel="canonical" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog.html">
+<!-- /all in one seo pack -->
+
+<!-- Theme version -->
+<meta name="generator" content="Canvas 5.0.3">
+<meta name="generator" content="WooFramework 5.5.3">
+
+<!-- Woo Custom Styling -->
+<style type="text/css">
+#logo .site-title, #logo .site-description { display:block!important; }
+body {background-color:#a1a1a1;background-image:url(http://www.sgoliver.net/blog/wp-content/uploads/2011/12/1411.png);background-repeat:repeat;background-position:top center;border-top:4px solid #000000;}
+#header {background-repeat:no-repeat;background-position:top center;margin-top:0px;margin-bottom:0px;padding-top:30px;padding-bottom:30px;border:0px solid ;}
+#logo .site-title a {font:normal 40px/1em Arial, sans-serif;color:#222222;}
+#logo .site-description {font:italic 14px/1em Arial, sans-serif;color:#999999;}
+#wrapper {padding-left:20px; padding-right:20px;background-color:#ffffff;margin-top:15px;margin-bottom:15px;border-top:2px solid #dbdbdb;border-bottom:2px solid #dbdbdb;border-left:2px solid #dbdbdb;border-right:2px solid #dbdbdb;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;box-shadow: 0px 1px 5px rgba(0,0,0,.3);-moz-box-shadow: 0px 1px 5px rgba(0,0,0,.3);-webkit-box-shadow: 0px 1px 5px rgba(0,0,0,.3);}
+body, p { font:normal 12px/1.5em Arial, sans-serif;color:#555555; }
+h1 { font:normal 26px/1.5em Arial, sans-serif;color:#222222; }h2 { font:normal 22px/1.5em Arial, sans-serif;color:#222222; }h3 { font:normal 18px/1.5em Arial, sans-serif;color:#222222; }h4 { font:normal 14px/1.5em Arial, sans-serif;color:#222222; }h5 { font:normal 12px/1.5em Arial, sans-serif;color:#222222; }h6 { font:normal 10px/1.5em Arial, sans-serif;color:#222222; }
+.post .title, .page .title, .post .title a:link, .post .title a:visited, .page .title a:link, .page .title a:visited {font:normal 22px/1.2em Arial, sans-serif;color:#222222;}
+.post-meta { font:normal 11px/1.5em Arial, sans-serif;color:#868686; }
+.entry, .entry p{ font:normal 14px/1.5em Arial, sans-serif;color:#555555; }
+.post-more {font:normal 12px/1.5em Arial, sans-serif;color:#868686;border-top:4px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
+#post-author, #connect {border-top:1px solid #e6e6e6;border-bottom:4px solid #e6e6e6;border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background-color:#fafafa}
+.nav-entries, .woo-pagination {border-top:1px solid #e6e6e6;border-bottom:4px solid #e6e6e6; padding: 12px 0px; }
+.nav-entries a, .woo-pagination { font:italic 12px/1em 'PT Serif', arial, sans-serif;color:#777777; }
+.woo-pagination a, .woo-pagination a:hover {color:#777777!important}
+.widget h3 {font:bold 14px/1.5em PT Serif;color:#555555;border-bottom:3px solid #e6e6e6;}
+.widget_recent_comments li, #twitter li { border-color: #e6e6e6;}
+.widget p, .widget .textwidget { font:normal 12px/1.5em Arial, sans-serif;color:#555555; }
+.widget {font:normal 12px/1.5em Arial, sans-serif;color:#555555;border-radius:0px;-moz-border-radius:0px;-webkit-border-radius:0px;}
+#tabs .inside li a { font:bold 12px/1.5em 'PT Serif', arial, sans-serif;color:#555555; }
+#tabs .inside li span.meta { font:normal 11px/1.5em "Trebuchet MS", Tahoma, sans-serif;color:#777777; }
+#tabs ul.wooTabs li a { font:normal 11px/2em "Trebuchet MS", Tahoma, sans-serif;color:#777777; }
+ul.nav li a, #navigation ul.rss a { font:normal 14px/1em Arial, sans-serif;color:#555555; }
+#navigation ul.nav li ul  { border: 1px solid #dbdbdb; }
+#navigation ul.nav > li  { border-right: 1px solid #dbdbdb; }#navigation ul li:first-child, #navigation ul li:first-child a { border-radius:0px 0 0 0px; -moz-border-radius:0px 0 0 0px; -webkit-border-radius:0px 0 0 0px; }
+#navigation {border-top:1px solid #dbdbdb;border-bottom:4px solid #dbdbdb;border-left:0px solid #dbdbdb;border-right:0px solid #dbdbdb;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+#top ul.nav li a { font:normal 14px/1.6em Arial, sans-serif;color:#ddd; }
+#footer, #footer p { font:italic 14px/1em 'PT Serif', arial, sans-serif;color:#777777; }
+#footer {border-top:4px solid #dbdbdb;border-bottom:0px solid ;border-left:0px solid ;border-right:0px solid ;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+.magazine #loopedSlider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.magazine #loopedSlider .content .excerpt p { font:normal 12px/1.5em Arial, sans-serif;color:#cccccc; }
+.business #loopedSlider .content h2 { font:bold 25px/1em Arial, sans-serif;color:#ffffff; }
+.business #loopedSlider .content h2.title a { font:bold 25px/1em Arial, sans-serif;color:#ffffff; }
+#wrapper .business #loopedSlider .content p { font:normal 12px/1.5em Arial, sans-serif;color:#cccccc; }
+.archive_header h1 { font:normal 18px/1em Arial, sans-serif;color:#555555; }
+.archive_header {border-bottom:5px solid #e6e6e6;}
+</style>
+<!-- /Woo Custom Styling -->
+
+
+<!-- Google Webfonts -->
+<link href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/css" rel="stylesheet" type="text/css">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile viewport scale -->
+<meta content="initial-scale=1.0; maximum-scale=1.0; user-scalable=yes" name="viewport">
+<link rel="stylesheet" type="text/css" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/shThemeDefault.css"><meta id="syntaxhighlighteranchor" name="syntaxhighlighter-version" content="3.1.3">
+
+<!-- Custom Favicon -->
+<link rel="shortcut icon" href="http://www.sgoliver.net/blog/wp-content/uploads/2011/12/favicon.ico">
+<!-- Options Panel Custom CSS -->
+<style type="text/css">
+body.home #sidebar {
+    overflow: hidden;
+    width: 266px !important;
+}
+
+body.home #main {
+    width: 644px !important;
+}
+
+.entry .wp-caption {
+   margin-bottom: 15px;
+}
+</style>
+
+
+<!-- Woo Shortcodes CSS -->
+<link href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/shortcodes.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Stylesheet -->
+<link href="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body class="single single-post postid-2571 single-format-standard chrome alt-style-default boxed-layout two-col-left width-940 two-col-left-940">
+<div id="wrapper">        
+	    
+	<div id="header" class="col-full">
+ 		
+		       
+		<div id="logo">
+		<span class="site-title"><a href="http://www.sgoliver.net/blog/">sgoliver.net blog</a></span>
+<span class="site-description">Pensamientos varios sobre programación, Android, .NET y Java</span>
+		</div><!-- /#logo -->
+	      
+	    <h3 class="nav-toggle icon"><a href="http://www.sgoliver.net/blog/?p=2571#navigation">Navigation</a></h3>
+	      
+		        <div id="topad">
+        
+		<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6031220618790036";
+/* Banner Cabecera Blog */
+google_ad_slot = "5357274395";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><iframe allowtransparency="true" frameborder="0" height="60" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="468" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>		   	
+            
+        </div><!-- /#topad -->
+               
+	</div><!-- /#header -->
+		<div id="navigation" class="col-full">
+				<ul class="rss fr">
+						<li class="sub-rss"><a class="icon" href="http://www.sgoliver.net/blog/?feed=rss2"></a></li>
+		</ul>
+				<ul id="main-nav" class="nav fl"><li id="menu-item-2462" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2462"><a href="http://www.sgoliver.net/blog/">Inicio</a></li>
+<li id="menu-item-2463" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2463 parent"><a href="http://www.sgoliver.net/blog/?page_id=20">Proyectos</a>
+<ul class="sub-menu">
+	<li id="menu-item-2467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2467"><a href="http://www.sgoliver.net/blog/?page_id=57">Librería NRtfTree</a></li>
+	<li id="menu-item-2465" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2465"><a href="http://www.sgoliver.net/blog/?page_id=92">Librería JRtfTree</a></li>
+	<li id="menu-item-2464" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2464"><a href="http://www.sgoliver.net/blog/?page_id=26">Lenguaje FKScript</a></li>
+</ul>
+</li>
+<li id="menu-item-3084" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3084 parent"><a href="http://www.sgoliver.net/blog/?page_id=2935">Curso Programación Android</a>
+<ul class="sub-menu">
+	<li id="menu-item-3088" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3088"><a href="http://www.sgoliver.net/blog/?page_id=2935">Información General</a></li>
+	<li id="menu-item-3086" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3086"><a href="http://www.sgoliver.net/blog/?page_id=3011">Indice de Contenidos</a></li>
+	<li id="menu-item-3087" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3087"><a href="http://www.sgoliver.net/blog/?page_id=2245">Curso en PDF</a></li>
+	<li id="menu-item-3085" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3085"><a href="http://www.sgoliver.net/blog/?page_id=3040">Preguntas Frecuentes</a></li>
+</ul>
+</li>
+<li id="menu-item-2468" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2468"><a href="http://www.sgoliver.net/blog/?page_id=2">Contacto</a></li>
+<li id="menu-item-2469" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2469"><a href="http://www.sgoliver.net/blog/?page_id=654">Privacidad</a></li>
+<li id="menu-item-2470" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2470"><a href="http://www.sgoliver.net/foro">Foro</a></li>
+</ul>	
+	</div><!-- /#navigation -->
+
+       
+    <!-- #content Starts -->
+	    <div id="content" class="col-full">
+    
+    	<div id="main-sidebar-container">    
+
+            <!-- #main Starts -->
+                        <div id="main">                       
+<div class="post-2571 post type-post status-publish format-standard hentry category-android category-programacion tag-net tag-aspnet tag-base-de-datos tag-curso-android tag-externo tag-servicios-web tag-servidor tag-soap tag-sql-server tag-visual-studio">
+<h1 class="title">Acceso a Servicios Web SOAP en Android (1/2)</h1><div class="post-meta"><span class="small">Por</span> <span class="author vcard"><span class="fn"><a href="http://www.sgoliver.net/blog/?author=2" title="Entradas de sgoliver" rel="author">sgoliver</a></span></span> <span class="small">on</span> <abbr class="date time published" title="2012-02-27T19:04:53+0000">27/02/2012</abbr>  <span class="small">en</span> <span class="categories"><a href="http://www.sgoliver.net/blog/?cat=203" title="Ver todas las entradas en Android" rel="category">Android</a>, <a href="http://www.sgoliver.net/blog/?cat=12" title="Ver todas las entradas en Programación" rel="category">Programación</a></span>   </div>
+	<div class="entry">
+	    <p>En este primer artículo que vamos a dedicar a los <strong>servicios web</strong> dentro del <a title="Curso Programación Android" href="http://www.sgoliver.net/blog/?p=1313">Curso de Programación Android</a> nos vamos a centrar en los servicios web que utilizan el estándar <strong>SOAP</strong> como mecanismo de comunicación.</p>
+<p>A diferencia de otros tutoriales, no sólo vamos describir cómo acceder a este tipo de servicios desde una aplicación Android, sino que también veremos como crear un servicio web SOAP mediante ASP.NET para acceder a una base de datos SQL Server. De esta forma pretendo ilustrar la “arquitectura” completa de una aplicación Android que acceda a datos almacenados en un servidor de base de datos externo. <strong>Nota:</strong> Aunque intentaré aportar el máximo número de detalles, es imposible abarcarlo todo en un solo artículo, por lo que el texto supondrá unos conocimientos mínimos de Visual Studio y del lenguaje C#.</p>
+<p>Como caso de ejemplo, vamos a crear una aplicación sencilla capaz de gestionar un listado de “clientes” que contendrá el nombre y teléfono de cada uno de ellos. Nuestra aplicación será capaz de consultar el listado actual de clientes almacenados en el servidor externo y de insertar nuevos clientes en la base de datos. Como siempre, se trata de un ejemplo muy sencillo pero creo que lo suficientemente completo como para que sirva de base para crear otras aplicaciones más complejas.</p>
+<p>Como software necesario, en este caso utilizaré <em>Visual Studio 2010</em> y <em>SQL Server 2008 R2</em> para crear el servicio web y la base de datos respectivamente. &nbsp;Podéis descargar de forma gratuita las versiones <em>Express</em> de ambos productos (más que suficientes para crear una aplicación como la que describiremos en este artículo) desde la <a title="Web Microsoft - Descarga Visual Studio 2010 Express" href="http://www.microsoft.com/visualstudio/en-us/products/2010-editions/express" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.microsoft.com&#39;]);" target="_blank">web oficial</a> de Microsoft. También es recomendable instalar&nbsp;<em>SQL Server 2008 Management Studio Express</em>, descargable también de forma gratuita desde <a title="Descargar SQL Server 2008 Management Studio Express" href="http://www.microsoft.com/download/en/details.aspx?id=22985" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.microsoft.com&#39;]);" target="_blank">esta web</a>. Esta aplicación no es más que un gestor gráfico para acceder y manipular nuestras bases de datos &nbsp;SQL Server con total comodidad.</p>
+<p>Vamos comenzar por la base de todo el sistema, y esto es la base de datos a la que accederá el servicio web y, a través de éste, también la aplicación Android que crearemos más adelante. Para ello abrimos <em>SQL Server Management Studio</em>, nos conectamos a nuestro servidor SQL Server local, y pulsamos sobre la sección “<em>Databases</em>” del árbol de objetos que aparece a la izquierda. Sobre esta carpeta podemos acceder a la opción “<em>New Database…</em>” del menú contextual para crear una nueva base de datos.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/sqlserver-new-database.png"><img class="alignnone size-medium wp-image-2625" title="sqlserver-new-database" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/sqlserver-new-database-300x256.png" alt="sqlserver-new-database" width="300" height="256"></a></p>
+<p>En el cuadro de diálogo que aparece tan sólo indicaremos el nombre de la nueva base de datos, en mi caso la llamaré <em>DBCLIENTES</em>, y dejaremos el resto de opciones con sus valores por defecto.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/sqlserver-new-database-2.png"><img class="alignnone size-medium wp-image-2626" title="sqlserver-new-database-2" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/sqlserver-new-database-2-300x269.png" alt="sqlserver-new-database-2" width="300" height="269"></a></p>
+<p>Desplegamos el árbol de carpetas de nuestra recién creada base de datos <em>DBCLIENTES</em> y sobre la carpeta “<em>Tables</em>” ejecutamos la opción “<em>New table…</em>” para crear una nueva tabla.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/sqlserver-new-table.png"><img class="alignnone size-medium wp-image-2627" title="sqlserver-new-table" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/sqlserver-new-table-246x300.png" alt="sqlserver-new-table" width="246" height="300"></a></p>
+<p>Vamos a añadir sólo 3 campos a la tabla:</p>
+<ul>
+<li><span style="font-family: &#39;courier new&#39;, courier;">IdCliente</span>, de tipo <span style="font-family: &#39;courier new&#39;, courier;">int</span>, que será un código único identificativo del cliente.</li>
+<li><span style="font-family: &#39;courier new&#39;, courier;">Nombre</span>, de tipo <span style="font-family: &#39;courier new&#39;, courier;">nvarchar(50)</span>, que contendrá el nombre del cliente.</li>
+<li><span style="font-family: &#39;courier new&#39;, courier;">Telefono</span>, de tipo <span style="font-family: &#39;courier new&#39;, courier;">int</span>, que contendrá el teléfono del cliente.</li>
+</ul>
+<div></div>
+<p>Marcaremos además el campo <span style="font-family: &#39;courier new&#39;, courier;">IdCliente</span> como <em>clave principal</em>&nbsp;de la tabla, y también como <em>campo de identidad autoincremental</em>, de modo que se calcule automáticamente cada vez que insertemos un nuevo cliente.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/sqlserver-diseno-tabla-identity.png"><img class="alignnone size-medium wp-image-2631" title="sqlserver-diseno-tabla-identity" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/sqlserver-diseno-tabla-identity-300x300.png" alt="sqlserver-diseno-tabla-identity" width="300" height="300"></a></p>
+<p>Con esto ya tenemos nuestra tabla finalizada, por lo que sólo nos queda guardarla con el nombre que deseemos, que para este ejemplo será “<em>Clientes</em>“.</p>
+<p>Hecho, ya tenemos nuestra base de datos SQL Server creada y una tabla preparada para almacenar los datos asociados a nuestros clientes. El siguiente paso será crear el servicio web que manipulará los datos de esta tabla.</p>
+<p>Para crear el servicio abriremos Visual Studio 2010 y crearemos un nuevo proyecto web en C# utilizando la plantilla “<em>ASP.NET Empty Web Application</em>“. En un alarde de originalidad lo llamaremos “<em>ServicioWebSoap</em>“.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/nuevo-proyecto-web.png"><img class="alignnone size-medium wp-image-2580" title="nuevo-proyecto-web" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/nuevo-proyecto-web-300x160.png" alt="nuevo-proyecto-web" width="300" height="160"></a></p>
+<p>Una vez creado el proyecto, añadiremos a éste un nuevo servicio web mediante el menú “<em>Project / Add new item…</em>“. Lo llamaremos “<em>ServicioClientes.asmx</em>“.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/nuevo-servicio-web.png"><img class="alignnone size-medium wp-image-2582" title="nuevo-servicio-web" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/nuevo-servicio-web-300x168.png" alt="nuevo-servicio-web" width="300" height="168"></a></p>
+<p>Una vez añadido aparecerá en pantalla el código fuente por defecto del nuevo servicio web, que contiene un único método de ejemplo llamado&nbsp;<span style="font-family: &#39;courier new&#39;, courier;">HelloWorld()</span>. Este método podemos eliminarlo ya que no nos servirá de nada, y además modificaremos el atributo <span style="font-family: &#39;courier new&#39;, courier;">WebService</span> de la clase para indicar que el namespace será “<em>http://sgoliver.net/</em>” (en vuestro caso podéis indicar otro valor). Con esto, nos quedaría un código base como éste:</p>
+<div><div id="highlighter_184512" class="syntaxhighlighter  csharp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="csharp keyword">namespace</code> <code class="csharp plain">ServicioWebSoap</code></div><div class="line number2 index1 alt1"><code class="csharp plain">{</code></div><div class="line number3 index2 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp color1">/// &lt;summary&gt;</code></div><div class="line number4 index3 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp color1">/// Summary description for ServicioClientes</code></div><div class="line number5 index4 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp color1">/// &lt;/summary&gt;</code></div><div class="line number6 index5 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">[WebService(Namespace = </code><code class="csharp string">"<a href="http://sgoliver.net/">http://sgoliver.net/</a>"</code><code class="csharp plain">)]</code></div><div class="line number7 index6 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]</code></div><div class="line number8 index7 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">[System.ComponentModel.ToolboxItem(</code><code class="csharp keyword">false</code><code class="csharp plain">)]</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp keyword">class</code> <code class="csharp plain">ServicioClientes : System.Web.Services.WebService</code></div><div class="line number11 index10 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">{</code></div><div class="line number12 index11 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp comments">//Métodos del servicio web</code></div><div class="line number13 index12 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp comments">//...</code></div><div class="line number14 index13 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">}</code></div><div class="line number15 index14 alt2"><code class="csharp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Pues bien, dentro de esta clase <span style="font-family: &#39;courier new&#39;, courier;">ServicioClientes</span> es donde añadiremos todos los métodos públicos que queramos tener accesibles a través de nuestro servicio web, siempre precedidos por el atributo <span style="font-family: &#39;courier new&#39;, courier;">[WebMethod]</span> como veremos en breve.&nbsp;Para nuestro ejemplo vamos a crear tres métodos, el primero para obtener el listado completo de clientes almacenados en la base de datos, y los otros dos para insertar nuevos clientes (más adelante explicaré por qué dos, aunque adelanto que es tan sólo por motivos didácticos).</p>
+<p>Antes de crear estos métodos, vamos a crear una nueva clase sencilla que nos sirva para encapsular los datos de un cliente. La añadiremos mediante la opción “<em>Project / Add class…</em>” de Visual Studio y la llamaremos “<em>Cliente.cs</em>“. Esta clase contendrá únicamente los 3 campos que ya comentamos al crear la base de datos y dos constructores, uno de ellos por defecto que tan solo inicializará los campos y otro con parámetros para crear clientes a partir de sus datos identificativos. El código de la clase es muy sencillo, y tan solo cabe mencionar que definiremos sus tres atributos como propiedades automáticas de C# utilizando para ello la notación abreviada <span style="font-family: &#39;courier new&#39;, courier;">{get; set;}</span></p>
+<div><div id="highlighter_227717" class="syntaxhighlighter  csharp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="csharp keyword">using</code> <code class="csharp plain">System;</code></div><div class="line number2 index1 alt1"><code class="csharp keyword">using</code> <code class="csharp plain">System.Collections.Generic;</code></div><div class="line number3 index2 alt2"><code class="csharp keyword">using</code> <code class="csharp plain">System.Linq;</code></div><div class="line number4 index3 alt1"><code class="csharp keyword">using</code> <code class="csharp plain">System.Web;</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="csharp keyword">namespace</code> <code class="csharp plain">ServicioWebSoap</code></div><div class="line number7 index6 alt2"><code class="csharp plain">{</code></div><div class="line number8 index7 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp keyword">class</code> <code class="csharp plain">Cliente</code></div><div class="line number9 index8 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">{</code></div><div class="line number10 index9 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp keyword">int</code> <code class="csharp plain">Id {</code><code class="csharp keyword">get</code><code class="csharp plain">; </code><code class="csharp keyword">set</code><code class="csharp plain">;}</code></div><div class="line number11 index10 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp keyword">string</code> <code class="csharp plain">Nombre {</code><code class="csharp keyword">get</code><code class="csharp plain">; </code><code class="csharp keyword">set</code><code class="csharp plain">;}</code></div><div class="line number12 index11 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp keyword">int</code> <code class="csharp plain">Telefono {</code><code class="csharp keyword">get</code><code class="csharp plain">; </code><code class="csharp keyword">set</code><code class="csharp plain">;}</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp plain">Cliente()</code></div><div class="line number15 index14 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">{</code></div><div class="line number16 index15 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">this</code><code class="csharp plain">.Id = 0;</code></div><div class="line number17 index16 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">this</code><code class="csharp plain">.Nombre = </code><code class="csharp string">""</code><code class="csharp plain">;</code></div><div class="line number18 index17 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">this</code><code class="csharp plain">.Telefono = 0;</code></div><div class="line number19 index18 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">}</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">public</code> <code class="csharp plain">Cliente(</code><code class="csharp keyword">int</code> <code class="csharp plain">id, </code><code class="csharp keyword">string</code> <code class="csharp plain">nombre, </code><code class="csharp keyword">int</code> <code class="csharp plain">telefono)</code></div><div class="line number22 index21 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">{</code></div><div class="line number23 index22 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">this</code><code class="csharp plain">.Id = id;</code></div><div class="line number24 index23 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">this</code><code class="csharp plain">.Nombre = nombre;</code></div><div class="line number25 index24 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">this</code><code class="csharp plain">.Telefono = telefono;</code></div><div class="line number26 index25 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">}</code></div><div class="line number27 index26 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">}</code></div><div class="line number28 index27 alt1"><code class="csharp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Vamos ahora a escribir el primero de los métodos que haremos accesible a través de nuestro servicio web. Lo llamaremos <span style="font-family: &#39;courier new&#39;, courier;">NuevoCliente()</span>, recibirá como parámetros de entrada un nombre y un teléfono, y se encargará de insertar un nuevo registro en nuestra tabla de clientes con dichos datos. Recordemos que el ID del cliente no será necesario insertarlo de forma explícita ya que lo hemos definido en la base de datos como campo autoincremental. Para el trabajo con la base de datos vamos a utilizar la API clásica de <em>ADO.NET</em>, aunque podríamos utilizar cualquier otro mécanismo de acceso a datos, como por ejemplo <a title="Web Oficial Entity Framework" href="http://msdn.microsoft.com/es-es/library/bb399572.aspx" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://msdn.microsoft.com&#39;]);" target="_blank">Entity Framework</a>, <a title="Web Oficial NHibernate" href="http://nhforge.org/Default.aspx" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://nhforge.org&#39;]);" target="_blank">NHibernate</a>, etc.</p>
+<p>De esta forma, el primer paso será crear una conexión a SQL Server mediante la clase <span style="font-family: &#39;courier new&#39;, courier;">SQLConnection</span>, pasando como parámetro la cadena de conexión correspondiente (en vuestro caso tendréis que modificarla para adaptarla a vuestro entorno). Tras esto abriremos la conexión mediante una llamada al método <span style="font-family: &#39;courier new&#39;, courier;">Open()</span>, definiremos el comando SQL que queremos ejecutar creando un objeto <span style="font-family: &#39;courier new&#39;, courier;">SQLCommand</span>. Ejecutaremos el comando llamando al método <span style="font-family: &#39;courier new&#39;, courier;">ExecuteNonQuery()</span> recogiendo el resultado en una variable, y finalmente cerraremos la conexión llamando a <span style="font-family: &#39;courier new&#39;, courier;">Close()</span>. Por último devolveremos el resultado del comando SQL como valor de retorno del método web.</p>
+<p>Como podéis ver en el código siguiente, los valores a insertar en la base de datos los hemos especificado en la consulta SQL como parámetros variable (precedidos por el carácter ‘@’). Los valores de estos parámetros los definimos y añadimos al comando SQL mediante el método <span style="font-family: &#39;courier new&#39;, courier;">Add()</span> de su propiedad <span style="font-family: &#39;courier new&#39;, courier;">Parameters</span>. Esta opción es más recomendable que la opción clásica de concatenar directamente la cadena de texto de la sentencia SQL con los parámetros variables, ya que entre otras cosas servirá para evitar [en gran medida] posibles ataques de <a title="Wikipedia Inyección SQL" href="http://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://es.wikipedia.org&#39;]);" target="_blank">inyección SQL</a>.&nbsp;El resultado devuelto por este método será el número de registros afectados por la sentencia SQL ejecutada, por lo que para verificar si se ha ejecutado correctamente bastará con comprobar que el resultado es igual a 1.</p>
+<div><div id="highlighter_591286" class="syntaxhighlighter  csharp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="csharp plain">[WebMethod]</code></div><div class="line number2 index1 alt1"><code class="csharp keyword">public</code> <code class="csharp keyword">int</code> <code class="csharp plain">NuevoClienteSimple(</code><code class="csharp keyword">string</code> <code class="csharp plain">nombre, </code><code class="csharp keyword">int</code> <code class="csharp plain">telefono)</code></div><div class="line number3 index2 alt2"><code class="csharp plain">{</code></div><div class="line number4 index3 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlConnection con =</code></div><div class="line number5 index4 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">new</code> <code class="csharp plain">SqlConnection(</code></div><div class="line number6 index5 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp string">@"Data Source=SGOLIVERPC\SQLEXPRESS;Initial Catalog=DBCLIENTES;Integrated Security=True"</code><code class="csharp plain">);</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">con.Open();</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">string</code> <code class="csharp plain">sql = </code><code class="csharp string">"INSERT INTO Clientes (Nombre, Telefono) VALUES (@nombre, @telefono)"</code><code class="csharp plain">;</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlCommand cmd = </code><code class="csharp keyword">new</code> <code class="csharp plain">SqlCommand(sql, con);</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">cmd.Parameters.Add(</code><code class="csharp string">"@nombre"</code><code class="csharp plain">, System.Data.SqlDbType.NVarChar).Value = nombre;</code></div><div class="line number15 index14 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">cmd.Parameters.Add(</code><code class="csharp string">"@telefono"</code><code class="csharp plain">, System.Data.SqlDbType.Int).Value = telefono;</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">int</code> <code class="csharp plain">res = cmd.ExecuteNonQuery();</code></div><div class="line number18 index17 alt1">&nbsp;</div><div class="line number19 index18 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">con.Close();</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">return</code> <code class="csharp plain">res;</code></div><div class="line number22 index21 alt1"><code class="csharp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>En el código anterior, podéis ver que hemos precedido el método con el atributo <span style="font-family: &#39;courier new&#39;, courier;">[WebMethod]</span>. Con este atributo estamos indicando que el método será accesible a través de nuestro servicio web y podrá ser llamado desde cualquier aplicación que se conecte con éste.</p>
+<p>La siguiente operación que vamos a añadir a nuestro servicio web será la que nos permita obtener el listado completo de clientes registrados en la base de datos. Llamaremos al método <span style="font-family: &#39;courier new&#39;, courier;">ListadoClientes()</span> y devolverá un array de objetos de tipo <span style="font-family: &#39;courier new&#39;, courier;">Cliente</span>. El código del método será muy similar al ya comentado para la operación de inserción, con la única diferencia de que en esta ocasión la sentencia SQL será obviamente un <span style="font-family: &#39;courier new&#39;, courier;">SELECT</span> y que utilizaremos un objeto <span style="font-family: &#39;courier new&#39;, courier;">SqlDataReader</span> para leer los resultados devueltos por la consulta. Los registros leídos los iremos añadiendo a una lista de tipo <span style="font-family: &#39;courier new&#39;, courier;">List&lt;Clientes&gt;</span> y una vez completada la lectura convertiremos esta lista en un array de clientes llamando al método <span style="font-family: &#39;courier new&#39;, courier;">ToArray()</span>. Este último array será el que devolveremos como resultado del método. Veamos el código completo del método:</p>
+<div><div id="highlighter_639297" class="syntaxhighlighter  csharp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="csharp plain">[WebMethod]</code></div><div class="line number2 index1 alt1"><code class="csharp keyword">public</code> <code class="csharp plain">Cliente[] ListadoClientes()</code></div><div class="line number3 index2 alt2"><code class="csharp plain">{</code></div><div class="line number4 index3 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlConnection con =</code></div><div class="line number5 index4 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">new</code> <code class="csharp plain">SqlConnection(</code></div><div class="line number6 index5 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp string">@"Data Source=SGOLIVERPC\SQLEXPRESS;Initial Catalog=DBCLIENTES;Integrated Security=True"</code><code class="csharp plain">);</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">con.Open();</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">string</code> <code class="csharp plain">sql = </code><code class="csharp string">"SELECT IdCliente, Nombre, Telefono FROM Clientes"</code><code class="csharp plain">;</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlCommand cmd = </code><code class="csharp keyword">new</code> <code class="csharp plain">SqlCommand(sql, con);</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlDataReader reader = cmd.ExecuteReader();</code></div><div class="line number15 index14 alt2">&nbsp;</div><div class="line number16 index15 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">List&lt;Cliente&gt; lista = </code><code class="csharp keyword">new</code> <code class="csharp plain">List&lt;Cliente&gt;();</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">while</code> <code class="csharp plain">(reader.Read())</code></div><div class="line number19 index18 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">{</code></div><div class="line number20 index19 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">lista.Add(</code></div><div class="line number21 index20 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">new</code> <code class="csharp plain">Cliente(reader.GetInt32(0),</code></div><div class="line number22 index21 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">reader.GetString(1),</code></div><div class="line number23 index22 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">reader.GetInt32(2)));</code></div><div class="line number24 index23 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">}</code></div><div class="line number25 index24 alt2">&nbsp;</div><div class="line number26 index25 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">con.Close();</code></div><div class="line number27 index26 alt2">&nbsp;</div><div class="line number28 index27 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">return</code> <code class="csharp plain">lista.ToArray();</code></div><div class="line number29 index28 alt2"><code class="csharp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Por último, como dijimos al principio, vamos a añadir un tercer método web con fines puramente&nbsp;didácticos. Si os fijáis en los dos métodos anteriores, veréis que en uno de los casos devolvemos como resultado un valor simple, un número entero, y en el otro caso un objeto complejo, en concreto un array de objetos de tipo <span style="font-family: &#39;courier new&#39;, courier;">Cliente</span>. Sin embargo, ninguno de ellos recibe como parámetro un tipo complejo, tan sólo valores simples (enteros y strings). Esto no tiene mucha relevancia en el código de nuestro servicio web, pero sí tiene ciertas peculiaridades a la hora de realizar la llamada al servicio desde la aplicación Android. Por lo que para poder explicar esto más adelante añadiremos un nuevo método de inserción de clientes que, en vez de recibir los parámetros de nombre y teléfono por separado, recibirá como dato de entrada un objeto <span style="font-family: &#39;courier new&#39;, courier;">Cliente</span>.</p>
+<p>El código de este método, que llamaremos <span style="font-family: &#39;courier new&#39;, courier;">NuevoClienteObjeto()</span>, será exactamente igual al anterior método de inserción, con la única diferencia de los parámetros de entrada, por lo que no nos detendremos en comentar nada más.</p>
+<div><div id="highlighter_362817" class="syntaxhighlighter  csharp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="csharp plain">[WebMethod]</code></div><div class="line number2 index1 alt1"><code class="csharp keyword">public</code> <code class="csharp keyword">int</code> <code class="csharp plain">NuevoClienteObjeto(Cliente cliente)</code></div><div class="line number3 index2 alt2"><code class="csharp plain">{</code></div><div class="line number4 index3 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlConnection con = </code><code class="csharp keyword">new</code> <code class="csharp plain">SqlConnection(</code><code class="csharp string">@"Data Source=SGOLIVERPC\SQLEXPRESS;Initial Catalog=DBCLIENTES;Integrated Security=True"</code><code class="csharp plain">);</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">con.Open();</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">string</code> <code class="csharp plain">sql = </code><code class="csharp string">"INSERT INTO Clientes (Nombre, Telefono) VALUES (@nombre, @telefono)"</code><code class="csharp plain">;</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">SqlCommand cmd = </code><code class="csharp keyword">new</code> <code class="csharp plain">SqlCommand(sql, con);</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">cmd.Parameters.Add(</code><code class="csharp string">"@nombre"</code><code class="csharp plain">, System.Data.SqlDbType.NVarChar).Value = cliente.Nombre;</code></div><div class="line number13 index12 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">cmd.Parameters.Add(</code><code class="csharp string">"@telefono"</code><code class="csharp plain">, System.Data.SqlDbType.Int).Value = cliente.Telefono;</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">int</code> <code class="csharp plain">res = cmd.ExecuteNonQuery();</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">con.Close();</code></div><div class="line number18 index17 alt1">&nbsp;</div><div class="line number19 index18 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp keyword">return</code> <code class="csharp plain">res;</code></div><div class="line number20 index19 alt1"><code class="csharp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Y con esto hemos finalizado nuestro servicio web. Podemos probar su funcionamiento con la página de prueba que proporciona ASP.NET al ejecutar el proyecto en Visual Studio. Si ejecutamos el proyecto se abrirá automáticamente un explorador web que mostrará una página con todas las operaciones que hemos definido en el servicio web.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/operaciones-ws.png"><img class="alignnone size-medium wp-image-2632" title="operaciones-ws" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/operaciones-ws-300x113.png" alt="operaciones-ws" width="300" height="113"></a></p>
+<p>Si pulsamos sobre cualquiera de ellas pasaremos a una nueva página que nos permitirá dar valores a sus parámetros y ejecutar el método correspondiente para visualizar sus resultados. Si pulsamos por ejemplo en la operación <span style="font-family: &#39;courier new&#39;, courier;">NuevoCliente(string, int)</span> llegaremos a esta página:</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/operaciones-nuevocliente.png"><img class="alignnone size-medium wp-image-2633" title="operaciones-nuevocliente" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/operaciones-nuevocliente-300x186.png" alt="operaciones-nuevocliente" width="300" height="186"></a></p>
+<p>Aquí podemos dar valores a los dos parámetros y ejecutar el método (botón “<em>Invoke</em>“), lo que nos devolverá la respuesta codificada en un XML según el estandar SOAP.</p>
+<p><a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/operaciones-nuevocliente-res.png"><img class="alignnone size-medium wp-image-2634" title="operaciones-nuevocliente-res" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/operaciones-nuevocliente-res-300x99.png" alt="operaciones-nuevocliente-res" width="300" height="99"></a></p>
+<p>Como podéis comprobar, en principio el XML devuelto no es fácil de interpretar, pero esto es algo que no debe preocuparnos demasiado ya que en principio será transparente para nosotros, las librerías que utilizaremos más adelante en Android para la llamada a servicios SOAP se encargarán de <em>parsear</em> convenientemente estas respuestas y de darnos tan sólo aquella parte que necesitamos.</p>
+<p>En el siguiente artículo nos ocuparemos de la construcción de una aplicación Android que sea capaz de conectarse a este servicio web y de llamar a los métodos que hemos definido para insertar y recuperar clientes de nuestra base de datos. Veremos además cómo podemos ejecutar y probar en local todo el sistema de forma que podamos comprobar que todo funciona como esperamos.</p>
+<p>Podéis descargar el código fuente completo del servicio web desde <a href="http://www.sgoliver.net/blog/wp-content/uploads/2012/02/ServicioWebSoap.zip" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://www.sgoliver.net/blog/wp-content/uploads/2012/02/ServicioWebSoap.zip&#39;]);">este enlace</a>.</p>
+	</div><!-- /.entry -->
+	<div class="fix"></div>
+<div id="post-author">
+	<div class="profile-image"></div>
+	<div class="profile-content">
+		<h4>Acerca de sgoliver</h4>
+						<div class="profile-link">
+			<a href="http://www.sgoliver.net/blog/?author=2">
+				Ver todos los artículos de sgoliver <span class="meta-nav">→</span>			</a>
+		</div><!-- #profile-link	-->
+			</div>
+	<div class="fix"></div>
+</div>
+	 
+	<div id="connect">
+		<h3>Suscríbete</h3>
+		
+		<div class="col-left">
+			<p>Suscríbete a alguno de nuestros canales para estar al día de todo.</p>
+			
+			
+						
+						<div class="social">
+		   				   		<a href="http://www.sgoliver.net/blog/?feed=rss2" class="subscribe" title="RSS"></a>
+
+		   				   		<a href="http://www.twitter.com/sgolivernet" class="twitter" title="Twitter"></a>
+
+		   				   		<a href="http://www.youtube.com/user/sgolivernet" class="youtube" title="YouTube"></a>
+
+		   				   		<a href="https://plus.google.com/u/0/b/111700400977680994301/111700400977680994301" class="googleplus" title="Google+"></a>
+
+							</div>
+						
+		</div><!-- col-left -->
+		
+				<div class="related-posts col-right">
+			<h4>Artículos relacionados:</h4>
+			<div class="woo-sc-related-posts">
+<ul>
+<li class="post-id-3462">
+
+<a href="http://www.sgoliver.net/blog/?p=3462" title="Código del curso en GitHub" class="related-title"><span>Código del curso en GitHub</span></a>
+</li>
+<li class="post-id-3286">
+
+<a href="http://www.sgoliver.net/blog/?p=3286" title="Mapas en Android (Google Maps Android API v2) – III" class="related-title"><span>Mapas en Android (Google Maps Android API v2) – III</span></a>
+</li>
+<li class="post-id-3271">
+
+<a href="http://www.sgoliver.net/blog/?p=3271" title="Mapas en Android (Google Maps Android API v2) – II" class="related-title"><span>Mapas en Android (Google Maps Android API v2) – II</span></a>
+</li>
+<li class="post-id-3244">
+
+<a href="http://www.sgoliver.net/blog/?p=3244" title="Mapas en Android (Google Maps Android API v2) – I" class="related-title"><span>Mapas en Android (Google Maps Android API v2) – I</span></a>
+</li>
+<li class="post-id-3129">
+
+<a href="http://www.sgoliver.net/blog/?p=3129" title="Tareas en segundo plano en Android (II): IntentService" class="related-title"><span>Tareas en segundo plano en Android (II): IntentService</span></a>
+</li>
+</ul>
+<div class="fix"></div><!--/.fix-->
+</div><!--/.woo-sc-related-posts-->		</div><!-- col-right -->
+									
+        <div class="fix"></div>
+	</div>
+	<div class="post-utility"><p class="tags icon"><a href="http://www.sgoliver.net/blog/?tag=net" rel="tag">.NET</a>, <a href="http://www.sgoliver.net/blog/?tag=aspnet" rel="tag">ASP.NET</a>, <a href="http://www.sgoliver.net/blog/?tag=base-de-datos" rel="tag">base de datos</a>, <a href="http://www.sgoliver.net/blog/?tag=curso-android" rel="tag">curso android</a>, <a href="http://www.sgoliver.net/blog/?tag=externo" rel="tag">externo</a>, <a href="http://www.sgoliver.net/blog/?tag=servicios-web" rel="tag">servicios web</a>, <a href="http://www.sgoliver.net/blog/?tag=servidor" rel="tag">servidor</a>, <a href="http://www.sgoliver.net/blog/?tag=soap" rel="tag">soap</a>, <a href="http://www.sgoliver.net/blog/?tag=sql-server" rel="tag">sql server</a>, <a href="http://www.sgoliver.net/blog/?tag=visual-studio" rel="tag">visual studio</a></p> </div>
+</div><!-- /.post -->
+	        <div class="post-entries">
+	            <div class="nav-prev icon fl"><a href="http://www.sgoliver.net/blog/?p=2544" rel="prev">Alternativas para leer y escribir XML (y otros ficheros) en Android</a></div>
+	            <div class="nav-next icon fr"><a href="http://www.sgoliver.net/blog/?p=2594" rel="next">Acceso a Servicios Web SOAP en Android (2/2)</a></div>
+	            <div class="fix"></div>
+	        </div>	
+	
+		<div id="comments">		 	<h3 id="comments-title">20 Respuestas a <em>Acceso a Servicios Web SOAP en Android (1/2)</em></h3>
+		 	<ol class="commentlist">
+					                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-8469"></a>
+	      	
+	      	<div id="li-comment-8469" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name"><a href="http://whiteoso.blogspot.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://whiteoso.blogspot.com&#39;]);" rel="external nofollow" class="url url">WhiteOso</a></span>           
+	                <span class="date">02/03/2012 at 13:50</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-8469" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-8469">
+				
+				<p>Genial explicado</p>
+<p>Esta primera parte no tenía duadas, pero aún así la repasé entera, voy a por la segunda parte-</p>
+<p>Gracias y continua en esta línea que es genial</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-8515"></a>
+	      	
+	      	<div id="li-comment-8515" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name"><a href="http://www.hellovierco.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.hellovierco.com&#39;]);" rel="external nofollow" class="url url">Vierco</a></span>           
+	                <span class="date">04/03/2012 at 20:11</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-8515" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-8515">
+				
+				<p>Sencillamente genial, como siempre.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-8526"></a>
+	      	
+	      	<div id="li-comment-8526" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Kevin R.</span>           
+	                <span class="date">05/03/2012 at 4:16</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-8526" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-8526">
+				
+				<p>Muy buenas noches,</p>
+<p>Durante varios días he estado leyendo sus tutoriales a base de Android y vi que los últimos que usted puso fueron los de Web Service SOAP y REST utilizando Visual Studio y SQL Server. Me gustaría saber si usted también va a poner un tutorial de los Web Service con MySql y PHP o algo por el estilo ya que no todos usamos SQL Server y a muchos de nosotros nos serviría de mucha ayuda. De antemano muchas gracias por la ayuda y espero su respuesta.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-9302"></a>
+	      	
+	      	<div id="li-comment-9302" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Victor Gerson</span>           
+	                <span class="date">28/03/2012 at 2:29</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-9302" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-9302">
+				
+				<p>Hola espero me puedan ayudar,  e seguido los pasos para hacer el web service y corre bien en mi pc lo malo es que la aplicacion la estoy haciendo en una mac, entonces mi idea fue abrir el web service de la forma localhost:puerto/ServicioWeb…  me aparece Bad Request – Invalid Hostname y no puedo acceder al servicio web localmente entonces quisiera poder abrir los servicios en la mac para despues seguir con la conexion de emulador de eclipse ojala me hayan entendido y me puedan ayudar gracias de antemano</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-9909"></a>
+	      	
+	      	<div id="li-comment-9909" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">juan carlos cortes</span>           
+	                <span class="date">24/04/2012 at 13:43</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-9909" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-9909">
+				
+				<p>Excelente explicacion…. quiero saber si es posible crear un webservices en eclipse<br>
+gracias</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-9950"></a>
+	      	
+	      	<div id="li-comment-9950" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">pelirroja191186</span>           
+	                <span class="date">25/04/2012 at 21:48</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-9950" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-9950">
+				
+				<p>hola juan carlos si es posible crearlo y es muy facil solo creas en un proyecto web dinamic una clase java y luego das nuevo webservice y ahi seleccionas las opciones correspondientes y ya te lo crea automatico, sino lo logras me avisas para ponerte un ejemplo.</p>
+<p>escribo para ver si me pueden ayudar ya tengo el servicio web hecho y funciona perfectamente en local pero cuando lo quiero subir para publicarlo no me va, pienso que es algo que estoy haciendo mal a la hora de publicar pues lo que hago es subir la carpeta por ftp? es correcto, besito</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-10610"></a>
+	      	
+	      	<div id="li-comment-10610" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">adriaBcn</span>           
+	                <span class="date">20/05/2012 at 21:10</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-10610" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-10610">
+				
+				<p>pelirroja191186  podrias passar un ejemplo de lo que has dicho? muchas gracias.</p>
+<p>despues tengo problemas porque tengo la base de datos en un pc y el servicio esta en otro…<br>
+y no consigo hacer la conexion, no se si es el connectionString que no esta bien o es que devo configurar el sqlserver2008</p>
+<p>podrias hecharme una mano? gracias! </p>
+<p>PD:geniales tus tutoriales!</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-11478"></a>
+	      	
+	      	<div id="li-comment-11478" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Daniel Ramirez</span>           
+	                <span class="date">12/06/2012 at 15:25</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-11478" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-11478">
+				
+				<p>Buen día, tengo una duda y es si hay alguna forma de gestionar archivos vía ftp para traerlos al móvil y utilizarlos en mi aplicación, para esto ingresando con usuario y contraseña requeridos por el servidor ftp.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-11491"></a>
+	      	
+	      	<div id="li-comment-11491" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Poldon</span>           
+	                <span class="date">12/06/2012 at 19:52</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-11491" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-11491">
+				
+				<p>Buen dia, disculpa en lugar de usar visual studio se puede usar monodevelop servisios web??</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-14589"></a>
+	      	
+	      	<div id="li-comment-14589" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name"><a href="http://www.skartweb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.skartweb.com&#39;]);" rel="external nofollow" class="url url">Luis Arboleda</a></span>           
+	                <span class="date">06/09/2012 at 4:04</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-14589" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-14589">
+				
+				<p>Hola, Como puedo conectarlo con MYSQL, lo cambie todo para hacer una prueba pero en Data Source no se conectarlo utilizando HOST, Username, y Password.</p>
+<p>Gracias de Antemano, Luis.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-16548"></a>
+	      	
+	      	<div id="li-comment-16548" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Fernando</span>           
+	                <span class="date">30/09/2012 at 22:25</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-16548" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-16548">
+				
+				<p>Esta excelente este tutorial, solo tengo una duda, por que cuando compilo en vstudio en la sentencia SqlConnection me tira error y me dice </p>
+<p>Error	1	No se puede encontrar el tipo o el nombre de espacio de nombres ‘SqlConnection’ (¿falta una directiva using o una referencia de ensamblado?)	c:\users\fernando\documents\visual studio 2010\Projects\ServicioWebSoap\ServicioWebSoap\ServicioClientes.asmx.cs	23	13	ServicioWebSoap</p>
+<p>de antemano muchas gracias por tu ayuda</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-17288"></a>
+	      	
+	      	<div id="li-comment-17288" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Rayco</span>           
+	                <span class="date">15/10/2012 at 4:39</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-17288" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-17288">
+				
+				<p>Muchas gracias por el tutorial. Eso si, en vez de ASP creo que hubiera sido mucho mejor opción haber usado alguna implementación Java de servicios web como por ejemplo Axis2. Las ventajas serían:<br>
+- Multiplataforma<br>
+- Open Source<br>
+- Con respecto a la aplicación Android, no hay que usar otro lenguaje distinto</p>
+<p>PD: Prácticamente lo mismo se podría decir del SQL Server. Teniendo MySQL que es libre, multiplataforma y ampliamente extendido en servidores, no le veo mucho sentido utilizar SQL Server.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment byuser comment-author-admin even thread-even depth-1">
+	    
+	    	<a name="comment-17307"></a>
+	      	
+	      	<div id="li-comment-17307" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name"><a href="http://www.sgoliver.net/" rel="external nofollow" class="url url">admin</a></span>           
+	                <span class="date">15/10/2012 at 9:50</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-17307" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-17307">
+				
+				<p>Hola Rayco, lo de “la mejor opción” es algo bastante relativo y personal. La mejor opción no es ninguna tecnología en concreto, sino aquella que mejor conoces y tienes disponible. No pongo en duda que tu mejor opción sea Java-Axis2-MySQL, es una solución tan válida y respetable como cualquier otra. Sin embargo, en mi caso particular, conozco mucho mejor la tecnología .NET y mi servicio de hosting es Windows/.NET/SQLServer, por lo que mi mejor opción es sin ninguna duda dicha plataforma. La idea de estos tutoriales no es imponer una tecnología concreta, sino proporcionar las bases generales para construir sistemas de comunicación entre aplicaciones Android y Servicios Web. Si conoces bien la plataforma Java-Axis2-MySql no deberías tener ningún problema para adaptar lo aquí explicado a dicha tecnología. Saludos.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-17467"></a>
+	      	
+	      	<div id="li-comment-17467" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Revol89</span>           
+	                <span class="date">17/10/2012 at 8:19</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-17467" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-17467">
+				
+				<p>Si alguno de ustedes tienen problemas al instalar el SQL Server, recomiendo que descarguen el Microsoft SQL Server 2008 Express con Tools (SQLEXPRWT_x64_ESN.exe) y sigan este link para su instalación. <a href="http://grendon.wordpress.com/2009/10/14/instalacion-de-sql-server-2008-express-edition-sobre-windows-7/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://grendon.wordpress.com&#39;]);" rel="nofollow">http://grendon.wordpress.com/2009/10/14/instalacion-de-sql-server-2008-express-edition-sobre-windows-7/</a></p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment even thread-even depth-1">
+	    
+	    	<a name="comment-17636"></a>
+	      	
+	      	<div id="li-comment-17636" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">Revol89</span>           
+	                <span class="date">18/10/2012 at 15:26</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-17636" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-17636">
+				
+				<p>Excelente aporte. Un dato adicional. Si les genera un error de ‘SqlConnection’ se debe agregar la línea de código using System.Data.SqlClient; También, al realizar la conexión a la base de datos, se debe modificar le código en donde se define la instancia (la cual aparece al conectarse a SQL Server 2008). Se define de la siguiente manera @”Data Source= NOMBRE_DEL_EQUIPO\SENTENCIA_DEFINIDA;Initial Catalog=DBCLIENTES;Integrated Security=True”</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+	                 
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+	    
+	    	<a name="comment-47258"></a>
+	      	
+	      	<div id="li-comment-47258" class="comment-container">
+	      	
+					                <div class="avatar"></div>
+	                        
+	
+		      	<div class="comment-head">
+		      	            
+	                <span class="name">hp</span>           
+	                <span class="date">16/01/2013 at 0:56</span>
+	                <span class="perma"><a href="http://www.sgoliver.net/blog/?p=2571&cpage=1#comment-47258" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+		        		          	
+				</div><!-- /.comment-head -->
+		      
+		   		<div class="comment-entry" id="comment-47258">
+				
+				<p>buen tutorial, tengo una duda en el metodo web Nuevoclientesimple. yo estoy haciendo el servicioweb en visual basic 2010<br>
+pero en el return lista.ToArray() me marca el error siguiente:</p>
+<p>Value of type ’1-dimensional array of AndroidWSSoap.Cliente’ cannot be converted to ‘AndroidWSSoap.Cliente’.</p>
+		            
+										
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->                       
+			
+				</div><!-- /comment-entry -->
+	
+			</div><!-- /.comment-container -->
+			
+	</li>
+			</ol>
+		 				 	<h3 id="comments-title">Trackbacks/Pingbacks</h3>
+			 	<ol class="commentlist">
+						
+		<li id="comment-8251">
+			<span class="author"><a href="http://www.sgoliver.net/blog/?p=2594" rel="external nofollow" class="url">Acceso a Servicios Web SOAP en Android (2/2) | sgoliver.net blog</a></span> - 
+			<span class="date">27/02/2012</span>
+			<span class="pingcontent"><p>[...] a Servicios Web SOAP en Android (2/2)Por sgoliver en 27/02/2012 en Android, Programación   En el artículo anterior del curso vimos cómo construir un servicio web SOAP haciendo uso de ASP.NET y una base de datos [...]</p>
+</span>
+</li>
+	
+		<li id="comment-8252">
+			<span class="author"><a href="http://www.sgoliver.net/blog/?p=1313" rel="external nofollow" class="url">Desarrollo en Android | sgoliver.net blog</a></span> - 
+			<span class="date">27/02/2012</span>
+			<span class="pingcontent"><p>[...]  [...]</p>
+</span>
+</li>
+	
+		<li id="comment-8510">
+			<span class="author"><a href="http://www.sgoliver.net/blog/?p=2610" rel="external nofollow" class="url">Acceso a Servicios Web REST en Android (1/2) | sgoliver.net blog</a></span> - 
+			<span class="date">04/03/2012</span>
+			<span class="pingcontent"><p>[...] Android (1/2)Por admin en 04/03/2012 en Android, Programación   En los dos artículos anteriores (éste y éste) del Curso de Programación Android nos hemos ocupado de describir la forma de construir un [...]</p>
+</span>
+</li>
+	
+		<li id="comment-12277">
+			<span class="author"><a href="http://www.sgoliver.net/blog/?p=2861" rel="external nofollow" class="url">Notificaciones Push Android: Google Cloud Messaging (GCM). Implementación Servidor | sgoliver.net blog</a></span> - 
+			<span class="date">04/07/2012</span>
+			<span class="pingcontent"><p>[...]  [...]</p>
+</span>
+</li>
+				</ol>
+			</div>								<div id="respond">
+				<h3 id="reply-title">Deja un comentario <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.sgoliver.net/blog/?p=2571#respond" style="display:none;">Click here to cancel reply.</a></small></h3>
+									<form action="http://www.sgoliver.net/blog/wp-comments-post.php" method="post" id="commentform">
+																										<p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="" size="30" aria-required="true"><label for="author">Name <span class="required">(required)</span></label> </p>
+<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="" size="30" aria-required="true"><label for="email">Email (will not be published) <span class="required">(required)</span></label> </p>
+<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="" size="30"><label for="url">Website</label></p>
+												<p class="comment-form-comment"><label class="hide" for="comment">Comentario</label><textarea tabindex="4" id="comment" name="comment" cols="50" rows="10" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Enviar Comentario">
+							<input type="hidden" name="comment_post_ID" value="2571" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="ef227d511f"></p>					</form>
+							</div><!-- #respond -->
+				<script type="text/javascript">
+		jQuery(document).ready(function () {
+			jQuery('#commentform').submit(function () {
+				_gaq.push(
+					['_setAccount', 'UA-90545-2'],
+					['_trackEvent', 'comment', 'submit']
+				);
+			});
+		});
+	</script>
+				     
+            </div><!-- /#main -->
+                
+            <div id="sidebar">
+	<div id="woo_search-2" class="widget widget_woo_search"><div class="search_main">
+    <form method="get" class="searchform" action="http://www.sgoliver.net/blog/">
+        <input type="text" class="field s" name="s" value="Buscar..." onfocus="if (this.value == &#39;Buscar...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Buscar...&#39;;}">
+        <input type="image" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/ico-search.png" alt="Search" class="submit" name="submit">
+    </form>    
+    <div class="fix"></div>
+</div>
+</div><div id="text-315033121" class="widget widget_text">			<div class="textwidget"><a href="http://www.domitienda.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-widget&#39;,&#39;http://www.domitienda.com&#39;]);" title="Oferta Domitienda" target="_blank"><img src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/sgoliver.gif" alt="Oferta Domitienda"></a></div>
+		</div><div id="text-314459581" class="widget widget_text"><h3>Licencia del Blog</h3>			<div class="textwidget"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/es/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-widget&#39;,&#39;http://creativecommons.org&#39;]);"><img alt="Licencia Creative Commons" style="border-width:0" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/88x31.png"></a><br>Salvo indicación expresa, todo el contenido de este blog (incluido texto y descargas) está bajo una licencia <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/es/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-widget&#39;,&#39;http://creativecommons.org&#39;]);">licencia Creative Commons Reconocimiento-NoComercial-SinObraDerivada 3.0 España</a>.</div>
+		</div><div id="text-315034891" class="widget widget_text"><h3>Publicidad</h3>			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "pub-6031220618790036";
+/* Banner Vertical para SideBar */
+google_ad_slot = "7363866103";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><iframe allowtransparency="true" frameborder="0" height="600" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="160" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		</div><div id="archives-2" class="widget widget_archive"><h3>Archivo</h3>		<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;"> <option value="">Elegir mes</option> 	<option value="http://www.sgoliver.net/blog/?m=201301"> enero 2013 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201212"> diciembre 2012 &nbsp;(3)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201208"> agosto 2012 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201207"> julio 2012 &nbsp;(4)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201206"> junio 2012 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201203"> marzo 2012 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201202"> febrero 2012 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201201"> enero 2012 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201112"> diciembre 2011 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201111"> noviembre 2011 &nbsp;(4)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201110"> octubre 2011 &nbsp;(6)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201108"> agosto 2011 &nbsp;(3)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201107"> julio 2011 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201106"> junio 2011 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201105"> mayo 2011 &nbsp;(3)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201104"> abril 2011 &nbsp;(7)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201103"> marzo 2011 &nbsp;(5)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201102"> febrero 2011 &nbsp;(5)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201101"> enero 2011 &nbsp;(7)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201012"> diciembre 2010 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201011"> noviembre 2010 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201010"> octubre 2010 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201009"> septiembre 2010 &nbsp;(9)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201008"> agosto 2010 &nbsp;(10)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201007"> julio 2010 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=201001"> enero 2010 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200912"> diciembre 2009 &nbsp;(4)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200910"> octubre 2009 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200908"> agosto 2009 &nbsp;(3)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200907"> julio 2009 &nbsp;(9)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200905"> mayo 2009 &nbsp;(8)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200904"> abril 2009 &nbsp;(10)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200903"> marzo 2009 &nbsp;(7)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200902"> febrero 2009 &nbsp;(9)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200901"> enero 2009 &nbsp;(5)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200812"> diciembre 2008 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200804"> abril 2008 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200803"> marzo 2008 &nbsp;(4)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200802"> febrero 2008 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200709"> septiembre 2007 &nbsp;(4)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200707"> julio 2007 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200706"> junio 2007 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200705"> mayo 2007 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200701"> enero 2007 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200612"> diciembre 2006 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200611"> noviembre 2006 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200609"> septiembre 2006 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200604"> abril 2006 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200601"> enero 2006 &nbsp;(5)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200508"> agosto 2005 &nbsp;(1)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200504"> abril 2005 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200501"> enero 2005 &nbsp;(2)</option>
+	<option value="http://www.sgoliver.net/blog/?m=200412"> diciembre 2004 &nbsp;(3)</option>
+ </select>
+</div><div id="categories-3" class="widget widget_categories"><h3>Categorías</h3><select name="cat" id="cat" class="postform">
+	<option value="-1">Elegir categoría</option>
+	<option class="level-0" value="203">Android</option>
+	<option class="level-0" value="15">Ebooks</option>
+	<option class="level-0" value="1">Generales</option>
+	<option class="level-0" value="77">Inteligencia Artificial</option>
+	<option class="level-0" value="14">Libros</option>
+	<option class="level-0" value="13">Noticias</option>
+	<option class="level-0" value="12">Programación</option>
+	<option class="level-0" value="45">Proyectos</option>
+	<option class="level-0" value="21">Recursos</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+	var dropdown = document.getElementById("cat");
+	function onCatChange() {
+		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
+			location.href = "http://www.sgoliver.net/blog/?cat="+dropdown.options[dropdown.selectedIndex].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+/* ]]> */
+</script>
+
+</div><div id="tag_cloud-3" class="widget widget_tag_cloud"><h3>Etiquetas</h3><div class="tagcloud"><a href="http://www.sgoliver.net/blog/?tag=net" class="tag-link-3" title="30 temas" style="font-size: 18.688172043pt;">.NET</a>
+<a href="http://www.sgoliver.net/blog/?tag=actualizacion" class="tag-link-50" title="7 temas" style="font-size: 9.8064516129pt;">actualización</a>
+<a href="http://www.sgoliver.net/blog/?tag=ajedrez" class="tag-link-61" title="6 temas" style="font-size: 9.05376344086pt;">ajedrez</a>
+<a href="http://www.sgoliver.net/blog/?tag=antlr" class="tag-link-5" title="13 temas" style="font-size: 13.5698924731pt;">antlr</a>
+<a href="http://www.sgoliver.net/blog/?tag=base-de-datos" class="tag-link-35" title="10 temas" style="font-size: 11.9139784946pt;">base de datos</a>
+<a href="http://www.sgoliver.net/blog/?tag=blog" class="tag-link-71" title="14 temas" style="font-size: 14.0215053763pt;">blog</a>
+<a href="http://www.sgoliver.net/blog/?tag=csharp" class="tag-link-20" title="6 temas" style="font-size: 9.05376344086pt;">C#</a>
+<a href="http://www.sgoliver.net/blog/?tag=c" class="tag-link-54" title="25 temas" style="font-size: 17.4838709677pt;">C++</a>
+<a href="http://www.sgoliver.net/blog/?tag=compiladores" class="tag-link-10" title="8 temas" style="font-size: 10.5591397849pt;">compiladores</a>
+<a href="http://www.sgoliver.net/blog/?tag=controles" class="tag-link-91" title="11 temas" style="font-size: 12.5161290323pt;">controles</a>
+<a href="http://www.sgoliver.net/blog/?tag=curso" class="tag-link-230" title="10 temas" style="font-size: 11.9139784946pt;">curso</a>
+<a href="http://www.sgoliver.net/blog/?tag=curso-android" class="tag-link-427" title="50 temas" style="font-size: 22pt;">curso android</a>
+<a href="http://www.sgoliver.net/blog/?tag=descargas" class="tag-link-42" title="6 temas" style="font-size: 9.05376344086pt;">descargas</a>
+<a href="http://www.sgoliver.net/blog/?tag=documentacion" class="tag-link-43" title="17 temas" style="font-size: 15.2258064516pt;">documentación</a>
+<a href="http://www.sgoliver.net/blog/?tag=dom" class="tag-link-39" title="5 temas" style="font-size: 8pt;">DOM</a>
+<a href="http://www.sgoliver.net/blog/?tag=ebook" class="tag-link-19" title="9 temas" style="font-size: 11.311827957pt;">ebook</a>
+<a href="http://www.sgoliver.net/blog/?tag=eclipse" class="tag-link-104" title="9 temas" style="font-size: 11.311827957pt;">Eclipse</a>
+<a href="http://www.sgoliver.net/blog/?tag=ensamblador" class="tag-link-47" title="5 temas" style="font-size: 8pt;">ensamblador</a>
+<a href="http://www.sgoliver.net/blog/?tag=fkscript" class="tag-link-46" title="15 temas" style="font-size: 14.3225806452pt;">FKScript</a>
+<a href="http://www.sgoliver.net/blog/?tag=google" class="tag-link-22" title="17 temas" style="font-size: 15.2258064516pt;">google</a>
+<a href="http://www.sgoliver.net/blog/?tag=gratis" class="tag-link-76" title="8 temas" style="font-size: 10.5591397849pt;">gratis</a>
+<a href="http://www.sgoliver.net/blog/?tag=herramienta" class="tag-link-26" title="6 temas" style="font-size: 9.05376344086pt;">herramienta</a>
+<a href="http://www.sgoliver.net/blog/?tag=ia" class="tag-link-78" title="6 temas" style="font-size: 9.05376344086pt;">IA</a>
+<a href="http://www.sgoliver.net/blog/?tag=java" class="tag-link-16" title="21 temas" style="font-size: 16.4301075269pt;">java</a>
+<a href="http://www.sgoliver.net/blog/?tag=jrtftree" class="tag-link-44" title="5 temas" style="font-size: 8pt;">JRtfTree</a>
+<a href="http://www.sgoliver.net/blog/?tag=libreria" class="tag-link-36" title="15 temas" style="font-size: 14.3225806452pt;">librería</a>
+<a href="http://www.sgoliver.net/blog/?tag=libro" class="tag-link-18" title="13 temas" style="font-size: 13.5698924731pt;">libro</a>
+<a href="http://www.sgoliver.net/blog/?tag=manuales" class="tag-link-17" title="5 temas" style="font-size: 8pt;">manuales</a>
+<a href="http://www.sgoliver.net/blog/?tag=mapas" class="tag-link-359" title="6 temas" style="font-size: 9.05376344086pt;">mapas</a>
+<a href="http://www.sgoliver.net/blog/?tag=mono" class="tag-link-98" title="6 temas" style="font-size: 9.05376344086pt;">Mono</a>
+<a href="http://www.sgoliver.net/blog/?tag=maquinas-virtuales" class="tag-link-11" title="8 temas" style="font-size: 10.5591397849pt;">máquinas virtuales</a>
+<a href="http://www.sgoliver.net/blog/?tag=nchess" class="tag-link-60" title="7 temas" style="font-size: 9.8064516129pt;">NChess</a>
+<a href="http://www.sgoliver.net/blog/?tag=novedades" class="tag-link-97" title="7 temas" style="font-size: 9.8064516129pt;">novedades</a>
+<a href="http://www.sgoliver.net/blog/?tag=novedades-sgolivernet" class="tag-link-62" title="5 temas" style="font-size: 8pt;">novedades sgoliver.net</a>
+<a href="http://www.sgoliver.net/blog/?tag=nrtftree" class="tag-link-37" title="41 temas" style="font-size: 20.6451612903pt;">NRtfTree</a>
+<a href="http://www.sgoliver.net/blog/?tag=open-source" class="tag-link-25" title="8 temas" style="font-size: 10.5591397849pt;">open source</a>
+<a href="http://www.sgoliver.net/blog/?tag=pdf" class="tag-link-87" title="7 temas" style="font-size: 9.8064516129pt;">pdf</a>
+<a href="http://www.sgoliver.net/blog/?tag=plugin" class="tag-link-72" title="9 temas" style="font-size: 11.311827957pt;">plugin</a>
+<a href="http://www.sgoliver.net/blog/?tag=programacion-2" class="tag-link-227" title="10 temas" style="font-size: 11.9139784946pt;">programación</a>
+<a href="http://www.sgoliver.net/blog/?tag=rtf" class="tag-link-38" title="8 temas" style="font-size: 10.5591397849pt;">RTF</a>
+<a href="http://www.sgoliver.net/blog/?tag=sax" class="tag-link-40" title="5 temas" style="font-size: 8pt;">SAX</a>
+<a href="http://www.sgoliver.net/blog/?tag=sqlite" class="tag-link-27" title="7 temas" style="font-size: 9.8064516129pt;">SQlite</a>
+<a href="http://www.sgoliver.net/blog/?tag=tutoriales" class="tag-link-8" title="10 temas" style="font-size: 11.9139784946pt;">tutoriales</a>
+<a href="http://www.sgoliver.net/blog/?tag=web" class="tag-link-23" title="8 temas" style="font-size: 10.5591397849pt;">web</a>
+<a href="http://www.sgoliver.net/blog/?tag=wordpress" class="tag-link-70" title="5 temas" style="font-size: 8pt;">wordpress</a></div>
+</div><div id="linkcat-403" class="widget widget_links"><h3>Enlaces .NET</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.elguille.info/" title="Fantástica web dedicada a Visual Basic y .NET con noticias, cursos, tutoriales y recursos de todo tipo relacionados con estas plataformas. Altamente recomendada por la calidad de los recursos publicados y por la frecuencia de actualización." target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.elguille.info&#39;]);">el Guille – La Web de Visual Basic, C#, .NET y más…</a></li>
+
+	</ul>
+</div>
+<div id="linkcat-402" class="widget widget_links"><h3>Enlaces Android</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.anddev.org/" title="Foro sobre desarrollo Android" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.anddev.org&#39;]);">AndDev.org [Inglés]</a></li>
+<li><a href="http://www.androcode.es/" title="Web sobre programación Android" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.androcode.es&#39;]);">Androcode</a></li>
+<li><a href="http://www.wikidroid.es/" title="Wiki sobre programación Android" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.wikidroid.es&#39;]);">WikiDroid</a></li>
+
+	</ul>
+</div>
+</div><!-- /#sidebar -->
+
+		</div><!-- /#main-sidebar-container -->         
+
+		
+    </div><!-- /#content -->
+	
+	<div id="footer" class="col-full">
+	
+		    
+	    
+		<div id="copyright" class="col-left">
+			<p>© 2013 sgoliver.net blog. All Rights Reserved. </p>		</div>
+		
+		<div id="credit" class="col-right">
+			<p>Powered by <a href="http://wordpress.org/" title="WordPress">WordPress</a>. Designed by <a href="http://www.woothemes.com/" title="WooThemes"><img src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/woothemes.png" width="74" height="19" alt="Woo Themes"></a></p>		</div>
+		
+	</div><!-- /#footer  -->
+	
+	    
+	
+	</div><!-- /#wrapper -->
+	
+	<div class="fix"></div><!--/.fix-->
+	
+	<!--[if lt IE 9]>
+<script src="http://www.sgoliver.net/blog/wp-content/themes/canvas/includes/js/respond-ie.js"></script>
+<![endif]-->
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/shCore.js"></script>
+<script type="text/javascript" src="./Acceso a Servicios Web SOAP en Android (1 2)   sgoliver.net blog_files/shBrushCSharp.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://www.sgoliver.net/blog/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.83c";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://www.sgoliver.net/blog/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.83c";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+		
+</body></html>

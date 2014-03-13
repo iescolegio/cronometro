@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+<mga.cronometro.Chronometer
+android:id="@+id/chronometer"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:textSize="96sp"
+android:text="Chronometer"
+android:gravity="center"/>
+
+<Button
+ android:id="@+id/buttonstart"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_blue"
+  style="@style/ButtonText" 
+  android:text="Start"
+ />
+<Button
+ android:id="@+id/buttonstop"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_blue"
+  style="@style/ButtonText" 
+  android:text="Stop"
+ />
+<Button
+ android:id="@+id/buttonreset"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_blue"
+  style="@style/ButtonText" 
+  android:text="Reset"
+ />
+
+<Button
+ android:id="@+id/buttonsalir"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_yellow"
+  style="@style/ButtonText" 
+  android:text="Salir"
+ />
+</LinearLayout>

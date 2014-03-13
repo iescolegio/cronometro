@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="js video no-maskImage placeholder" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Pausable chronometer Widget - Less is More</title>
+  <meta name="author" content="Yao Yuan">
+
+  
+  <meta name="description" content="I’ve been developing a gobang game this week and I want to have a stop
+watcher to record the time that player used in one set. I googled that …">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+  <link rel="canonical" href="http://andyao.github.com/2011/12/05/pausable-chronometer-widget">
+  <link href="http://yaoyuan.me/favicon.png" rel="icon">
+  <link href="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/modernizr-2.js"></script>
+  <script src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/ender.js"></script>
+  <script src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/octopress.js" type="text/javascript"></script>
+  <link href="http://yaoyuan.me/atom.xml" rel="alternate" title="Less is More" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/css.css" rel="stylesheet" type="text/css">
+<link href="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/css_002.css" rel="stylesheet" type="text/css">
+
+  
+
+<script src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/embed.js" async="" type="text/javascript"></script><script src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/widgets.js" async="" type="text/javascript"></script><script charset="UTF-8" async="" src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/thread.js"></script><link href="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/defaults.css" type="text/css" rel="stylesheet"><script charset="UTF-8" async="" src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/disqus.js"></script><link href="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/dsq7884a9652e94555c70f96b6be63be216.css" type="text/css" rel="stylesheet"><script charset="UTF-8" async="" src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/dsq7884a9652e94555c70f96b6be63be216.js"></script><script charset="UTF-8" async="" src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/event.js"></script></head>
+
+<body data-twttr-rendered="true">
+  <header role="banner"><hgroup>
+  <h1><a href="http://yaoyuan.me/">Less is More</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://yaoyuan.me/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input name="q" value="site:andyao.github.com" type="hidden">
+    <input class="search" name="q" results="0" placeholder="Search" type="text">
+  </fieldset><fieldset class="mobile-nav"><select><option value="">Navigate…</option><option value="http://yaoyuan.me/">» Blog</option><option value="http://yaoyuan.me/blog/archives">» Archives</option><option selected="selected" value="http://yaoyuan.me/atom.xml">» RSS</option></select></fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="http://yaoyuan.me/">Blog</a></li>
+  <li><a href="http://yaoyuan.me/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Pausable Chronometer Widget</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-05T12:40:00+08:00" pubdate="" data-updated="true">Dec 5<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I’ve been developing a gobang game this week and I want to have a stop
+watcher to record the time that player used in one set. I googled that
+chronmoneter widget provides the stop-watch function. But after I
+developed a time watcher, I found that chronometer is not functional as
+I expected. The “stop” method doesn’t really pause/stop the timer and it
+just stop showing the timer. So I googled again, but I didn’t find a
+good solution. Then I decided to develop one and the code is as follow:</p>
+
+<!--more-->
+
+
+
+
+<figure class="code"><figcaption><span>PausableChronometer</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">package</span> <span class="n">me</span><span class="o">.</span><span class="na">yaoyuan</span><span class="o">.</span><span class="na">widget</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.os.SystemClock</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.widget.Chronometer</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.text.DecimalFormat</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.text.NumberFormat</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PausableChronometer</span> <span class="kd">extends</span> <span class="n">Chronometer</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">private</span> <span class="kt">long</span> <span class="n">eclipsedTime</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="nf">PausableChronometer</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+</span><span class="line">    <span class="n">init</span><span class="o">();</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="nf">PausableChronometer</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+</span><span class="line">    <span class="n">init</span><span class="o">();</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="nf">PausableChronometer</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">,</span> <span class="kt">int</span>
+</span><span class="line"><span class="n">defStyle</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">,</span> <span class="n">defStyle</span><span class="o">);</span>
+</span><span class="line">    <span class="n">init</span><span class="o">();</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">setBase</span><span class="o">(</span><span class="n">SystemClock</span><span class="o">.</span><span class="na">elapsedRealtime</span><span class="o">()</span> <span class="o">-</span> <span class="n">eclipsedTime</span><span class="o">);</span>
+</span><span class="line">    <span class="kd">super</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">restart</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">stop</span><span class="o">();</span>
+</span><span class="line">    <span class="k">this</span><span class="o">.</span><span class="na">eclipsedTime</span> <span class="o">=</span> <span class="mi">0</span><span class="n">l</span><span class="o">;</span>
+</span><span class="line">    <span class="n">start</span><span class="o">();</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">this</span><span class="o">.</span><span class="na">eclipsedTime</span> <span class="o">=</span> <span class="n">SystemClock</span><span class="o">.</span><span class="na">elapsedRealtime</span><span class="o">()</span> <span class="o">-</span> <span class="k">this</span><span class="o">.</span><span class="na">getBase</span><span class="o">();</span>
+</span><span class="line">    <span class="kd">super</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kt">long</span> <span class="nf">stopAndReturnEclipsedTime</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">stop</span><span class="o">();</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">eclipsedTime</span><span class="o">;</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">this</span><span class="o">.</span><span class="na">eclipsedTime</span> <span class="o">=</span> <span class="mi">0</span><span class="n">l</span><span class="o">;</span>
+</span><span class="line">    <span class="k">this</span><span class="o">.</span><span class="na">setOnChronometerTickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">OnChronometerTickListener</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">      <span class="n">NumberFormat</span> <span class="n">formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">"00"</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">      <span class="nd">@Override</span>
+</span><span class="line">      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onChronometerTick</span><span class="o">(</span><span class="n">Chronometer</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="kt">float</span> <span class="n">countUp</span> <span class="o">=</span> <span class="o">(</span><span class="n">SystemClock</span><span class="o">.</span><span class="na">elapsedRealtime</span><span class="o">()</span> <span class="o">-</span> <span class="n">arg0</span><span class="o">.</span><span class="na">getBase</span><span class="o">())</span>
+</span><span class="line"><span class="o">/</span> <span class="mi">1000</span><span class="o">;</span>
+</span><span class="line">        <span class="n">String</span> <span class="n">asText</span> <span class="o">=</span> <span class="n">formatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">countUp</span> <span class="o">/</span> <span class="mi">60</span><span class="o">)</span> <span class="o">+</span> <span class="s">":"</span> <span class="o">+</span>
+</span><span class="line"><span class="n">formatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">countUp</span> <span class="o">%</span> <span class="mi">60</span><span class="o">);</span>
+</span><span class="line">        <span class="n">setText</span><span class="o">(</span><span class="n">asText</span><span class="o">);</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">});</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+
+
+<figure class="code"><figcaption><span>Activity</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">package</span> <span class="n">me</span><span class="o">.</span><span class="na">yaoyuan</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PausableChronometerActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">private</span> <span class="n">PausableChronometer</span> <span class="n">chronometer</span><span class="o">;</span>
+</span><span class="line">  <span class="kd">private</span> <span class="n">Button</span> <span class="n">startBtn</span><span class="o">;</span>
+</span><span class="line">  <span class="kd">private</span> <span class="n">Button</span> <span class="n">restartBtn</span><span class="o">;</span>
+</span><span class="line">  <span class="kd">private</span> <span class="n">Button</span> <span class="n">stopBtn</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">private</span> <span class="n">StopWatcher</span> <span class="n">stopWatcher</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="nd">@Override</span>
+</span><span class="line">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span><span class="line">    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">main</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">chronometer</span> <span class="o">=</span> <span class="o">(</span><span class="n">PausableChronometer</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">chrono</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">startBtn</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">start</span><span class="o">);</span>
+</span><span class="line">    <span class="n">startBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">      <span class="nd">@Override</span>
+</span><span class="line">      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">chronometer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">restartBtn</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">restart</span><span class="o">);</span>
+</span><span class="line">    <span class="n">restartBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">      <span class="nd">@Override</span>
+</span><span class="line">      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">chronometer</span><span class="o">.</span><span class="na">reset</span><span class="o">();</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">stopBtn</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">stop</span><span class="o">);</span>
+</span><span class="line">    <span class="n">stopBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">      <span class="nd">@Override</span>
+</span><span class="line">      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">chronometer</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">});</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<figure class="code"><figcaption><span>layout</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+</span><span class="line"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+</span><span class="line">              <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+</span><span class="line">              <span class="na">android:layout_width=</span><span class="s">"fill_parent"</span>
+</span><span class="line">              <span class="na">android:layout_height=</span><span class="s">"fill_parent"</span>
+</span><span class="line">        <span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;me.yaoyuan.widget.PausableChronometer</span> <span class="na">android:id=</span><span class="s">"@+id/chrono"</span>
+</span><span class="line">                 <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+</span><span class="line">                 <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+</span><span class="line">                 <span class="na">android:layout_margin=</span><span class="s">"10px"</span><span class="nt">/&gt;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nt">&lt;Button</span> <span class="na">android:id=</span><span class="s">"@+id/start"</span>
+</span><span class="line">            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+</span><span class="line">            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+</span><span class="line">            <span class="na">android:text=</span><span class="s">"start"</span><span class="nt">/&gt;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nt">&lt;Button</span> <span class="na">android:id=</span><span class="s">"@+id/restart"</span>
+</span><span class="line">                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+</span><span class="line">                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+</span><span class="line">                <span class="na">android:text=</span><span class="s">"restart"</span><span class="nt">/&gt;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nt">&lt;Button</span> <span class="na">android:id=</span><span class="s">"@+id/stop"</span>
+</span><span class="line">            <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+</span><span class="line">            <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+</span><span class="line">            <span class="na">android:text=</span><span class="s">"stop"</span><span class="nt">/&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/LinearLayout&gt;</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Yao Yuan</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-05T12:40:00+08:00" pubdate="" data-updated="true">Dec 5<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class="category" href="http://yaoyuan.me/categories/android/">Android</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <iframe data-twttr-rendered="true" title="Twitter Tweet Button" style="width: 106px; height: 20px;" class="twitter-share-button twitter-count-horizontal" src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/tweet_button.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="http://yaoyuan.me/2011/11/14/iptables-openvpn-l2tp-ipsec/" title="Previous Post: Aron's IPtables and OpenVPN, L2TP over IPsec">« Aron's IPtables and OpenVPN, L2TP over IPsec</a>
+      
+      
+        <a class="basic-alignment right" href="http://yaoyuan.me/2012/01/15/enable-trim-on-ssd-in-lion/" title="Next Post: Enable TRIM on SSD in Lion">Enable TRIM on SSD in Lion »</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<div style="display: none;" id="dsq-content-stub"><img alt="DISQUS" src="data:image/png;base64,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" height="17" width="71"><img alt="..." src="data:image/gif;base64,R0lGODlhEAALAPQAAP///z2LqeLt8dvp7u7090GNqz2LqV+fuJ/F1IW2ycrf51aatHWswaXJ14i4ys3h6FmctUCMqniuw+vz9eHs8fb5+meku+Tu8vT4+cfd5bbT3tbm7PH2+AAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCwAAACwAAAAAEAALAAAFLSAgjmRpnqSgCuLKAq5AEIM4zDVw03ve27ifDgfkEYe04kDIDC5zrtYKRa2WQgAh+QQJCwAAACwAAAAAEAALAAAFJGBhGAVgnqhpHIeRvsDawqns0qeN5+y967tYLyicBYE7EYkYAgAh+QQJCwAAACwAAAAAEAALAAAFNiAgjothLOOIJAkiGgxjpGKiKMkbz7SN6zIawJcDwIK9W/HISxGBzdHTuBNOmcJVCyoUlk7CEAAh+QQJCwAAACwAAAAAEAALAAAFNSAgjqQIRRFUAo3jNGIkSdHqPI8Tz3V55zuaDacDyIQ+YrBH+hWPzJFzOQQaeavWi7oqnVIhACH5BAkLAAAALAAAAAAQAAsAAAUyICCOZGme1rJY5kRRk7hI0mJSVUXJtF3iOl7tltsBZsNfUegjAY3I5sgFY55KqdX1GgIAIfkECQsAAAAsAAAAABAACwAABTcgII5kaZ4kcV2EqLJipmnZhWGXaOOitm2aXQ4g7P2Ct2ER4AMul00kj5g0Al8tADY2y6C+4FIIACH5BAkLAAAALAAAAAAQAAsAAAUvICCOZGme5ERRk6iy7qpyHCVStA3gNa/7txxwlwv2isSacYUc+l4tADQGQ1mvpBAAIfkECQsAAAAsAAAAABAACwAABS8gII5kaZ7kRFGTqLLuqnIcJVK0DeA1r/u3HHCXC/aKxJpxhRz6Xi0ANAZDWa+kEAA7AAAAAAAAAAAA" style="margin:0 0 3px 5px" height="11" width="16"></div><div class="clearfix" style="display: block;" id="dsq-content">      <div id="dsq-global-toolbar" class="dsq-clearfix">        <ul class="dsq-global-toolbar-right dsq-clearfix">                            <li class="dsq-community-box">                <a href="#" class="dsq-toolbar-item dsq-tt" onclick="DISQUS.dtpl.actions.fire('community.show'); return false" title="Expand Community Box"><span class="dsq-toolbar-icon"></span></a>            </li>                            <li class="dsq-global-toolbar-dropdown-container">                    <div id="dsq-toolbar-dropdown">    <a href="#" class="dsq-toolbar-logo dsq-toolbar-item dsq-clearfix"><span class="dsq-toolbar-icon">Disqus</span></a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none">      <ul class="dsq-clearfix">                    <li class="dsq-login-link"><a href="#" onclick="DISQUS.dtpl.actions.fire('auth.login'); return false"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">Login</span></a></li>                    <li class="dsq-about-link"><a href="http://disqus.com/" target="_blank"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">About Disqus</span></a></li>      </ul>    </div>  </div>            </li>        </ul>                <ul class="dsq-global-toolbar-left dsq-clearfix">            <li class="dsq-like-thread">                <a href="#" id="dsq-like-thread-button" class="dsq-toolbar-item dsq-clearfix  dsq-tt" onclick="DISQUS.dtpl.actions.fire('thread.vote', 1); return false;" title="I like this page">                    <span class="dsq-toolbar-icon"></span>                    <span class="dsq-toolbar-label">Like</span>                </a>            </li>            <li class="dsq-dislike-thread">                <a href="#" id="dsq-dislike-thread-button" class="dsq-toolbar-item dsq-clearfix  dsq-tt" onclick="DISQUS.dtpl.actions.fire('thread.vote', -1); return false" title="I don't like this page">                    <span class="dsq-toolbar-icon">Dislike</span>                </a>            </li>            <li class="dsq-like-panel">                <ul class="dsq-like-faces dsq-clearfix">                        <li class="dsq-like-activity">    </li>                </ul>            </li>        </ul>            </div>    <div id="dsq-like-tooltip">      <div id="dsq-share-step-1" class="dsq-share-step">        <h3>Glad you liked it. Would you like to share?</h3>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>        <ul id="dsq-tooltip-actions">                        <li><a href="#" onclick="DISQUS.dtpl.actions.fire('thread.share.send'); return false" class="dsq-primary-action">Share</a></li>                    <li><a href="#" onclick="DISQUS.dtpl.actions.fire('thread.share.cancel'); return false" class="dsq-secondary-action">No thanks</a></li>        </ul>      </div>      <div id="dsq-share-step-2" class="dsq-share-step" style="display:none !important">        <p>Sharing this page …</p>      </div>      <div id="dsq-share-step-3" class="dsq-share-step" style="display:none !important">        <p>Thanks! <a href="#" class="dsq-tooltip-decline" onclick="DISQUS.dtpl.actions.fire('thread.share.cancel'); return false">Close</a></p>      </div>    </div>                                <div class="dsq-reply " id="dsq-reply">          <div id="dsq-account-dropdown">                  <a href="#" onclick="DISQUS.dtpl.actions.fire('auth.login'); return false;">Login</a>              </div>      <h3>Add New Comment</h3>        <div class="dsq-avatar">              <img src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/noavatar32.png">          </div>    <div class="dsq-textarea dsq-textarea-reply">      <div class="dsq-textarea-background">        <div style="height: auto;" class="dsq-textarea-wrapper">          <!-- filled dynamically -->        <iframe style="height: 58px;" src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/reply.html" id="easyXDM_DISQUS_net_default6477_provider" name="easyXDM_DISQUS_net_default6477_provider" frameborder="0" scrolling="no"></iframe></div>                  <div id="dsq-media-preview" class="dsq-media-preview" style="display:none">          </div>                <div class="dsq-post-tools">          <ul>            <li class="dsq-post-as">                                <button type="button" class="dsq-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null, this);">                    Post as …                  </button>                          </li>                          <li class="dsq-attach-media">                <div class="dsq-attach-media-container">                  <span>Image</span>                  <!-- filled dynamically -->                <iframe src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/upload.html" id="easyXDM_DISQUS_net_default6478_provider" name="easyXDM_DISQUS_net_default6478_provider" frameborder="0" scrolling="no"></iframe></div>              </li>                        <li class="dsq-share-on dsq-clearfix">                            </li>          </ul>        </div>      </div>    </div>  </div>                              <div id="dsq-sort-by">    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">              <option value="hot" selected="selected">          Sort by popular now        </option>              <option value="best">          Sort by best rating        </option>              <option value="newest">          Sort by newest first        </option>              <option value="oldest">          Sort by oldest first        </option>          </select>  </div>      <h3>            Showing <span id="dsq-num-posts">0</span> comments        </h3>        <ul id="dsq-comments">      </ul>        <div id="dsq-pagination">      <ul id="dsq-footer" class="dsq-clearfix">        <div id="dsq-subscribe">            <li>      <a href="#" class="dsq-subscribe-email" onclick="return DISQUS.dtpl.actions.fire('thread.subscribe');">        <span class="dsq-font">M</span> <em>Subscribe by email</em>      </a>    </li>    <li>    <a href="http://lessismore.disqus.com/httpandyaogithubcom20111205pausable_chronometer_widget/latest.rss" class="dsq-subscribe-rss">      <span class="dsq-font">S</span> <em>RSS</em>    </a>  </li>    </div>  </ul>    </div>                  <div class="dsq-trackback-url">      Trackback URL      <input onclick="this.select()" readonly="true" value="http://disqus.com/forums/lessismore/httpandyaogithubcom20111205pausable_chronometer_widget/trackback/">    </div>      </div><div>  </div></div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section class="odd">
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class="category"><a href="http://yaoyuan.me/categories/android/">Android (1)</a></li>
+<li class="category"><a href="http://yaoyuan.me/categories/linux/">Linux (1)</a></li>
+<li class="category"><a href="http://yaoyuan.me/categories/mac/">Mac (1)</a></li>
+
+  </ul>
+</section>
+
+
+<section class="even">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="http://yaoyuan.me/2012/01/15/enable-trim-on-ssd-in-lion/">Enable TRIM on SSD in Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="http://yaoyuan.me/2011/12/05/pausable-chronometer-widget/">Pausable chronometer Widget</a>
+      </li>
+    
+      <li class="post">
+        <a href="http://yaoyuan.me/2011/11/14/iptables-openvpn-l2tp-ipsec/">Aron's IPtables and OpenVPN, L2TP over IPsec</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    <span class="toggle-sidebar"></span></div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright © 2013 - Yao Yuan -
+  <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'lessismore';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andyao.github.com/2011/12/05/pausable-chronometer-widget/';
+        var disqus_url = 'http://andyao.github.com/2011/12/05/pausable-chronometer-widget/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+
+<iframe src="Pausable%20chronometer%20Widget%20-%20Less%20is%20More_files/def.html" style="position: absolute; top: -2000px; left: 0px;" id="easyXDM_DISQUS_net_default6476_provider" name="easyXDM_DISQUS_net_default6476_provider" frameborder="0"></iframe></body></html>

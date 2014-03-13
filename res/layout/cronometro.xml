@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  >
+<TextView
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:text="@string/hello"
+  />
+<Chronometer
+ android:id="@+id/chronometer"
+ android:layout_gravity="center_horizontal"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+ />
+<Button
+ android:id="@+id/buttonstart"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_blue"
+  style="@style/ButtonText" 
+  android:text="Start"
+ />
+<Button
+ android:id="@+id/buttonstop"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_blue"
+  style="@style/ButtonText" 
+  android:text="Stop"
+ />
+<Button
+ android:id="@+id/buttonreset"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_blue"
+  style="@style/ButtonText" 
+  android:text="Reset"
+ />
+
+<Button
+ android:id="@+id/buttonsalir"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/btn_green"
+  style="@style/ButtonText" 
+  android:text="Salir"
+ />
+<TextView
+  android:id="@+id/txtDisplay"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:text="@string/hello"
+  />
+</LinearLayout>

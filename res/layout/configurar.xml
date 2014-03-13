@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<TextView
+	android:id="@+id/widget75"
+	android:layout_width="fill_parent"
+	android:layout_height="25dp"
+	android:layout_marginTop="10dip"
+	android:text="Elige Piscina, estilo y distancia."
+	android:layout_x="0dp"
+	android:layout_y="8dp" />
+
+<Spinner
+	android:id="@+id/Maestro"
+	android:layout_width="200dp"
+	android:layout_height="wrap_content"
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"
+	android:layout_x="123dp"
+	android:layout_y="85dp" />
+
+<Spinner
+	android:id="@+id/spinner"
+	android:layout_width="200dp"
+	android:layout_height="wrap_content"
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"
+	android:layout_x="123dp"
+	android:layout_y="40dp" />
+<Spinner
+	android:id="@+id/spinner2"
+	android:layout_width="200dp"
+	android:layout_height="wrap_content"
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"
+	android:layout_x="123dp"
+	android:layout_y="130dp" />
+<Spinner
+	android:id="@+id/spinner3"
+	android:layout_width="200dp"
+	android:layout_height="wrap_content"
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"
+	android:layout_x="123dp"
+	android:layout_y="179dp" />
+<Button
+	android:id="@+id/button1"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Salir"
+        android:layout_x="0dp"
+	android:layout_y="300dp"
+        android:background="@drawable/btn_red"
+        style="@style/ButtonText"/>
+<Button
+	android:id="@+id/Borrar"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Borrar"
+        android:layout_x="0dp"
+	android:layout_y="240dp"
+        android:background="@drawable/btn_red"
+        style="@style/ButtonText" />
+<TextView
+	android:id="@+id/widget84"
+	android:layout_width="wrap_content"
+	android:layout_height="25dp"
+	android:text="Tama&#241;o Piscina"
+	android:layout_x="5dp"
+	android:layout_y="55dp" />
+<TextView
+	android:id="@+id/widget86_copy"
+	android:layout_width="wrap_content"
+	android:layout_height="25dp"
+	android:text="Maestro"
+	android:layout_x="9dp"
+	android:layout_y="83dp" />
+<TextView
+	android:id="@+id/widget84_copy"
+	android:layout_width="wrap_content"
+	android:layout_height="25dp"
+	android:text="Estilo"
+	android:layout_x="9dp"
+	android:layout_y="135dp" />
+<TextView
+	android:id="@+id/widget84_copy"
+	android:layout_width="wrap_content"
+	android:layout_height="25dp"
+	android:text="Distancia"
+	android:layout_x="14dp"
+	android:layout_y="194dp" />
+</AbsoluteLayout>

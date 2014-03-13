@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+	android:id="@+id/widget0"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<Button
+	android:id="@+id/buttonCargar"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Cargar"
+	android:layout_x="0dp"
+	android:layout_y="141dp" 
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"/>
+<Button
+	android:id="@+id/buttonCronometro"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Cronometro"
+	android:layout_x="0dp"
+	android:layout_y="89dp" 
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"/>
+<Button
+	android:id="@+id/buttonConfigurar"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Configurar"
+	android:layout_x="0dp"
+	android:layout_y="34dp" 
+        android:background="@drawable/btn_blue"
+        style="@style/ButtonText"/>
+<Button
+	android:id="@+id/buttonSalir"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Salir"
+	android:layout_x="0dp"
+	android:layout_y="195dp" 
+        android:background="@drawable/btn_red"
+        style="@style/ButtonText"/>
+</AbsoluteLayout>

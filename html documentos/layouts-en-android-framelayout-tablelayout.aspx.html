@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html><head id="ctl00_Head1"><title>
+	Layouts en Android - FrameLayout ,TableLayout - Avanet
+</title>
+<link rel="stylesheet" type="text/css" href="layouts-en-android-framelayout-tablelayout.aspx_files/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="layouts-en-android-framelayout-tablelayout.aspx_files/csshandler.css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="search" type="application/opensearchdescription+xml" title="Avanet Site Search" href="http://avanet.org/SearchEngineInfo.ashx">
+	<!--[if IE]>
+	<meta http-equiv="Page-Enter" content="blendTrans(Duration=0)" /><meta http-equiv="Page-Exit" content="blendTrans(Duration=0)" />
+	<![endif]-->
+	
+<link rel="shortcut icon" href="http://avanet.org/Data/Sites/1/skins/Avanet2012/favicon.ico">
+<script src="layouts-en-android-framelayout-tablelayout.aspx_files/ga.js" async="" type="text/javascript"></script><script src="layouts-en-android-framelayout-tablelayout.aspx_files/jquery.js" type="text/javascript"></script>
+<script src="layouts-en-android-framelayout-tablelayout.aspx_files/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19710932-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	<style>
+	#silverlightControlHost {
+	    height: 100%;
+	    text-align:center;
+    }
+    </style>
+    <script type="text/javascript" src="layouts-en-android-framelayout-tablelayout.aspx_files/Silverlight.html"></script>
+    <script type="text/javascript">
+        function onSilverlightError(sender, args) {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+              appSource = sender.getHost().Source;
+            }
+            
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+              return;
+            }
+
+            var errMsg = "Error no controlado en la aplicación de Silverlight " +  appSource + "\n" ;
+
+            errMsg += "Código: "+ iErrorCode + "    \n";
+            errMsg += "Categoría: " + errorType + "       \n";
+            errMsg += "Mensaje: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "Archivo: " + args.xamlFile + "     \n";
+                errMsg += "Línea: " + args.lineNumber + "     \n";
+                errMsg += "Posición: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {           
+                if (args.lineNumber != 0) {
+                    errMsg += "Línea: " + args.lineNumber + "     \n";
+                    errMsg += "Posición: " +  args.charPosition + "     \n";
+                }
+                errMsg += "Nombre de método: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </script>
+<link rel="alternate" type="application/rss+xml" title="Android desde cero" href="http://avanet.org/blog859rss.aspx?r=ba582d5d-b005-4d81-9fa1-7382222dcb79">
+<link rel="canonical" href="http://avanet.org/layouts-en-android-framelayout-tablelayout.aspx"></head>
+<body data-twttr-rendered="true" id="ctl00_Body" class="pagebody blogviewpost">
+
+<form method="post" action="http://avanet.org/layouts-en-android-framelayout-tablelayout.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div class="aspNetHidden">
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATEFIELDCOUNT" id="__VIEWSTATEFIELDCOUNT" value="7" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTYwNzczMTkzOA9kFgJmD2QWAgIDDxYCHgVjbGFzcwUVcGFnZWJvZHkgYmxvZ3ZpZXdwb3N0FgICAw9kFhACFw8PFgIeB1Zpc2libGVoZGQCIQ8PFgIfAWhkZAIlDw8WAh8BaGRkAicPDxYGHghDc3NDbGFzcwUQbGVmdHNpZGUgY21zem9uZR4EXyFTQgICHwFoZBYCAgMPDxYCHwFoZBYCAgIPZBYCZhA8KwAJAgAPFggeDVBhdGhTZXBhcmF0b3IEfB4NTmV2ZXJFeHBhbmRlZGceC18hRGF0YUJvdW5kZx4MRGF0YVNvdXJjZUlEBRBsZXZlbDNkYXRhc291cmNlZAgUKwAJBR8wOjAsMDoxLDA6MiwwOjMsMDo0LDA6NSwwOjYsMDo3FCsAAhYMHgRUZXh0BRlDIy5ORVQgcGFyYSBwcmluY2lwaWFudGVzHgVWYWx1ZQUkNmQ3YTQwMjktNWQxMC00Y2Q2LTk5NmMt" type="hidden">
+<input name="__VIEWSTATE1" id="__VIEWSTATE1" value="MTlhNjVmNDRmMDYzHgtOYXZpZ2F0ZVVybAUdfi9uZXQtcGFyYS1wcmluY2lwaWFudGVzLmFzcHgeCERhdGFQYXRoBQM0MjYeCURhdGFCb3VuZGceEFBvcHVsYXRlT25EZW1hbmRoZBQrAAIWDB8IBRhXaW5kb3dzIFBob25lIGRlc2RlIGNlcm8fCQUkOGJmNzJkMTQtY2FmNS00ZWVlLWJkOTMtZDIxYzBlM2FiNjYyHwoFIX4vd2luZG93cy1waG9uZS1kZXNkZS1jZXJvLTEuYXNweB8LBQM3NTIfDGcfDWhkFCsAAhYMHwgFFkNTUyBwYXJhIHByaW5jaXBpYW50ZXMfCQUkYjIwN2YzMzQtMDBhOC00YzhlLThmYWYtN2Y5ZjRjZDg0NTliHwoFHX4vY3NzLXBhcmEtcHJpbmNpcGlhbnRlcy5hc3B4HwsFAzQzMB8MZx8NaGQUKwACFgwfCAUWU2lsdmVybGlnaHQgZGVzZGUg" type="hidden">
+<input name="__VIEWSTATE2" id="__VIEWSTATE2" value="Y2Vybx8JBSRkNzhkNDkxNi0wODViLTRiODQtODNmMi0wNzk0Y2I5YWQ4ZjYfCgUdfi9zaWx2ZXJsaWdodC1kZXNkZS1jZXJvLmFzcHgfCwUDNDU1HwxnHw1oZBQrAAIWEB8IBRJBbmRyb2lkIGRlc2RlIGNlcm8fCQUkYjI0NjkyZDYtNWFhNS00ZDYxLWE1MTUtNWRkZTg3NTI4YjQ1HwoFGX4vYW5kcm9pZC1kZXNkZS1jZXJvLmFzcHgfCwUDNDY1HwxnHw1oHghFeHBhbmRlZGceCFNlbGVjdGVkZ2QUKwACFgwfCAURSFRNTCA1IGRlc2RlIGNlcm8fCQUkYmZkZTliNDYtZjcwMi00NzI2LTk1MTMtM2MxZDJjOWYwZDAxHwoFGH4vaHRtbC01LWRlc2RlLWNlcm8uYXNweB8LBQM2NzcfDGcfDWhkFCsAAhYMHwgFDUhUTUwgNSBDYW52YXMfCQUkYmU4YmYxOGUtYzBhNS00" type="hidden">
+<input name="__VIEWSTATE3" id="__VIEWSTATE3" value="NzJkLTk4MjctMzAzOTlmZmVkNWE3HwoFFH4vaHRtbC01LWNhbnZhcy5hc3B4HwsFAzY5Mx8MZx8NaGQUKwACFgwfCAUQV2ViTWF0cml4IHkgQ1NTMx8JBSRhZTZhZjRiOS0yOWY2LTRmMzYtYmIzMy0xMjY0NjlmYTkwN2YfCgUVfi9XZWJNYXRyaXgtQ1NTMy5hc3B4HwsFAzc0OR8MZx8NaGQFDGN0bDAwJGN0bDA1fGQCKQ8PFgQfAgU5YXJ0LWxheW91dC1jZWxsIGFydC1jb250ZW50LXdpZGUgY2VudGVyLW5vbWFyZ2lucyBjbXN6b25lHwMCAmQWAgIFD2QWAgIBD2QWAgIDD2QWAmYPZBYCAgMPZBYCAgEPZBYCAgUPZBYGAgUPZBYCAgEPDxYCHwFoZBYCAgEPZBYCZg9kFgICBQ9kFgJmDxYCHgpDYWxsYmFja0lEBS1jdGwwMCRtYWluQ29udGVudCRCbG9nVmlldzEk" type="hidden">
+<input name="__VIEWSTATE4" id="__VIEWSTATE4" value="UmF0aW5nJFVzZXJSYXRpbmdkAgsPDxYCHwFoZBYCAgEPZBYCZg9kFgICBQ9kFgJmDxYCHxAFM2N0bDAwJG1haW5Db250ZW50JEJsb2dWaWV3MSRSYXRpbmdCb3R0b20kVXNlclJhdGluZ2QCHQ9kFgQCAw8WAh4LXyFJdGVtQ291bnQCARYCZg9kFgICAQ8PFgoeDUFsdGVybmF0ZVRleHQFBkRlbGV0ZR4HVG9vbFRpcAUGRGVsZXRlHghJbWFnZVVybAUbfi9EYXRhL1NpdGVJbWFnZXMvdHJhc2gucG5nHg9Db21tYW5kQXJndW1lbnQFAzUzMB8BaBYCHgdvbmNsaWNrBUByZXR1cm4gY29uZmlybSgnQXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZSB0aGlzIGNvbW1lbnQ/Jyk7ZAIFDw8WAh8BaGQWBgIJD2QWAgIFDw8WAh4MRXJyb3JNZXNzYWdlBTBtdXN0IGJl" type="hidden">
+<input name="__VIEWSTATE5" id="__VIEWSTATE5" value="IGFuIHVybCBzdGFydGluZyB3aXRoIGh0dHA6Ly8gb3IgaHR0cHM6Ly9kZAIRD2QWAmYPFgoeBkhlaWdodBsAAAAAAEBlQAEAAAAeE0FkdmFuY2VkUm93MUJ1dHRvbnMFbGN1dCxjb3B5LHBhc3RldGV4dCxzZXBhcmF0b3IsYmxvY2txdW90ZSxib2xkLGl0YWxpYyxzZXBhcmF0b3IsYnVsbGlzdCxudW1saXN0LHNlcGFyYXRvcixsaW5rLHVubGluayxlbW90aW9ucx4TQWR2YW5jZWRSb3czQnV0dG9uc2UeDUVkaXRvckFyZWFDU1MFVC9jc3NoYW5kbGVyLmFzaHg/c2tpbj1BdmFuZXQyMDEyJmFtcDtzPTEmYW1wO3N2PTAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMB4TQWR2YW5jZWRSb3cyQnV0dG9uc2VkAhUPDxYCHwgFBlN1Ym1pdGRkAisPDxYG" type="hidden">
+<input name="__VIEWSTATE6" id="__VIEWSTATE6" value="HwIFEXJpZ2h0c2lkZSBjbXN6b25lHwMCAh8BaGRkAi0PDxYGHwIFE2FsdGNvbnRlbnQyIGNtc3pvbmUfAwICHwFoZGQCMQ8PFgIfAWhkZBgBBRVjdGwwMCRTaXRlTWVudTEkY3RsMDAPD2QFJDljMTM2MzNjLTQ1NWItNDE4My05ZTI5LTE0MjU1NjExMDJkOGQ=" type="hidden">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="layouts-en-android-framelayout-tablelayout.aspx_files/WebResource.js" type="text/javascript"></script>
+
+
+<script src="layouts-en-android-framelayout-tablelayout.aspx_files/ScriptResource.js" type="text/javascript"></script>
+<script src="layouts-en-android-framelayout-tablelayout.aspx_files/widgets.js" type="text/javascript"></script>
+	<script type="text/javascript" language="javascript" src="layouts-en-android-framelayout-tablelayout.aspx_files/NeatHtml.js"></script>
+<script src="layouts-en-android-framelayout-tablelayout.aspx_files/ScriptResource.axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+document.getElementById('ctl00_ctl05').value = GetViewState__AspNetTreeView('ctl00_PageMenu2_ctl00_UL');
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0" type="hidden">
+	<input name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0" type="hidden">
+	<input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAgLHmLHlCgKWk6OhBA==" type="hidden">
+</div>
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+<div id="contenedor">
+	<div id="cabecera">
+		<div id="cabecera_opciones">
+			<a href="#startcontent" class="skiplink">Skip over navigation</a>
+			<div class="addthis">
+				<div id="ctl00_InsecurePanel1" class="addthisbutton">
+	
+					  
+				
+</div>
+			</div>
+			<div id="opciones">
+				<ul>
+					
+					<li class="firstnav"><a class="sitelink homelink" href="http://avanet.org/">Home</a></li>
+					<li class="topnavitem"><a class="sitelink" href="http://avanet.org/SiteMap.aspx">Site Map</a></li>
+					
+					
+					
+					<li class="topnavitem"><a class="sitelink" href="http://avanet.org/MemberList.aspx">Member List</a></li>
+					<li class="topnavitem"><a class="sitelink" rel="nofollow" href="http://avanet.org/Secure/Register.aspx?returnurl=%2flayouts-en-android-framelayout-tablelayout.aspx">Register</a></li>
+					<li class="topnavitem"><a class="sitelink" rel="nofollow" href="http://avanet.org/Secure/Login.aspx?returnurl=%2flayouts-en-android-framelayout-tablelayout.aspx">Sign In</a></li>
+					
+				</ul>  
+			</div>
+		</div>
+		<div id="contenedor_menu">
+			<div id="menu">
+				
+
+<div style="float: left;" class="AspNet-Menu-Horizontal" id="ctl00_SiteMenu1_ctl00">
+		<ul role="menubar" style="position: relative; width: auto; float: left;" tabindex="0" class="AspNet-Menu static">
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf static">
+				<a tabindex="-1" href="http://avanet.org/inicio.aspx" class="AspNet-Menu static">
+					Inicio</a>
+			</li>
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf static">
+				<a tabindex="-1" href="http://avanet.org/blogs.aspx" class="AspNet-Menu static">
+					Blogs</a>
+			</li>
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf static">
+				<a tabindex="-1" href="http://avanet.org/foros.aspx" class="AspNet-Menu static">
+					Foros</a>
+			</li>
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf AspNet-Menu-SelectedLeaf static">
+				<a tabindex="-1" href="http://avanet.org/recursos.aspx" class="AspNet-Menu AspNet-Menu-SelectedLeaf static">
+					Recursos Técnicos</a>
+			</li>
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf static">
+				<a tabindex="-1" href="http://avanet.org/proyectos.aspx" class="AspNet-Menu static">
+					Proyectos</a>
+			</li>
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf static">
+				<a tabindex="-1" href="http://avanet.org/charlas-en-l%C3%ADnea.aspx" class="AspNet-Menu static">
+					Charlas en línea</a>
+			</li>
+			<li style="position: relative; float: left;" role="menuitem" class="AspNet-Menu-Leaf static">
+				<a tabindex="-1" href="http://avanet.org/escr%C3%ADbenos.aspx" class="AspNet-Menu static">
+					Escríbenos</a>
+			</li>
+		</ul>
+
+</div><div style="clear: left;"></div>
+
+
+			</div>
+		</div>
+	</div>
+		<div id="cuerpo">
+		
+		
+		<div id="ctl00_divCenter" class="art-layout-cell art-content-wide center-nomargins cmszone">
+	
+			
+			
+			
+<div id="ctl00_mainContent_pnlOuterWrap" class="">
+
+
+<div id="ctl00_mainContent_BlogView1_pnlInnerWrap" class="panelwrapper blogwrapper blogview">
+
+    <h2 class=" moduletitle ">Layouts en Android - FrameLayout ,TableLayout</h2>
+    <div id="ctl00_mainContent_BlogView1_pnlOuterBody" class="">
+
+        <div id="ctl00_mainContent_BlogView1_pnlInnerBody" class="modulecontent">
+
+            
+            
+<div id="ctl00_mainContent_BlogView1_navTop_divNav" class="blognavright">
+
+    
+    
+<ul class="blognav">
+    <li id="ctl00_mainContent_BlogView1_navTop_Feeds_liRSS" class="feedrsslinkitem"><a href="http://avanet.org/blog859rss.aspx" id="ctl00_mainContent_BlogView1_navTop_Feeds_lnkRSS" class="rsslink" rel="nofollow" title="RSS Feed"><img src="layouts-en-android-framelayout-tablelayout.aspx_files/feed.png" id="ctl00_mainContent_BlogView1_navTop_Feeds_imgRSS" alt="RSS"></a></li>
+    
+    <li id="ctl00_mainContent_BlogView1_navTop_Feeds_liAddMSN" class="feedmsnitem"><a href="http://my.msn.com/addtomymsn.armx?id=rss&amp;ut=http://avanet.org/blog859rss.aspx" id="ctl00_mainContent_BlogView1_navTop_Feeds_lnkAddMSN" rel="nofollow" title="Add To My MSN"><img src="layouts-en-android-framelayout-tablelayout.aspx_files/rss_mymsn.gif" id="ctl00_mainContent_BlogView1_navTop_Feeds_imgMSNRSS" alt="Add To My MSN"></a></li>
+    <li id="ctl00_mainContent_BlogView1_navTop_Feeds_liAddToLive" class="feedliveitem"><a href="http://www.live.com/?add=http%3a%2f%2favanet.org%2fblog859rss.aspx" id="ctl00_mainContent_BlogView1_navTop_Feeds_lnkAddToLive" rel="nofollow" title="Add to Windows Live"><img src="layouts-en-android-framelayout-tablelayout.aspx_files/addtolive.gif" id="ctl00_mainContent_BlogView1_navTop_Feeds_imgAddToLive" alt="Add To Windows Live"></a></li>
+    <li id="ctl00_mainContent_BlogView1_navTop_Feeds_liAddYahoo" class="feedyahooitem"><a href="http://e.my.yahoo.com/config/promo_content?.module=ycontent&amp;.url=http://avanet.org/blog859rss.aspx" id="ctl00_mainContent_BlogView1_navTop_Feeds_lnkAddYahoo" rel="nofollow" title="Add To My Yahoo"><img src="layouts-en-android-framelayout-tablelayout.aspx_files/addtomyyahoo2.gif" id="ctl00_mainContent_BlogView1_navTop_Feeds_imgYahooRSS" alt="Add To My Yahoo"></a></li>
+    <li id="ctl00_mainContent_BlogView1_navTop_Feeds_liAddGoogle" class="feedgoogleitem"><a href="http://fusion.google.com/add?feedurl=http://avanet.org/blog859rss.aspx" id="ctl00_mainContent_BlogView1_navTop_Feeds_lnkAddGoogle" rel="nofollow" title="Add To Google"><img src="layouts-en-android-framelayout-tablelayout.aspx_files/googleaddrss.gif" id="ctl00_mainContent_BlogView1_navTop_Feeds_imgGoogleRSS" alt="Add To Google"></a></li>
+    
+</ul>
+
+    <div id="ctl00_mainContent_BlogView1_navTop_pnlSideTop" class="bsidecontent bsidetop">
+
+        
+    
+</div>
+    <div id="ctl00_mainContent_BlogView1_navTop_pnlStatistics" class="bsidelist bstatslist">
+
+        <h3>
+Statistics
+</h3>
+<ul class="blognav">
+<li>Entries (11)</li>
+<li id="ctl00_mainContent_BlogView1_navTop_stats_liComments">Comments (7)</li>
+</ul>
+
+    
+</div>
+    <div id="ctl00_mainContent_BlogView1_navTop_pnlCategories" class="bsidelist bcatlist">
+
+        <h3>
+Categories
+</h3>
+<ul class="blognav">
+        <li>
+        <a id="ctl00_mainContent_BlogView1_navTop_tags_dlCategories_ctl01_Hyperlink5" href="http://avanet.org/Blog/ViewCategory.aspx?cat=316&amp;mid=859&amp;pageid=465">android (1)</a></li>
+    
+        <li>
+        <a id="ctl00_mainContent_BlogView1_navTop_tags_dlCategories_ctl02_Hyperlink5" href="http://avanet.org/Blog/ViewCategory.aspx?cat=315&amp;mid=859&amp;pageid=465">Diseño (1)</a></li>
+    </ul>
+
+
+
+    
+</div>
+    
+    <div id="ctl00_mainContent_BlogView1_navTop_pnlArchives" class="bsidelist barchivelist">
+
+        <h3>
+Archives
+</h3>
+<ul class="blognav">
+        <li>
+        <a id="ctl00_mainContent_BlogView1_navTop_archive_dlArchive_ctl01_Hyperlink6" href="http://avanet.org/Blog/ViewArchive.aspx?month=2&amp;year=2012&amp;pageid=465&amp;mid=859">febrero, 2012 (1)</a></li>
+    
+        <li>
+        <a id="ctl00_mainContent_BlogView1_navTop_archive_dlArchive_ctl02_Hyperlink6" href="http://avanet.org/Blog/ViewArchive.aspx?month=10&amp;year=2011&amp;pageid=465&amp;mid=859">octubre, 2011 (2)</a></li>
+    
+        <li>
+        <a id="ctl00_mainContent_BlogView1_navTop_archive_dlArchive_ctl03_Hyperlink6" href="http://avanet.org/Blog/ViewArchive.aspx?month=9&amp;year=2011&amp;pageid=465&amp;mid=859">septiembre, 2011 (3)</a></li>
+    
+        <li>
+        <a id="ctl00_mainContent_BlogView1_navTop_archive_dlArchive_ctl04_Hyperlink6" href="http://avanet.org/Blog/ViewArchive.aspx?month=8&amp;year=2011&amp;pageid=465&amp;mid=859">agosto, 2011 (5)</a></li>
+    </ul>
+
+    
+</div>
+    <div id="ctl00_mainContent_BlogView1_navTop_pnlSideBottom" class="bsidecontent bsidebottom">
+
+        
+    
+</div>
+    
+
+</div>
+
+            <div id="ctl00_mainContent_BlogView1_divblog" class="blogcenter-rightnav" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_mainContent_BlogView1_btnPostComment')">
+		
+                <div id="ctl00_mainContent_BlogView1_pnlDateTop" class="blogdate">
+
+                    <span class="blogauthor">Posted by ingyesid</span>
+                    <span class="bdate">lunes, 12 de septiembre de 2011 13:27:00</span>
+                    
+                
+</div>
+                <div id="ctl00_mainContent_BlogView1_divTopPager" class="blogpager">
+
+                    <a id="ctl00_mainContent_BlogView1_lnkPreviousPostTop" title="Layouts en Android -Relative Layout " class="postlink prevpost" href="http://avanet.org/layouts-en-android--relative-layout-.aspx">Previous Post &lt;&lt;</a>
+                    <a id="ctl00_mainContent_BlogView1_lnkNextPostTop" title="Controles basicos en Android : Botones e Imagenes" class="postlink nextpost" href="http://avanet.org/controles-basicos-en-android--botones-e-imagenes.aspx">&gt;&gt; Next Post</a>
+                
+</div>
+                <div id="ctl00_mainContent_BlogView1_pnlDetails">
+			
+                    
+                    
+                    <div class="blogtext">
+                        <p><span style="text-decoration: underline;"><strong>FrameLayout</strong></span></p>
+<p>Éste es el más simple de todos los layouts de Android. Un <span style="font-family: courier new,courier;">FrameLayout</span>
+ coloca todos sus controles hijos alineados con su esquina superior 
+izquierda, de forma que cada control quedará oculto por el control 
+siguiente (a menos que éste último tenga transparencia). Por ello, suele
+ utilizarse para mostrar un único control en su interior, a modo de 
+contenedor (<em>placeholder</em>) sencillo para un sólo elemento sustituible, por ejemplo una imagen.</p>
+<ol>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;FrameLayout</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">xmlns:android</span>=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp;</div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;EditText</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:id</span>=<span style="color: #ff0000;">"@+id/TxtNombre"</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp; &nbsp;&nbsp; <span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp;</div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/FrameLayout<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+</ol>
+<p>﻿</p>
+<p><span style="text-decoration: underline;"><strong>TableLayout</strong></span></p>
+<p>Un <span style="font-family: courier new,courier;">TableLayout </span>permite
+ distribuir sus elementos hijos de forma tabular, definiendo las filas y
+ columnas necesarias, y la posición de cada componente dentro de la 
+tabla.</p>
+<p>La estructura de la tabla se define de forma similar a como se hace 
+en HTML, es decir, indicando las filas que compondrán la tabla (objetos <span style="font-family: courier new,courier;">TableRow</span>),
+ y dentro de cada fila las columnas necesarias, con la salvedad de que 
+no existe ningún objeto especial para definir una columna (algo así como
+ un <em>TableColumn</em>) sino que directamente insertaremos los controles necesarios dentro del <span style="font-family: courier new,courier;">TableRow</span> y cada componente insertado (que puede ser un control sencillo o incluso otro <span style="font-family: courier new,courier;">ViewGroup</span>)
+ corresponderá a una columna de la tabla. De esta forma, el número final
+ de filas de la tabla se corresponderá con el número de elementos 
+TableRowinsertados, y el número total de columnas quedará determinado 
+por el número de componentes de la fila que más componentes contenga.</p>
+<p>Por norma general, el ancho de cada columna se corresponderá con el 
+ancho del mayor componente de dicha columna, pero existen una serie de 
+propiedades que nos ayudarán a modificar este comportamiento:</p>
+<ul>
+<li><span style="font-family: courier new,courier;">android:stretchColumns</span>.
+ Indicará las columnas que pueden expandir para absorver el espacio 
+libre dejado por las demás columnas a la derecha de la pantalla.</li>
+<li><span style="font-family: courier new,courier;">android:shrinkColumns</span>.
+ Indicará las columnas que se pueden contraer para dejar espacio al 
+resto de columnas que se puedan salir por la derecha de la palntalla.</li>
+<li><span style="font-family: courier new,courier;">android:collapseColumns</span>. Indicará las columnas de la tabla que se quieren ocultar completamente.</li>
+</ul>
+<ol>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;TableLayout</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">xmlns:android</span>=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp;<span style="color: #000066;">android:stretchColumns</span>=<span style="color: #ff0000;">"1"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp;</div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;TableRow<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;Button</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:text</span>=<span style="color: #ff0000;">"Celda 1.1"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;Button</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:text</span>=<span style="color: #ff0000;">"Celda 1.2"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/TableRow<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp;</div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;TableRow<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;Button</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:text</span>=<span style="color: #ff0000;">"Celda 2.1"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;Button</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:text</span>=<span style="color: #ff0000;">"Celda 2.2"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/TableRow<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp;</div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;TableRow<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;Button</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:text</span>=<span style="color: #ff0000;">"Celda 3"</span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #000066;">android:layout_span</span>=<span style="color: #ff0000;">"2"</span><span class="Apple-converted-space">&nbsp;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/TableRow<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+<li style="background-color: #fcfcfc;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;">&nbsp;</div>
+</li>
+<li style="background-color: #f0f0f0;">
+<div style="font: 1em/1.2em monospace; margin: 0px; padding: 0px; background-image: none; vertical-align: top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/TableLayout<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div>
+</li>
+</ol>
+<p>﻿</p>
+<p style="text-align: center;"><img src="layouts-en-android-framelayout-tablelayout.aspx_files/table.png" alt="" height="455" width="300"></p>
+<p>Autor: <a href="http://yelamablog.blogspot.com/">http://yelamablog.blogspot.com/﻿</a></p>
+<p>Fuente:<a href="http://developer.android.com/guide/topics/ui/declaring-layout.html">http://developer.android.com/guide/topics/ui/declaring-layout.html</a>﻿</p>
+                    </div>
+                    
+                    
+                    
+                    <div id="ctl00_mainContent_BlogView1_pnlBingDirections" class="drivingdirections">
+				
+                    
+			</div>
+                
+		</div>
+                
+                <div class="blogcopyright">
+                    <span id="ctl00_mainContent_BlogView1_lblCopyright"></span>
+                </div>
+                
+                <div class="bsocial">
+                    <div class="blogaddthis">
+                        
+                    </div>
+                    <iframe data-twttr-rendered="true" title="Twitter Tweet Button" style="width: 106px; height: 20px;" class="twitter-share-button twitter-count-horizontal" src="layouts-en-android-framelayout-tablelayout.aspx_files/tweet_button.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                    <div class="fblikebutton"><iframe src="layouts-en-android-framelayout-tablelayout.aspx_files/like.html" allowtransparency="true" style="border:none; overflow:hidden;width:450px; height:35px;" frameborder="0" scrolling="no"></iframe></div>
+                    
+                </div>
+                <div id="ctl00_mainContent_BlogView1_divBottomPager" class="blogpager blogpagerbottom">
+
+                    <a id="ctl00_mainContent_BlogView1_lnkPreviousPost" title="Layouts en Android -Relative Layout " class="postlink prevpost" href="http://avanet.org/layouts-en-android--relative-layout-.aspx">Previous Post &lt;&lt;</a>
+                    <a id="ctl00_mainContent_BlogView1_lnkNextPost" title="Controles basicos en Android : Botones e Imagenes" class="postlink nextpost" href="http://avanet.org/controles-basicos-en-android--botones-e-imagenes.aspx">&gt;&gt; Next Post</a>
+                
+</div>
+                <div class="blogcommentservice">
+                    
+                    
+                    
+                </div>
+                <div id="ctl00_mainContent_BlogView1_pnlFeedback" class="bcommentpanel">
+
+                    <fieldset>
+                        <legend>
+                            <label>Comments</label>
+                        </legend>
+                        <div class="blogcomments">
+                            
+			        <h3 class="blogtitle">
+				        
+				        re: Layouts en Android - FrameLayout ,TableLayout
+				        
+			        </h3>
+			        <div>
+				        <span id="ctl00_mainContent_BlogView1_dlComments_ctl00_Label2" class="blogdate">lunes, 12 de septiembre de 2011 13:57:27</span>
+				        
+                        
+<!--[if gte IE 7]><!-->
+<div class="NeatHtml" style="overflow: hidden; position: relative; border: none; padding: 0; margin: 0;"><div>
+				        <a id="NeatHtml_ctl00_mainContent_BlogView1_dlComments_ctl00_Hyperlink2" class="blogcommentposter" rel="nofollow" href="http://yelamablog.blogspot.com/">yelama</a>
+                        </div>
+</div><script type="text/javascript">
+NeatHtml.DefaultFilter.ResizeContainer();
+</script>
+
+			        </div>
+			        <div class="blogcommenttext">
+			        
+<!--[if gte IE 7]><!-->
+<div class="NeatHtml" style="overflow: hidden; position: relative; border: none; padding: 0; margin: 0;"><div>
+                    <p>con estos acabamos con los layouts , seguiremos con los controles basico(Button,TextView,EditText ...)</p>
+                    </div>
+</div><script type="text/javascript">
+NeatHtml.DefaultFilter.ResizeContainer();
+</script>
+
+			        </div>
+		        
+                            
+                            <div id="ctl00_mainContent_BlogView1_pnlCommentsClosed">
+			
+                                Comments are closed on this post.
+                            
+		</div>
+                            
+                        </div>
+                    </fieldset>
+                
+</div>
+            
+	</div>
+            
+            
+        
+</div>
+    
+</div>
+    <div id="ctl00_mainContent_BlogView1_divCleared" class="cleared">
+
+    
+</div>
+
+</div>
+
+	
+
+</div>
+
+		
+</div>
+		
+				
+	</div>
+</div>
+<div id="espacio">
+</div>
+<div id="pie">
+	<div id="contenedor_pie">
+		<div id="derechos">
+			© 2009 - 2013 Avanet
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function HideMenuToolbar(){ $("#toolbar").fadeOut(); $("#toolbarbut").fadeIn("slow");}
+function ShowMenuToolbar(){ $("#toolbar").fadeIn(); $("#toolbarbut").fadeOut("slow");}
+$(document).ready(function(){ 
+  $("span.downarr a").click(function() {HideMenuToolbar(); Set_Cookie('openstate', 'closed')});
+  $("span.showbar a").click(function() {ShowMenuToolbar(); Set_Cookie('openstate', 'open') });
+  $("span.downarr a, span.showbar a").click(function() { return false; });	
+	var openState = Get_Cookie('openstate');
+	if(openState != null){ if(openState == 'closed'){HideMenuToolbar();} if(openState == 'open'){ShowMenuToolbar();}}
+});	
+</script>
+
+
+<div>
+	<input name="ctl00$ctl05" id="ctl00_ctl05" type="hidden">
+</div>
+<script type="text/javascript">Sys.Application.add_load(function() { var form = Sys.WebForms.PageRequestManager.getInstance()._form; form._initialAction = form.action = window.location.href; }); </script>
+<script type="text/javascript">
+//<![CDATA[
+
+WebForm_InitCallback();//]]>
+</script>
+
+<script type="text/javascript"> $('div.mojo-accordion').accordion({fx:{opacity:'toggle',duration:'fast'}});$('div.mojo-accordion-nh').accordion({fx:{opacity:'toggle',duration:'fast'},autoHeight:false}); $('div.mojo-tabs').tabs({fx:{opacity:'toggle',duration:'fast'}}); $('input.jqbutton').button(); $('.faqs dd').hide();$('.faqs dt').hover(function(){$(this).addClass('hover')},function(){$(this).removeClass('hover')}).click(function(){ $(this).next().slideToggle('normal'); });  </script><script type="text/javascript">new Sys.WebForms.Menu({ element: 'ctl00_SiteMenu1_ctl00', disappearAfter: 500, orientation: 'horizontal', tabIndex: 0, disabled: false });</script>
+<script type="text/javascript">
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+//]]>
+</script>
+</form>
+
+
+
+</body></html>

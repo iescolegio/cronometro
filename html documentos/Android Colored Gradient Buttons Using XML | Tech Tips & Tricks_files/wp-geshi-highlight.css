@@ -1,0 +1,31 @@
+.wp-geshi-highlight {
+    width: 100%;
+    font-size: 90%;
+    line-height: 1.2;
+    background-color: #fafaf7;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 4px 4px 4px #888;
+    -webkit-box-shadow: 4px 4px 4px #888;
+    box-shadow: 4px 4px 4px #888;
+    }
+
+.wp-geshi-highlight pre {
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    }
+
+.wp-geshi-highlight ol {
+    padding-right: 0;
+    }
+
+.wp-geshi-highlight li {
+    padding-left: 2px;
+    }

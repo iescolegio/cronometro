@@ -1,0 +1,937 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head id="ctl00_MyHeader" profile="http://gmpg.org/xfn/11"><link media="all" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/widget102.css" type="text/css" rel="stylesheet"><script src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js_005.axd"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js_002.axd"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js.axd"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js_007.axd"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js_004.axd"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js_003.axd"></script><link type="text/css" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/css_002.css" rel="stylesheet"><link rel="stylesheet" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/css.css" type="text/css"><link rel="shortcut icon" href="http://www.ingens-networks.com/blog/pics/ingens16.ico" type="image/x-icon">
+    <script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/jquery.js"></script>
+    <script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menu.html"></script>
+    <link rel="stylesheet" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/css_003.css" type="text/css"><link rel="stylesheet" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/css_004.css" type="text/css">
+    
+    <script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/addthis_widget_002.js"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/sh109.html" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px none; left: 0px; top: 0px;" title="AddThis utility frame" id="_atssh102"></iframe></div><script src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/core060.js" type="text/javascript"></script>
+<meta name="keywords" content="Android,WebServices,SOAP,Programaci&amp;#243;n"><meta name="author" content="Jos&amp;#233; Manuel null Pereira Garc&amp;#237;a"><link rel="last" title="Windows Server 2012 - Lab 2: Parte VI - Eliminar el DC anterior después de una degradación forzosa en dominio de Windows Server 2008 / Windows Server 2008 R2" href="http://www.ingens-networks.com/blog/post/2013/01/08/Windows-Server-2012-Lab-2-Parte-VI-Eliminar-el-DC-anterior-despues-de-una-degradacion-forzosa-en-dominio-de-Windows-Server-2008-Windows-Server-2008-R2.aspx"><link rel="first" title="WWDC 2009" href="http://www.ingens-networks.com/blog/post/2009/06/20/WWDC-2009.aspx"><link rel="next" title="Parseando JSON en Android" href="http://www.ingens-networks.com/blog/post/2012/05/08/Parseando-JSON-en-Android.aspx"><link rel="prev" title="Serializar y Deserializar objetos con System.Web.Script.Serialization.JavaScriptSerializer" href="http://www.ingens-networks.com/blog/post/2012/05/05/Serializar-y-Deserializar-objetos-con-JavaScriptSerializer.aspx"><link type="application/rss+xml" rel="alternate" title="Consumiendo Web Services SOAP en Android con ksoap2 (RSS)" href="http://www.ingens-networks.com/blog/post/feed/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx?format=ATOM"><link type="application/rss+xml" rel="alternate" title="Consumiendo Web Services SOAP en Android con ksoap2 (ATOM)" href="http://www.ingens-networks.com/blog/post/feed/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx?format=ATOM"><link rel="contents" title="Archive" href="http://www.ingens-networks.com/blog/archive.aspx"><link rel="start" title="IngensBlog" href="http://www.ingens-networks.com/blog/"><link type="application/rdf+xml" rel="meta" title="SIOC" href="http://www.ingens-networks.com/blog/sioc.axd"><link type="application/apml+xml" rel="meta" title="APML" href="http://www.ingens-networks.com/blog/apml.axd"><link type="application/rdf+xml" rel="meta" title="FOAF" href="http://www.ingens-networks.com/blog/foaf.axd"><link type="application/rss+xml" rel="alternate" title="IngensBlog (RSS)" href="http://www.ingens-networks.com/blog/syndication.axd?format=rss"><link type="application/atom+xml" rel="alternate" title="IngensBlog (ATOM)" href="http://www.ingens-networks.com/blog/syndication.axd?format=atom"><link type="application/rsd+xml" rel="edituri" title="RSD" href="http://www.ingens-networks.com/blog/rsd.axd"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link type="application/opensearchdescription+xml" rel="search" title="IngensBlog" href="http://www.ingens-networks.com/blog/opensearch.axd"><link type="text/css" rel="stylesheet" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shCore.css"><link type="text/css" rel="stylesheet" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shThemeDefault.css"><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shCore.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushBash.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushCSharp.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushCss.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushJava.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushJScript.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushObjC.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushPlain.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushSql.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushVb.js"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/shBrushXml.js"></script><title>
+	IngensBlog | Consumiendo Web Services SOAP en Android con ksoap2
+</title><link type="text/css" rel="stylesheet" href="Consumiento-Web-Services-SOAP-en-Android.aspx_files/widget.css"><style type="text/css">#twtr-widget-1 .twtr-avatar { display: none; } #twtr-widget-1 .twtr-tweet-text { margin-left: 0; }</style><style type="text/css">#twtr-widget-1 .twtr-doc,                      #twtr-widget-1 .twtr-hd a,                      #twtr-widget-1 h3,                      #twtr-widget-1 h4 {            background-color: #d6d6d6 !important;            color: #cc0000 !important;          }          #twtr-widget-1 .twtr-tweet a {            color: #cc0000 !important;          }          #twtr-widget-1 .twtr-bd, #twtr-widget-1 .twtr-timeline i a,           #twtr-widget-1 .twtr-bd p {            color: #333333 !important;          }          #twtr-widget-1 .twtr-new-results,           #twtr-widget-1 .twtr-results-inner,           #twtr-widget-1 .twtr-timeline {            background: #ffffff !important;          }</style><script src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/challenge" type="text/javascript"></script><style type="text/css">.recaptchatable td img{display:block}.recaptchatable .recaptcha_r1_c1{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') 0 -63px no-repeat;width:318px;height:9px}.recaptchatable .recaptcha_r2_c1{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -18px 0 no-repeat;width:9px;height:57px}.recaptchatable .recaptcha_r2_c2{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -27px 0 no-repeat;width:9px;height:57px}.recaptchatable .recaptcha_r3_c1{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') 0 0 no-repeat;width:9px;height:63px}.recaptchatable .recaptcha_r3_c2{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -18px -57px no-repeat;width:300px;height:6px}.recaptchatable .recaptcha_r3_c3{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -9px 0 no-repeat;width:9px;height:63px}.recaptchatable .recaptcha_r4_c1{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -43px 0 no-repeat;width:171px;height:49px}.recaptchatable .recaptcha_r4_c2{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -36px 0 no-repeat;width:7px;height:57px}.recaptchatable .recaptcha_r4_c4{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -214px 0 no-repeat;width:97px;height:57px}.recaptchatable .recaptcha_r7_c1{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -43px -49px no-repeat;width:171px;height:8px}.recaptchatable .recaptcha_r8_c1{background:url('http://www.google.com/recaptcha/api/img/white/sprite.png') -43px -49px no-repeat;width:25px;height:8px}.recaptchatable .recaptcha_image_cell center img{height:57px}.recaptchatable .recaptcha_image_cell center{height:57px}.recaptchatable .recaptcha_image_cell{background-color:white;height:57px}#recaptcha_area,#recaptcha_table{width:318px!important}.recaptchatable,#recaptcha_area tr,#recaptcha_area td,#recaptcha_area th{margin:0!important;border:0!important;padding:0!important;border-collapse:collapse!important;vertical-align:middle!important}.recaptchatable *{margin:0;padding:0;border:0;font-family:helvetica,sans-serif;font-size:8pt;color:black;position:static;top:auto;left:auto;right:auto;bottom:auto;text-align:left!important}.recaptchatable #recaptcha_image{margin:auto}.recaptchatable img{border:0!important;margin:0!important;padding:0!important}.recaptchatable a,.recaptchatable a:hover{outline:none;border:0!important;padding:0!important;text-decoration:none;color:blue;background:none!important;font-weight:normal}.recaptcha_input_area{position:relative!important;width:146px!important;height:45px!important;margin-left:20px!important;margin-right:5px!important;margin-top:4px!important;background:none!important}.recaptchatable label.recaptcha_input_area_text{margin:0!important;padding:0!important;position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;background:none!important;height:auto!important;width:auto!important}.recaptcha_theme_red label.recaptcha_input_area_text,.recaptcha_theme_white label.recaptcha_input_area_text{color:black!important}.recaptcha_theme_blackglass label.recaptcha_input_area_text{color:white!important}.recaptchatable #recaptcha_response_field{width:145px!important;position:absolute!important;bottom:7px!important;padding:0!important;margin:0!important;font-size:10pt}.recaptcha_theme_blackglass #recaptcha_response_field,.recaptcha_theme_white #recaptcha_response_field{border:1px solid gray}.recaptcha_theme_red #recaptcha_response_field{border:1px solid #cca940}.recaptcha_audio_cant_hear_link{font-size:7pt;color:black}.recaptchatable{line-height:1em}#recaptcha_instructions_error{color:red!important}
+
+.recaptcha_is_showing_audio .recaptcha_only_if_image,.recaptcha_isnot_showing_audio .recaptcha_only_if_audio,.recaptcha_had_incorrect_sol .recaptcha_only_if_no_incorrect_sol,.recaptcha_nothad_incorrect_sol .recaptcha_only_if_incorrect_sol{display:none !important}</style></head>
+<body>
+<div id="fixitem" title="blog" style="display: none;"></div>
+<div id="fixitemsub" title="" style="display: none;"></div>
+<form name="aspnetForm" method="post" action="/blog/post/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTIwODUxOTQ5OTMPZBYCZg9kFgICAw9kFgYCIw8WBB4EaHJlZgUYL2Jsb2cvQWNjb3VudC9sb2dpbi5hc3B4Hglpbm5lcmh0bWwFE0luaWNpYXIgc2VzaSYjMjQzO25kAiUPZBYIAgMPFgIeB1Zpc2libGVnFgQCAQ8PFgYeC05hdmlnYXRlVXJsBVUvYmxvZy9wb3N0LzIwMTIvMDUvMDUvU2VyaWFsaXphci15LURlc2VyaWFsaXphci1vYmpldG9zLWNvbi1KYXZhU2NyaXB0U2VyaWFsaXplci5hc3B4HgRUZXh0BWMmbHQ7Jmx0OyBTZXJpYWxpemFyIHkgRGVzZXJpYWxpemFyIG9iamV0b3MgY29uIFN5c3RlbS5XZWIuU2NyaXB0LlNlcmlhbGl6YXRpb24uSmF2YVNjcmlwdFNlcmlhbGl6ZXIeB1Rvb2xUaXAFFVB1YmxpY2FjacOzbiBhbnRlcmlvcmRkAgMPDxYGHwMFNC9ibG9nL3Bvc3QvMjAxMi8wNS8wOC9QYXJzZWFuZG8tSlNPTi1lbi1BbmRyb2lkLmFzcHgfBAUiUGFyc2VhbmRvIEpTT04gZW4gQW5kcm9pZCAmZ3Q7Jmd0Ox8FBRZTaWd1aWVudGUgcHVibGljYWNpw7NuZGQCCQ8WAh8CZ2QCCw9kFgQCAQ8WAh8CaGQCAg9kFgICCg8PFgIfAmhkZAINDxYCHwJoZAImD2QWBAICDw8WAh8CaGRkAgQPZBYCZg9kFgJmD2QWAgIED2QWCmYPZBYCZg8VAQsw4oKsIGFsIG1lc2QCAQ9kFgJmDxUBGGVudHJlIDDigqwgeSA14oKsIGFsIG1lc2QCAg9kFgJmDxUBGWVudHJlIDXigqwgeSAxMOKCrCBhbCBtZXNkAgMPZBYCZg8VARplbnRyZSAxMOKCrCB5IDE14oKsIGFsIG1lc2QCBA9kFgJmDxUBGG0mIzIyNTtzIGRlIDE14oKsIGFsIG1lc2Rk95z6Rxrj7xaNZrXhmxTiT22S09o=" type="hidden">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/WebResource_002.js" type="text/javascript"></script>
+
+
+<script src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/WebResource.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+ 
+<table class="outmaintable" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>
+            <table class="maintable" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                    <td>
+                        <div id="headermenu">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td>
+                                        <ul id="toplogo">
+                                            <li><img id="ctl00_image_blank01" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menu_blank01.png" alt=" " style="border-width:0px;"></li>
+                                            <li style="background: url(&quot;http://www.ingens-networks.com/images/mainmenu/menu/logoIG.jpg&quot;) no-repeat scroll 0% 0% transparent;" id="logo"><a id="ctl00_HyperLink1" href="http://www.ingens-group.com/"><img id="ctl00_image_Logo" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:59px;width:75px;"></a></li>
+                                            <li><img id="ctl00_image_blank02" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menu_blank02.png" alt=" " style="border-width:0px;"></li>
+                                        </ul>
+                                    </td>
+                                    <td valign="top">
+                                        <ul id="topnav">                                                
+                                            <li id="empresa"><a id="ctl00_HyperLink2" href="http://www.ingens-networks.com/empresa.aspx"><img id="ctl00_image_empresa" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:103px;" align="top"></a></li>
+                                            <li id="soluciones"><a id="ctl00_HyperLink3" href="http://www.ingens-networks.com/default.aspx"><img id="ctl00_image_soluciones" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:103px;"></a>
+                                            <!--Subnav Starts Here-->
+                                                <ul id="subnav_soluciones">
+                                                    <li id="voiceoverip"><a id="ctl00_HyperLink4" href="http://www.ingens-networks.com/soluciones/voiceoverip.aspx"><img id="ctl00_image_voiceoverip" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:30px;width:103px;"></a></li>
+                                                    <li id="virtualization"><a id="ctl00_HyperLink5" href="http://www.ingens-networks.com/soluciones/virtualization.aspx"><img id="ctl00_image_virtualization" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:30px;width:103px;"></a></li>
+                                                    <li id="diagnostico"><a id="ctl00_HyperLink6" href="http://www.ingens-networks.com/soluciones/diagnostico.aspx"><img id="ctl00_image_diagnostico" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:30px;width:103px;"></a></li>
+                                                    <li id="proassist"><a id="ctl00_HyperLink7" href="http://www.ingens-networks.com/soluciones/proassist.aspx"><img id="ctl00_image_helpdesk" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:30px;width:103px;"></a></li>
+                                                    <li id="securitynetworks"><a id="ctl00_HyperLink8" href="http://www.ingens-networks.com/soluciones/securitynetworks.aspx"><img id="ctl00_image_securitynetworks" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:30px;width:103px;"></a></li>
+                                                </ul>
+                                                <!--Subnav Ends Here-->
+                                            </li>
+                                            <li id="partners"><a id="ctl00_HyperLink9" href="http://www.ingens-networks.com/partners.aspx"><img id="ctl00_image_partners" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:103px;"></a></li>
+                                            <li style="background: url(&quot;http://www.ingens-networks.com/images/mainmenu/menu_over/blog_over.png&quot;) no-repeat scroll 0% 0% transparent;" id="blog"><a id="ctl00_HyperLink10" href="http://www.ingens-networks.com/blog"><img id="ctl00_image_blog" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:103px;"></a></li>
+                                            <li id="contacta"><a id="ctl00_HyperLink11" href="http://www.ingens-networks.com/contacta.aspx"><img id="ctl00_image_contacta" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:107px;"></a></li>
+                                        </ul>
+                                    </td>
+                                    <td>
+										<table cellpadding="0" cellspacing="0">
+											<tbody><tr>
+												<td align="center">
+													<table cellpadding="0" cellspacing="0">
+														<tbody><tr>
+															<td><a href="http://www.ingens-networks.com/" target="_blank"><img id="ctl00_Image12" title="Ingens Networks" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ingensnetworkssmalllogo.png" alt="Ingens Networks" style="border-width:0px;" align="left"></a></td>
+															<td><img id="ctl00_Image6" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="height:15px;width:5px;border-width:0px;"></td>
+															<td><a href="http://www.ingens-developments.com/" target="_blank"><img id="ctl00_Image14" title="Ingens Developments" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ingensdevelopmentssmalllogo.png" alt="Ingens Developments" style="border-width:0px;" align="left"></a></td>
+															<td><img id="ctl00_Image16" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="height:15px;width:5px;border-width:0px;"></td>
+															<td><a href="http://www.ingens-biometrics.com/" target="_blank"><img id="ctl00_Image15" title="Ingens Biometrics" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ingensbiometricssmalllogo.png" alt="Ingens Biometrics" style="border-width:0px;" align="left"></a></td>
+															<td><img id="ctl00_Image11" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="height:15px;width:5px;border-width:0px;"></td>
+															<td><a href="http://www.ingens-hostings.com/" target="_blank"><img id="ctl00_Image17" title="Ingens Hostings" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ingenshostingsmalllogo.png" alt="Ingens Hostings" style="border-width:0px;" align="left"></a></td>
+														</tr>
+													</tbody></table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<img id="ctl00_image4" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:10px;width:249px;">
+												</td>
+											</tr>
+										</tbody></table>                                        
+                                    </td>
+                                    <td valign="top">
+                                        <div id="serviciosingens">
+                                            <div id="headerserviciosingens">
+                                                <img id="ctl00_image8" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:140px;">
+                                                <div id="bodyserviciosingens">
+                                                    <table class="extraneticotable" cellpadding="0" cellspacing="0">
+                                                        <tbody><tr>
+                                                            <td>
+                                                                <a href="http://webmail.ingens-networks.com/" target="_blank"><img id="ctl00_Image9" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicowebmail.png" alt=" " style="border-width:0px;height:83px;width:68px;"></a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="https://213.27.221.221/cgi-bin/supportLogin" target="_blank"><img id="ctl00_Image10" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicovirtualassist.png" alt=" " style="border-width:0px;height:83px;width:72px;"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="http://213.27.221.208/" target="_blank"><img id="ctl00_Image19" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicocpdcam.jpg" style="border-width:0px;height:83px;width:68px;"></a>
+                                                            </td>
+                                                            <td>
+                                                                <img id="ctl00_Image20" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicovacio.jpg" style="border-width:0px;height:83px;width:72px;">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                                <div id="footerserviciosingens">
+                                                   <img id="ctl00_image13" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:10px;width:140px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <img id="ctl00_image7" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:5px;">
+                                    </td>
+                                    <td valign="top">
+                                        <div id="extranet">
+                                            <div id="headerextranet">
+                                                <img id="ctl00_image_extranet" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:140px;">
+                                                <div id="bodyextranet">
+                                                    <table class="extraneticotable" cellpadding="0" cellspacing="0">
+                                                        <tbody><tr>
+                                                            <td>
+                                                                <a href="https://www.ingens-networks.com/secure/secure.ingens-networks.com" target="_blank"><img id="ctl00_menuicoextranet" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicoextranet.png" alt=" " style="border-width:0px;height:70px;width:68px;"></a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="http://dsc.ingens-networks.com/" target="_blank"><img id="ctl00_menuicodsc" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicodsc.png" alt=" " style="border-width:0px;height:70px;width:72px;"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="https://sslvpn.ingens-networks.com/" target="_blank"><img id="ctl00_menuicosslvpn" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicosslvpn.png" alt=" " style="border-width:0px;height:70px;width:68px;"></a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="https://ingens-networks.webex.com/" target="_blank"><img id="ctl00_menuicowebex" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/menuicowebex.png" alt=" " style="border-width:0px;height:70px;width:72px;"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                                <div id="footerextranet">
+                                                   <img id="ctl00_image3" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:10px;width:140px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <img id="ctl00_image2" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans.png" alt=" " style="border-width:0px;height:42px;width:30px;">
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans_002.png" alt=" " height="10" width="1200"></td></tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tbody><tr>
+                                <td id="content">
+                                    <table id="blogtop">
+                                        <tbody><tr>
+                                            <td>
+                                                <div id="menu">
+                                                    <ul>
+                                                      <li><a title="XFN relationship: home" href="http://www.ingens-networks.com/blog/" rel="home">Inicio</a></li>
+                                                      <li><a href="http://www.ingens-networks.com/blog/archive.aspx">Archivo</a></li>
+                                                      <li><a href="http://www.ingens-networks.com/blog/syndication.axd" class="feed"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.gif" alt="Feed">Suscribirse</a></li>
+                                                      <li><a href="http://www.ingens-networks.com/blog/Account/login.aspx" id="ctl00_aLogin">Iniciar sesión</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td id="bloglogo">
+                                                <img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/blogtitle.png" alt="blog">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                
+                                                
+  
+  
+
+  
+    <div id="postnavigation">
+      <a id="ctl00_cphBody_hlPrev" title="Publicación anterior" href="http://www.ingens-networks.com/blog/post/2012/05/05/Serializar-y-Deserializar-objetos-con-JavaScriptSerializer.aspx">&lt;&lt; Serializar y Deserializar objetos con System.Web.Script.Serialization.JavaScriptSerializer</a> | 
+      <a id="ctl00_cphBody_hlNext" title="Siguiente publicación" href="http://www.ingens-networks.com/blog/post/2012/05/08/Parseando-JSON-en-Android.aspx">Parseando JSON en Android &gt;&gt;</a>
+    </div>
+  
+  
+  <div id="ctl00_cphBody_a4b20486615e4ce58bbec59021b6a785_frontpage">
+<div class="post" id="post0">
+  <h1><a href="http://www.ingens-networks.com/blog/post/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx" class="taggedlink">Consumiendo Web Services SOAP en Android con ksoap2</a></h1>
+  <span class="authorline">07 mayo 2012 09:00 by <span class="author"><a href="http://www.ingens-networks.com/blog/author/jmanuelpereira.aspx">JMPergar</a></span>
+  </span>
+  <div class="text"><p><a href="http://es.wikipedia.org/wiki/Simple_Object_Access_Protocol">SOAP</a> es uno de lo protocolos para comunicación de datos más usados auspiciado por la <a href="http://es.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C</a>,
+ existiendo multitud de servicios web implementados bajo esta 
+tecnología. Partiendo de esta situación es importante tener unos 
+conocimientos de partida que nos permita enfrentarnos al uso de los 
+mismos en los proyectos que emprendamos. A continuación os guiaremos en 
+el uso de <a href="http://code.google.com/p/ksoap2-android/">ksoap2-android</a>, el fork de la famosa kSOAP2 library adaptado para su uso en Android.</p>
+<p>&nbsp;</p>
+<p>Una vez creado nuestro proyecto Android deberemos bajarnos la librería en cuestión y incluirla en nuestro build path:</p>
+<p><a href="http://ksoap2-android.googlecode.com/svn/m2-repo/com/google/code/ksoap2-android/ksoap2-android-assembly/2.6.4/ksoap2-android-assembly-2.6.4-jar-with-dependencies.jar">download</a></p>
+<p>&nbsp;</p>
+<p>Llegados este punto vayamos a la miga, como acceder y consumir el web
+ service y para ello necesitaremos una serie de variables que usaremos 
+en los posteriores m´rtodos:</p>
+<p>&nbsp;</p>
+<div><div id="highlighter_908867" class="syntaxhighlighter  java"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java comments">// Metodo que queremos ejecutar en el servicio web</code></div><div class="line number2 index1 alt1"><code class="java keyword">private</code> <code class="java keyword">static</code> <code class="java keyword">final</code> <code class="java plain">String Metodo = </code><code class="java string">"GetCitiesByCountry"</code><code class="java plain">;</code></div><div class="line number3 index2 alt2"><code class="java comments">// Namespace definido en el servicio web</code></div><div class="line number4 index3 alt1"><code class="java keyword">private</code> <code class="java keyword">static</code> <code class="java keyword">final</code> <code class="java plain">String namespace = </code><code class="java string">"<a href="http://www.webservicex.net/">http://www.webserviceX.NET</a>"</code><code class="java plain">;</code></div><div class="line number5 index4 alt2"><code class="java comments">// namespace + metodo</code></div><div class="line number6 index5 alt1"><code class="java keyword">private</code> <code class="java keyword">static</code> <code class="java keyword">final</code> <code class="java plain">String accionSoap = </code><code class="java string">"<a href="http://www.webservicex.net/GetCitiesByCountry">http://www.webserviceX.NET/GetCitiesByCountry</a>"</code><code class="java plain">;</code></div><div class="line number7 index6 alt2"><code class="java comments">// Fichero de definicion del servcio web</code></div><div class="line number8 index7 alt1"><code class="java keyword">private</code> <code class="java keyword">static</code> <code class="java keyword">final</code> <code class="java plain">String url = </code><code class="java string">"<a href="http://www.webservicex.net/globalweather.asmx">http://www.webservicex.net/globalweather.asmx</a>"</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+<p>&nbsp;</p>
+<p>Una vez tenemos claros estos parámetros necesarios para las 
+peticiones pasamos al siguiente paso. El protocolo SOAP se basa en cinco
+ pasos básicamente, definir la petición (request), configurar un sobre 
+(envelope) (define que hay en el mensaje y como procesarlo), definir el 
+canal de transporte, hacer la llamada y recoger los datos. Estos datos 
+ya los procesaríamos en función del caso (XML, JSON, texto plano...).</p>
+<p>&nbsp;</p>
+<p>A continuación os mostramos el fragmento de código en el que 
+realizaríamos estos pasos y que incluiríamos en aquel sitio donde 
+deseáramos realizar la petición:</p>
+<p>&nbsp;</p>
+<div><div id="highlighter_736313" class="syntaxhighlighter  java"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java keyword">try</code> <code class="java plain">{</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// Modelo el request</code></div><div class="line number4 index3 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">SoapObject request = </code><code class="java keyword">new</code> <code class="java plain">SoapObject(namespace, Metodo);</code></div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">request.addProperty(</code><code class="java string">"Param"</code><code class="java plain">, </code><code class="java string">"valor"</code><code class="java plain">); </code><code class="java comments">// Paso parametros al WS</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// Modelo el Sobre</code></div><div class="line number8 index7 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">SoapSerializationEnvelope sobre = </code><code class="java keyword">new</code> <code class="java plain">SoapSerializationEnvelope(SoapEnvelope.VER11);</code></div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">sobre.dotNet = </code><code class="java keyword">true</code><code class="java plain">;</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">sobre.setOutputSoapObject(request);</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// Modelo el transporte</code></div><div class="line number13 index12 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">HttpTransportSE transporte = </code><code class="java keyword">new</code> <code class="java plain">HttpTransportSE(url);</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// Llamada</code></div><div class="line number16 index15 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">transporte.call(accionSoap, sobre);</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// Resultado</code></div><div class="line number19 index18 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">SoapPrimitive resultado = (SoapPrimitive) sobre.getResponse();</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">Log.i(</code><code class="java string">"Resultado"</code><code class="java plain">, resultado.toString());</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="java plain">} </code><code class="java keyword">catch</code> <code class="java plain">(Exception e) {</code></div><div class="line number24 index23 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">Log.e(</code><code class="java string">"ERROR"</code><code class="java plain">, e.getMessage());</code></div><div class="line number25 index24 alt2"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>&nbsp;</p>
+<p>En próximos tutoriales os mostraremos como procesar estos datos devueltos.</p>
+<p>&nbsp;</p>
+<p>NOTA: Para el consumo de servicios web es necesaria la conexión a 
+Internet y por tanto deberemos solicitar dicho permiso en el manifiesto.</p>
+<p>&nbsp;</p>
+<div><div id="highlighter_391214" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">uses-permission</code> <code class="xml color1">android:name</code><code class="xml plain">=</code><code class="xml string">"android.permission.INTERNET"</code><code class="xml plain">/&gt;</code></div></div></td></tr></tbody></table></div></div></div>
+  <div class="bottom">
+    <div class="ratingcontainer" style="visibility: visible;"><div class="rating"><p>Calificación promedio 4.0 (de 1 persona(s))</p><ul class="star-rating small-star"><li style="width: 80%;" class="current-rating">Currently 4.0/5 Stars.</li><li><a title="Calificar este 1 /5 estrellas" class="one-star" href="http://www.ingens-networks.com/blog/post/2012/05/07/rate/1">1</a></li><li><a title="Calificar este 2 s/5 estrellas" class="two-stars" href="http://www.ingens-networks.com/blog/post/2012/05/07/rate/2">2</a></li><li><a title="Calificar este 3 s/5 estrellas" class="three-stars" href="http://www.ingens-networks.com/blog/post/2012/05/07/rate/3">3</a></li><li><a title="Calificar este 4 s/5 estrellas" class="four-stars" href="http://www.ingens-networks.com/blog/post/2012/05/07/rate/4">4</a></li><li><a title="Calificar este 5 s/5 estrellas" class="five-stars" href="http://www.ingens-networks.com/blog/post/2012/05/07/rate/5">5</a></li></ul></div></div>
+    <p class="tags">Tags: <a href="http://www.ingens-networks.com/blog/?tag=/Android" rel="tag">Android</a>, <a href="http://www.ingens-networks.com/blog/?tag=/WebServices" rel="tag">WebServices</a>, <a href="http://www.ingens-networks.com/blog/?tag=/SOAP" rel="tag">SOAP</a>, <a href="http://www.ingens-networks.com/blog/?tag=/Programaci%c3%b3n" rel="tag">Programación</a></p>
+    <p class="categories"><a href="http://www.ingens-networks.com/blog/category/Android.aspx">Android</a></p>
+  </div>
+
+  <div class="footer">
+    <div class="medialinks">
+        <div class="addthis_toolbox addthis_default_style">
+            <a href="#" title="Tweet" class="addthis_button_twitter at300b"><span class="at16nc at300bs at15nc at15t_twitter at16t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
+            <a href="#" title="Facebook" class="addthis_button_facebook at300b"><span class="at16nc at300bs at15nc at15t_facebook at16t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
+			<a title="Google" target="_blank" href="http://www.addthis.com/bookmark.php?v=250&amp;winname=addthis&amp;pub=ingensnetworks&amp;source=tbx-250&amp;lng=es-ES&amp;s=google&amp;url=http%3A%2F%2Fwww.ingens-networks.com%2Fblog%2Fpost%2F2012%2F05%2F07%2FConsumiento-Web-Services-SOAP-en-Android.aspx&amp;title=IngensBlog%20%7C%20Consumiendo%20Web%20Services%20SOAP%20en%20Android%20con%20ksoap2&amp;ate=AT-ingensnetworks/-/-/510006966a0eafc0/2&amp;frommenu=1&amp;uid=5100069636df0221&amp;ct=1&amp;pre=http%3A%2F%2Fwww.google.es%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D3%26ved%3D0CEAQFjAC%26url%3Dhttp%253A%252F%252Fwww.ingens-networks.com%252Fblog%252Fpost%252F2012%252F05%252F07%252FConsumiento-Web-Services-SOAP-en-Android.aspx%26ei%3DkAYAUaipO-XL0AX244DgDA%26usg%3DAFQjCNGrdJlWKJvAlVpdkplMw8gpmfXxKA%26sig2%3DJ4-ODmjr8xJdVQoRo5BQOg%26bvm%3Dbv.4124&amp;tt=0&amp;captcha_provider=nucaptcha" class="addthis_button_google at300b"><span class="at16nc at300bs at15nc at15t_google at16t_google"><span class="at_a11y">Share on google</span></span></a>
+            <a title="Linkedin" target="_blank" href="http://www.addthis.com/bookmark.php?v=250&amp;winname=addthis&amp;pub=ingensnetworks&amp;source=tbx-250&amp;lng=es-ES&amp;s=linkedin&amp;url=http%3A%2F%2Fwww.ingens-networks.com%2Fblog%2Fpost%2F2012%2F05%2F07%2FConsumiento-Web-Services-SOAP-en-Android.aspx&amp;title=IngensBlog%20%7C%20Consumiendo%20Web%20Services%20SOAP%20en%20Android%20con%20ksoap2&amp;ate=AT-ingensnetworks/-/-/510006966a0eafc0/3&amp;frommenu=1&amp;uid=51000696e37faf01&amp;ct=1&amp;pre=http%3A%2F%2Fwww.google.es%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D3%26ved%3D0CEAQFjAC%26url%3Dhttp%253A%252F%252Fwww.ingens-networks.com%252Fblog%252Fpost%252F2012%252F05%252F07%252FConsumiento-Web-Services-SOAP-en-Android.aspx%26ei%3DkAYAUaipO-XL0AX244DgDA%26usg%3DAFQjCNGrdJlWKJvAlVpdkplMw8gpmfXxKA%26sig2%3DJ4-ODmjr8xJdVQoRo5BQOg%26bvm%3Dbv.4124&amp;tt=0&amp;captcha_provider=nucaptcha" class="addthis_button_linkedin at300b"><span class="at16nc at300bs at15nc at15t_linkedin at16t_linkedin"><span class="at_a11y">Share on linkedin</span></span></a>
+            <a href="#" title="Email" class="addthis_button_email at300b"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class="at_a11y">Share on email</span></span></a>
+        <div class="atclear"></div></div>
+		<script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/addthis_widget.js"></script>
+    </div>
+        
+    
+    <a rel="bookmark" href="http://www.ingens-networks.com/blog/post.aspx?id=a4b20486-615e-4ce5-8bbe-c59021b6a785" title="Consumiendo Web Services SOAP en Android con ksoap2">Permalink</a> |
+    <a rel="nofollow" href="http://www.ingens-networks.com/blog/post/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx#comment">Comentarios (3)</a>   
+    
+    </div>
+</div></div>
+  
+  
+    <!-- 
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://www.ingens-networks.com/blog/post/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx" dc:identifier="http://www.ingens-networks.com/blog/post/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx" dc:title="Consumiendo Web Services SOAP en Android con ksoap2" trackback:ping="http://www.ingens-networks.com/blog/trackback.axd?id=a4b20486-615e-4ce5-8bbe-c59021b6a785" />
+    </rdf:RDF>
+    -->
+  
+  
+  <div id="relatedPosts"><h3>Publicaciones relacionadas</h3><div><a href="http://www.ingens-networks.com/blog/post/2012/05/07/Consumiento-Web-Services-SOAP-en-Android.aspx">Consumiendo Web Services SOAP en Android con ksoap2</a><span>SOAP es uno de lo protocolos para comunicación de datos más usados auspiciado por la W...</span><a href="http://www.ingens-networks.com/blog/post/2012/05/04/Devolver-Resultado-JSON-en-WebServices-asmx-NET-%28Consumicion-sin-clase-proxy%29.aspx">Devolver Resultado JSON en WebServices asmx .NET (Consumición sin clase proxy)</a><span>&nbsp;
+&nbsp;
+Por comodidad de los programadores que quieran consumir un servicio web en distintos l...</span><a href="http://www.ingens-networks.com/blog/post/2012/04/30/Monetizando-nuestras-Apps-AdMob-en-Android.aspx">Monetizando nuestras Apps: AdMob en Android</a><span>&nbsp;
+A la hora de enfrentarnos a los desarrollos no lo hacemos por amor al arte, no obstante neces...</span></div></div>
+  
+  
+<h3 id="comment">
+    Comentarios (3)
+    <a id="commenttoggle" style="float:right;width:20px;height:20px;border:1px solid #ccc;text-decoration:none;text-align:center" href="javascript:toggle_visibility('commentlist',%20'commenttoggle');">-</a>
+</h3>
+
+
+<div id="commentlist" style="display:block">
+  
+
+<div id="id_40bf2761-125d-4e58-ba63-445c44c55e55" class="vcard comment">
+  <p class="date">04/06/2012 9:44:31 <a href="#id_40bf2761-125d-4e58-ba63-445c44c55e55">#</a></p>
+  <p class="gravatar"><img class="photo" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/affa96d98531fcfc2249bb45ee166ffe.png" alt="Sergio"></p>
+  <p class="content">Hola,
+<br>muy util el post.
+<br>¿Se podría realizar de la misma manera una llamada a un Web Service con UserNameToken?
+<br>Muchas gracias, un saludo.</p>
+  <p class="author">
+    <span class="fn">Sergio</span>
+    
+    
+        
+    
+  </p>
+  
+  <div class="comment-replies" id="replies_40bf2761-125d-4e58-ba63-445c44c55e55" style="display:none;">
+	
+  </div>
+  
+</div>
+
+<div id="id_67ad1533-b8c3-43d8-a86b-39cf304bb3ae" class="vcard comment">
+  <p class="date">01/10/2012 8:13:08 <a href="#id_67ad1533-b8c3-43d8-a86b-39cf304bb3ae">#</a></p>
+  <p class="gravatar"><img class="photo" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/b07c0179a26e1a42a14ae7698a19aa8d.png" alt="carlos"></p>
+  <p class="content">saludos purebo y me sale el sigueinte mensaje 
+Sorry¡ the aplication&nbsp;&nbsp;MyTest(process com.example.mytest) has 
+stopped unexpectedly. please try again. </p>
+  <p class="author">
+    <span class="fn">carlos</span>
+    
+    
+        
+    
+  </p>
+  
+  <div class="comment-replies" id="replies_67ad1533-b8c3-43d8-a86b-39cf304bb3ae" style="display:none;">
+	
+  </div>
+  
+</div>
+
+<div id="id_9cb235e3-9a83-49c9-a631-7f9244504707" class="vcard comment self">
+  <p class="date">02/10/2012 16:26:58 <a href="#id_9cb235e3-9a83-49c9-a631-7f9244504707">#</a></p>
+  <p class="gravatar"><img class="photo" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/81f1e0e2b85c49f64dd35f4a3941a177.jpg" alt="jmanuel.pereira"></p>
+  <p class="content">¿Has depurado? Con los datos que proporcionas no puedo sacar una conclusión.</p>
+  <p class="author">
+    <span class="fn">jmanuel.pereira</span>
+    
+    
+        
+    
+  </p>
+  
+  <div class="comment-replies" id="replies_9cb235e3-9a83-49c9-a631-7f9244504707" style="display:none;">
+	
+  </div>
+  
+</div>  
+</div>
+
+
+
+
+
+<div id="comment-form">
+
+	<img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ajax-loader.gif" alt="Saving the comment" style="display:none" id="ajaxLoader">  
+	<span id="status"></span>
+
+	<div class="commentForm">
+	  <h3 id="addcomment">Agregar comentario</h3>
+
+	  
+      <p>
+	      <label for="txtName634945565815129973" class="lbl-user">Nombre*</label>
+	      <input class="txt-user" name="txtName634945565815129973" id="txtName634945565815129973" tabindex="2" type="text">
+	      <span id="spnNameRequired" style="color:Red;display:none;"> Requerido</span>
+	      <span id="spnChooseOtherName" style="color:Red;display:none;"> Por favor escoja otro nombre </span>
+      </p>
+      <p>
+	      <label for="ctl00_cphBody_CommentView1_txtEmail" class="lbl-email">Correo Electrónico*</label>
+	      <input name="ctl00$cphBody$CommentView1$txtEmail" id="ctl00_cphBody_CommentView1_txtEmail" tabindex="3" class="lbl-email" type="text">
+	      <span id="gravatarmsg"></span>
+	      <span id="ctl00_cphBody_CommentView1_RequiredFieldValidator2" style="color:Red;display:none;">Requerido</span><span id="ctl00_cphBody_CommentView1_RegularExpressionValidator1" style="color:Red;display:none;">Por favor introduzca un una direccion de correo electrónico válida</span>
+      </p>
+      
+	  <span class="bbcode" title="BBCode tags"><a title="[b][/b]" href="javascript:void(BlogEngine.addBbCode('b'))">b</a><a title="[i][/i]" href="javascript:void(BlogEngine.addBbCode('i'))">i</a><a title="[u][/u]" href="javascript:void(BlogEngine.addBbCode('u'))">u</a><a title="[quote][/quote]" href="javascript:void(BlogEngine.addBbCode('quote'))">quote</a></span>
+	  <span id="ctl00_cphBody_CommentView1_RequiredFieldValidator3" style="color:Red;display:none;">Requerido</span><br>
+
+	    
+	  <ul id="commentMenu">
+		<li id="compose" class="selected" onclick="BlogEngine.composeComment()">Comentario</li>
+		<li id="preview" onclick="BlogEngine.showCommentPreview()">Vista previa</li>
+	  </ul>
+	  
+	  <div id="commentCompose">
+		<label for="ctl00_cphBody_CommentView1_txtContent" class="lbl-content" style="display:none">Comentario</label>
+		<textarea name="ctl00$cphBody$CommentView1$txtContent" rows="10" cols="50" id="ctl00_cphBody_CommentView1_txtContent" tabindex="7" class="txt-content"></textarea>
+	  </div>
+	  <div id="commentPreview">
+		<img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/ajax-loader.gif" style="display:none" alt="Loading">  
+	  </div>
+	  
+	  <p>
+	      <input id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" type="checkbox">
+	      <label for="cbNotify" style="width:auto;float:none;display:inline;padding-left:5px">Notificarme cuando se publiquen nuevos comentarios</label>
+      </p>
+	  <script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/recaptcha_ajax.js">
+
+</script><span id="spnCaptchaIncorrect" style="color:Red;display:none;">The captcha text was not valid. Please try again.
+</span><div class=" recaptcha_nothad_incorrect_sol recaptcha_isnot_showing_audio" id="recaptcha_placeholder"><div id="recaptcha_area"><table id="recaptcha_table" class="recaptchatable recaptcha_theme_white"> <tbody><tr> <td colspan="6" class="recaptcha_r1_c1"></td> </tr> <tr> <td class="recaptcha_r2_c1"></td> <td colspan="4" class="recaptcha_image_cell"><div style="width: 300px; height: 57px;" id="recaptcha_image"><img style="display:block;" alt="reCAPTCHA challenge image" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/image.jpeg" height="57" width="300"></div></td> <td class="recaptcha_r2_c2"></td> </tr> <tr> <td rowspan="6" class="recaptcha_r3_c1"></td> <td colspan="4" class="recaptcha_r3_c2"></td> <td rowspan="6" class="recaptcha_r3_c3"></td> </tr> <tr> <td rowspan="3" class="recaptcha_r4_c1" height="49"> <div class="recaptcha_input_area"> <label for="recaptcha_response_field" class="recaptcha_input_area_text"><span id="recaptcha_instructions_image" class="recaptcha_only_if_image recaptcha_only_if_no_incorrect_sol">Type the two words:</span><span id="recaptcha_instructions_audio" class="recaptcha_only_if_no_incorrect_sol recaptcha_only_if_audio">Type what you hear:</span><span id="recaptcha_instructions_error" class="recaptcha_only_if_incorrect_sol">Incorrect. Try again.</span></label><br> <span style="display: none;" id="recaptcha_challenge_field_holder"><input name="recaptcha_challenge_field" id="recaptcha_challenge_field" value="03AHJ_Vut95ANcYN0Aigy-wEVK42yD9HS3Ax43Elf92uPIx1drsUtecnIEhVMoNnTR6SKPQaUhKMjrST-5uIcSox34X83jndowdv9wvPVn6TC-mJgW2s30Q7jNJC8pG3lwTQ3z4OQ9W9iJSCZ5Gqw0nYd7exDCJMcooy3ilaa-4YEYUC8ufzUS-P8" type="hidden"></span><input tabindex="9" autocomplete="off" name="recaptcha_response_field" id="recaptcha_response_field" autocorrect="off" autocapitalize="off" type="text"> </div> </td> <td rowspan="4" class="recaptcha_r4_c2"></td> <td><a tabindex="10" href="javascript:Recaptcha.reload();" title="Get a new challenge" id="recaptcha_reload_btn"><img alt="Get a new challenge" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/refresh.gif" id="recaptcha_reload" height="17" width="25"></a></td> <td rowspan="4" class="recaptcha_r4_c4"></td> </tr> <tr> <td><a tabindex="11" href="javascript:Recaptcha.switch_type('audio');" title="Get an audio challenge" id="recaptcha_switch_audio_btn" class="recaptcha_only_if_image"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/audio.gif" id="recaptcha_switch_audio" alt="Get an audio challenge" height="16" width="25"></a><a tabindex="12" href="javascript:Recaptcha.switch_type('image');" title="Get a visual challenge" id="recaptcha_switch_img_btn" class="recaptcha_only_if_audio"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/text.gif" id="recaptcha_switch_img" alt="Get a visual challenge" height="16" width="25"></a></td> </tr> <tr> <td><a tabindex="13" target="_blank" href="http://www.google.com/recaptcha/help?c=03AHJ_Vut95ANcYN0Aigy-wEVK42yD9HS3Ax43Elf92uPIx1drsUtecnIEhVMoNnTR6SKPQaUhKMjrST-5uIcSox34X83jndowdv9wvPVn6TC-mJgW2s30Q7jNJC8pG3lwTQ3z4OQ9W9iJSCZ5Gqw0nYd7exDCJMcooy3ilaa-4YEYUC8ufzUS-P8&amp;hl=en" title="Help" id="recaptcha_whatsthis_btn"><img alt="Help" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/help.gif" id="recaptcha_whatsthis" height="16" width="25"></a></td> </tr> <tr> <td class="recaptcha_r7_c1"></td> <td class="recaptcha_r8_c1"></td> </tr> </tbody></table> </div></div><script type="text/javascript">
+	function showRecaptcha() {
+	Recaptcha.create('6LdFar4SAAAAAHgCjDyz7ChylzIqTkRFvaiHwAY1', 'recaptcha_placeholder', {
+	theme: 'white',
+	lang: 'en',
+	tabindex: 9
+	})
+	}
+	var rc_oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+	window.onload = showRecaptcha;
+	}
+	else {
+	window.onload = function() {
+	rc_oldonload();
+	showRecaptcha();
+	}
+	}
+
+</script>
+      
+
+      <p>
+	    <input id="btnSaveAjax" class="btn-save" style="margin-top:10px" value="Guardar comentario" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" type="button">
+	    <input name="ctl00$cphBody$CommentView1$hfCaptcha" id="ctl00_cphBody_CommentView1_hfCaptcha" value="4588f9e6-5768-4d72-bff0-2eaa78001232" type="hidden">
+      </p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+<!--//
+function registerCommentBox(){
+	BlogEngine.comments.flagImage = BlogEngine.$("ctl00_cphBody_CommentView1_imgFlag");
+	BlogEngine.comments.contentBox = BlogEngine.$("ctl00_cphBody_CommentView1_txtContent");
+	BlogEngine.comments.moderation = false;
+	BlogEngine.comments.checkName = true;
+	BlogEngine.comments.postAuthor = "jmanuel.pereira";
+	BlogEngine.comments.nameBox = BlogEngine.$("txtName634945565815129973");
+	BlogEngine.comments.emailBox = BlogEngine.$("ctl00_cphBody_CommentView1_txtEmail");
+	BlogEngine.comments.websiteBox = BlogEngine.$("ctl00_cphBody_CommentView1_txtWebsite");
+	BlogEngine.comments.countryDropDown = BlogEngine.$("ctl00_cphBody_CommentView1_ddlCountry"); 
+	BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_CommentView1_hfCaptcha');
+	BlogEngine.comments.controlId = 'ctl00$cphBody$CommentView1';
+	BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_CommentView1_hiddenReplyTo"); 
+}
+//-->
+</script>
+
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+  
+  
+
+                                            </td>
+                                        </tr>
+                                    </tbody></table>                                    
+                                </td>
+                                <td id="blankpanel"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans_002.png" alt=" " width="12"></td>
+                                <td id="sidepanel">
+                                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone">
+<div class="widget search" id="widget8a9f6171-3ead-4d31-bb72-0b2247e5ccdd">
+    
+    
+    <div class="content">
+        <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input value="Enter search term" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/blog/')" onfocus="BlogEngine.searchClear('Enter search term')" onblur="BlogEngine.searchClear('Enter search term')" type="text"><input value="Search" id="searchbutton" onclick="BlogEngine.search('/blog/');" onkeypress="BlogEngine.search('/blog/');" type="button"></div>
+
+    </div>
+</div>
+
+<div class="widget categorylist" id="widgeta1b68a2d-5819-4e83-82f9-536e4eb7e9fc">
+    
+    
+    <h4>
+        Categorías</h4>
+    
+    <div class="content">
+        <ul id="categorylist"><li><a href="http://www.ingens-networks.com/blog/category/feed/Eventos.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Eventos" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Eventos.aspx" title="Category: Eventos">Eventos (25)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/General.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for General" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/General.aspx" title="Category: General">General (26)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Ingens-Developments.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Developments" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Ingens-Developments.aspx" title="Category: Ingens Developments">Ingens Developments (1)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/NET.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Developments - .NET" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/NET.aspx" title="Category: Ingens Developments - .NET">Ingens Developments - .NET (21)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Android.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Developments - Android" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Android.aspx" title="Category: Ingens Developments - Android">Ingens Developments - Android (33)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/iOS.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Developments - iOS" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/iOS.aspx" title="Category: Ingens Developments - iOS">Ingens Developments - iOS (23)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Ingens-Networks.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Ingens-Networks.aspx" title="Category: Ingens Networks">Ingens Networks (2)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Cloud-Computing.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Cloud Computing" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Cloud-Computing.aspx" title="Category: Ingens Networks - Cloud Computing">Ingens Networks - Cloud Computing (2)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Issues-How-To.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Issues &amp; How To" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Issues-How-To.aspx" title="Category: Ingens Networks - Issues &amp; How To">Ingens Networks - Issues &amp; How To (14)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Reviews-Benchmarks.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Reviews &amp; Benchmarks" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Reviews-Benchmarks.aspx" title="Category: Ingens Networks - Reviews &amp; Benchmarks">Ingens Networks - Reviews &amp; Benchmarks (6)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Security.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Security" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Security.aspx" title="Category: Ingens Networks - Security">Ingens Networks - Security (5)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Storage.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Storage" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Storage.aspx" title="Category: Ingens Networks - Storage">Ingens Networks - Storage (1)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Systems.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Systems" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Systems.aspx" title="Category: Ingens Networks - Systems">Ingens Networks - Systems (22)</a></li><li><a href="http://www.ingens-networks.com/blog/category/feed/Virtualization.aspx" rel="nofollow"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Ingens Networks - Virtualization" class="rssButton"></a><a href="http://www.ingens-networks.com/blog/category/Virtualization.aspx" title="Category: Ingens Networks - Virtualization">Ingens Networks - Virtualization (2)</a></li></ul>
+
+
+    </div>
+</div>
+
+<div class="widget monthlist" id="widgetc9a9fac4-2538-4d49-a660-7f218668c050">
+    
+    
+    <h4>
+        Archivo</h4>
+    
+    <div class="content">
+        <ul id="monthList">
+	<li class="year" onclick="BlogEngine.toggleMonth('year2013')">2013<ul id="year2013" class="open">
+		<li><a href="http://www.ingens-networks.com/blog/2013/01/default.aspx">enero</a> (2)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2012')">2012<ul id="year2012">
+		<li><a href="http://www.ingens-networks.com/blog/2012/12/default.aspx">diciembre</a> (11)</li><li><a href="http://www.ingens-networks.com/blog/2012/11/default.aspx">noviembre</a> (8)</li><li><a href="http://www.ingens-networks.com/blog/2012/10/default.aspx">octubre</a> (14)</li><li><a href="http://www.ingens-networks.com/blog/2012/09/default.aspx">septiembre</a> (3)</li><li><a href="http://www.ingens-networks.com/blog/2012/08/default.aspx">agosto</a> (9)</li><li><a href="http://www.ingens-networks.com/blog/2012/07/default.aspx">julio</a> (8)</li><li><a href="http://www.ingens-networks.com/blog/2012/06/default.aspx">junio</a> (14)</li><li><a href="http://www.ingens-networks.com/blog/2012/05/default.aspx">mayo</a> (25)</li><li><a href="http://www.ingens-networks.com/blog/2012/04/default.aspx">abril</a> (14)</li><li><a href="http://www.ingens-networks.com/blog/2012/03/default.aspx">marzo</a> (9)</li><li><a href="http://www.ingens-networks.com/blog/2012/02/default.aspx">febrero</a> (11)</li><li><a href="http://www.ingens-networks.com/blog/2012/01/default.aspx">enero</a> (12)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2011')">2011<ul id="year2011">
+		<li><a href="http://www.ingens-networks.com/blog/2011/12/default.aspx">diciembre</a> (8)</li><li><a href="http://www.ingens-networks.com/blog/2011/11/default.aspx">noviembre</a> (2)</li><li><a href="http://www.ingens-networks.com/blog/2011/10/default.aspx">octubre</a> (1)</li><li><a href="http://www.ingens-networks.com/blog/2011/04/default.aspx">abril</a> (1)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2010')">2010<ul id="year2010">
+		<li><a href="http://www.ingens-networks.com/blog/2010/12/default.aspx">diciembre</a> (1)</li><li><a href="http://www.ingens-networks.com/blog/2010/11/default.aspx">noviembre</a> (1)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2009')">2009<ul id="year2009">
+		<li><a href="http://www.ingens-networks.com/blog/2009/06/default.aspx">junio</a> (1)</li>
+	</ul></li>
+</ul>
+    </div>
+</div>
+
+<div class="widget poll" id="widget35f8454e-0a37-4845-867a-cf14066c5ba6">
+    
+    
+    <h4>
+        Pregunta</h4>
+    
+    <div class="content">
+        
+<div id="PollForm" style="height: 100%;">
+    <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Question_div" class="pollForm-Question">¿Cuanto dinero gastas mensualmente en la store de tu smartphone (googleplay, appstore, marketplace,...)?</div>
+    <table id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl" class="pollForm-AnswersContainer" border="0">
+	<tbody><tr>
+		<td><input id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_0" name="ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6$AnswersRbl" value="6efc5a25-2f68-4f27-93b6-1ecc0c79a5ed" type="radio"><label for="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_0">0€ al mes</label></td>
+	</tr><tr>
+		<td><input id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_1" name="ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6$AnswersRbl" value="8a6f3998-34d2-4442-9802-3cd2f219981f" type="radio"><label for="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_1">entre 0€ y 5€ al mes</label></td>
+	</tr><tr>
+		<td><input id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_2" name="ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6$AnswersRbl" value="051dcd61-799a-402e-b1ac-46babbf8ea52" type="radio"><label for="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_2">entre 5€ y 10€ al mes</label></td>
+	</tr><tr>
+		<td><input id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_3" name="ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6$AnswersRbl" value="a90bf453-9df2-4c03-8caf-81de5005985a" type="radio"><label for="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_3">entre 10€ y 15€ al mes</label></td>
+	</tr><tr>
+		<td><input id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_4" name="ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6$AnswersRbl" value="d3f2eb35-4f40-4d6d-b48a-b959e2c5d473" type="radio"><label for="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl_4">más de 15€ al mes</label></td>
+	</tr>
+</tbody></table>
+    <br>
+    <input name="ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6$Vote_bt" value="Vote" onclick="return beginVote();" id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Vote_bt" class="pollForm-VoteButton" type="submit">
+    <div id="AjaxLoader" class="pollForm-AjaxLoader" style="display: none">
+    </div>
+    <span id="SelectError" style="display: none;" class="pollForm-AnswersNotSelectedError">Please choose
+        an answer.</span> <span onclick="showResult();" style="cursor: pointer; float: right" class="pollForm-ResultsLink">Show Results</span>
+    <br style="clear: both">
+</div>
+<div id="PollResult" style="display: none">
+    <span id="VotedBefore" style="display: none;" class="pollResult-CurrentlyVoted">You have already
+        voted in this poll.</span> <span id="VoteSaved" style="display: none;" class="pollResult-VoteSaved">
+            Your vote has been registered.</span>
+    <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_QuestionResult_div" class="pollResult-Question">¿Cuanto dinero gastas mensualmente en la store de tu smartphone (googleplay, appstore, marketplace,...)?</div>
+    
+            <div class="pollResult-AnswersText">
+                0€ al mes</div>
+            <div class="pollResult-AnswersProgressBarContainer">
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl00_Progress_div" style="float:left;width:30.8%;" class="pollResult-AnswersProgressBar">
+                    &nbsp;
+                </div>
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl00_Percent_div" class="pollResult-AnswersPercentage">37,8%</div>
+            </div>
+        
+            <div class="pollResult-AnswersText">
+                entre 0€ y 5€ al mes</div>
+            <div class="pollResult-AnswersProgressBarContainer">
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl01_Progress_div" style="float:left;width:30.8%;" class="pollResult-AnswersProgressBar">
+                    &nbsp;
+                </div>
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl01_Percent_div" class="pollResult-AnswersPercentage">37,8%</div>
+            </div>
+        
+            <div class="pollResult-AnswersText">
+                entre 5€ y 10€ al mes</div>
+            <div class="pollResult-AnswersProgressBarContainer">
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl02_Progress_div" style="float:left;width:9.8%;" class="pollResult-AnswersProgressBar">
+                    &nbsp;
+                </div>
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl02_Percent_div" class="pollResult-AnswersPercentage">11,1%</div>
+            </div>
+        
+            <div class="pollResult-AnswersText">
+                entre 10€ y 15€ al mes</div>
+            <div class="pollResult-AnswersProgressBarContainer">
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl03_Progress_div" style="float:left;width:2.8%;" class="pollResult-AnswersProgressBar">
+                    &nbsp;
+                </div>
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl03_Percent_div" class="pollResult-AnswersPercentage">2,2%</div>
+            </div>
+        
+            <div class="pollResult-AnswersText">
+                más de 15€ al mes</div>
+            <div class="pollResult-AnswersProgressBarContainer">
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl04_Progress_div" style="float:left;width:9.8%;" class="pollResult-AnswersProgressBar">
+                    &nbsp;
+                </div>
+                <div id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Results_rpt_ctl04_Percent_div" class="pollResult-AnswersPercentage">11,1%</div>
+            </div>
+        
+    <br>
+    <div class="pollResult-TotalVotes" style="float: left">
+        Total Votes:
+        <span id="ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_TotalVote_lb">45</span></div>
+    <span id="ShowPoll" onclick="showPoll();" style="cursor: pointer; float: right" class="pollResult-PollLink">
+        Show Poll</span>
+    <br style="clear: both">
+</div>
+
+<script type="text/javascript">
+  function getElementsByName_iefix(tag, name) 
+  {    
+       var elem = document.getElementsByTagName(tag);
+       var arr = new Array();
+       for(i = 0,iarr = 0; i < elem.length; i++) {
+            att = elem[i].getAttribute("name");
+            if(att == name) {
+                 arr[iarr] = elem[i];
+                 iarr++;
+            }
+       }
+       return arr;
+  }
+    
+  function beginVote()
+  {
+    BlogEngine.$('SelectError').style.display = 'none';
+    var clientId= 'ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_AnswersRbl';
+    var clientName= clientId.replace(/_/g,"$");    
+    var answerRadioButtons = getElementsByName_iefix("input", clientName);
+    var rblDCSelection = "";
+
+    for (var i in answerRadioButtons)
+    {
+        if (answerRadioButtons[i].checked)
+        {
+           rblDCSelection = answerRadioButtons[i].value;
+           break;
+        }
+    }     
+    
+    if(rblDCSelection == "")
+    {
+        BlogEngine.$('SelectError').style.display = 'block';
+        return false;
+    }
+    
+    BlogEngine.$('AjaxLoader').style.display = 'block';
+    if (BlogEngine.$('ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Vote_bt') != null)
+    {
+      BlogEngine.$('ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Vote_bt').style.display = 'none';
+    }
+    
+    var arg = rblDCSelection;
+    var context = 'poll';
+    WebForm_DoCallback('ctl00$widgetContainer35f8454e0a374845867acf14066c5ba6$35f8454e0a374845867acf14066c5ba6',arg,endVote,context,null,false);
+    
+    return false;
+  }
+  
+  function endVote(arg, context)
+  {
+     if(arg=="true")
+     {
+       BlogEngine.$('ShowPoll').style.display = 'none';
+       BlogEngine.$('VoteSaved').style.display = 'block';
+       showResult();
+     }
+     else
+     {
+       BlogEngine.$('VotedBefore').style.display = 'block';
+       showResult();
+     }
+  }
+  
+  function showResult()
+  { 
+    if (BlogEngine.$('ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Vote_bt') != null)
+    {
+      BlogEngine.$('ctl00_widgetContainer35f8454e0a374845867acf14066c5ba6_35f8454e0a374845867acf14066c5ba6_Vote_bt').style.display = 'block';
+    }
+    BlogEngine.$('PollForm').style.display = 'none';
+    BlogEngine.$('PollResult').style.display = 'block';    
+    BlogEngine.$('AjaxLoader').style.display = 'none';
+  }  
+  
+  function showPoll()
+  {
+    BlogEngine.$('PollForm').style.display = 'block';
+    BlogEngine.$('PollResult').style.display = 'none';
+  }  
+</script>
+
+
+    </div>
+</div>
+
+<div class="widget textbox" id="widget5c55cabc-ab7e-41ac-aa24-abd1423f97a6">
+    
+    
+    <div class="content">
+        <div align="center">
+<script charset="utf-8" type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/widget.js"></script>
+<script type="text/javascript">// <![CDATA[
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 5,
+  interval: 60000,
+  width: 300,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#d6d6d6',
+      color: '#cc0000'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#333333',
+      links: '#cc0000'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    behavior: 'default'
+  }
+}).render().setUser('IngensNetworks').start();
+// ]]></script><div class="twtr-widget twtr-widget-profile" id="twtr-widget-1"><div class="twtr-doc" style="width: 300px;">            <div class="twtr-hd"><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks" class="twtr-profile-img-anchor"><img alt="profile" class="twtr-profile-img" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/logo_WEB_250x250px_normal.png"></a>                      <h3>Ingens Networks</h3>                      <h4><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks">IngensNetworks</a></h4>             </div>            <div class="twtr-bd">              <div class="twtr-timeline" style="height: auto;">                <div class="twtr-tweets">                  <div class="twtr-reference-tweet"></div><div class="twtr-tweet" id="tweet-id-5"><div class="twtr-tweet-wrap">         <div class="twtr-avatar">           <div class="twtr-img"><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks"><img alt="IngensNetworks profile" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/logo_WEB_250x250px_normal.png"></a></div>         </div>         <div class="twtr-tweet-text">           <p>             <a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks" class="twtr-user">IngensNetworks</a> IngensBlog | Arruinar o no nuestros mailings por no validar el Sender Reputation <a href="http://t.co/onUeWuLZ" target="_blank" urlentities="[object Object]" rel="nofollow">ingens-networks.com/blog/post/2012…</a>             <em>            <a target="_blank" class="twtr-timestamp" time="Tue Nov 27 21:10:37 +0000 2012" href="https://twitter.com/IngensNetworks/status/273534316930281472">56 days ago</a> ·            <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to=273534316930281472">reply</a> ·             <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id=273534316930281472">retweet</a> ·             <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id=273534316930281472">favorite</a>             </em>           </p>         </div>       </div></div><div class="twtr-tweet" id="tweet-id-4"><div class="twtr-tweet-wrap">         <div class="twtr-avatar">           <div class="twtr-img"><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks"><img alt="IngensNetworks profile" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/logo_WEB_250x250px_normal.png"></a></div>         </div>         <div class="twtr-tweet-text">           <p>             <a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks" class="twtr-user">IngensNetworks</a> IngensBlog | Encriptación de secciones del archivo web.config con aspnet_regiis.exe <a href="http://t.co/c9ds4J64" target="_blank" urlentities="[object Object]" rel="nofollow">ingens-networks.com/blog/post/2012…</a>             <em>            <a target="_blank" class="twtr-timestamp" time="Tue Nov 20 08:41:23 +0000 2012" href="https://twitter.com/IngensNetworks/status/270809051254906880">64 days ago</a> ·            <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to=270809051254906880">reply</a> ·             <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id=270809051254906880">retweet</a> ·             <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id=270809051254906880">favorite</a>             </em>           </p>         </div>       </div></div><div class="twtr-tweet" id="tweet-id-3"><div class="twtr-tweet-wrap">         <div class="twtr-avatar">           <div class="twtr-img"><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks"><img alt="IngensNetworks profile" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/logo_WEB_250x250px_normal.png"></a></div>         </div>         <div class="twtr-tweet-text">           <p>             <a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks" class="twtr-user">IngensNetworks</a> Descubre como llevar tu empresa al siguiente NIVEL jugando y matando marcianos! <a href="http://t.co/AQBfonVi" target="_blank" urlentities="[object Object]" rel="nofollow">ymlp.com/z0G7xd</a>             <em>            <a target="_blank" class="twtr-timestamp" time="Thu Nov 08 10:06:52 +0000 2012" href="https://twitter.com/IngensNetworks/status/266481906135220225">76 days ago</a> ·            <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to=266481906135220225">reply</a> ·             <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id=266481906135220225">retweet</a> ·             <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id=266481906135220225">favorite</a>             </em>           </p>         </div>       </div></div><div class="twtr-tweet" id="tweet-id-2"><div class="twtr-tweet-wrap">         <div class="twtr-avatar">           <div class="twtr-img"><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks"><img alt="IngensNetworks profile" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/logo_WEB_250x250px_normal.png"></a></div>         </div>         <div class="twtr-tweet-text">           <p>             <a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks" class="twtr-user">IngensNetworks</a> IngensBlog | KVC: Key-Value Coding <a href="http://t.co/RMI7qxbe" target="_blank" urlentities="[object Object]" rel="nofollow">ingens-networks.com/blog/post/2012…</a> por <a class="tweet-url username" data-screen-name="rais38" href="http://twitter.com/rais38" target="_blank">@rais38</a>             <em>            <a target="_blank" class="twtr-timestamp" time="Fri Nov 02 18:10:26 +0000 2012" href="https://twitter.com/IngensNetworks/status/264429272414969857">81 days ago</a> ·            <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to=264429272414969857">reply</a> ·             <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id=264429272414969857">retweet</a> ·             <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id=264429272414969857">favorite</a>             </em>           </p>         </div>       </div></div><div class="twtr-tweet" id="tweet-id-1"><div class="twtr-tweet-wrap">         <div class="twtr-avatar">           <div class="twtr-img"><a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks"><img alt="IngensNetworks profile" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/logo_WEB_250x250px_normal.png"></a></div>         </div>         <div class="twtr-tweet-text">           <p>             <a target="_blank" href="https://twitter.com/intent/user?screen_name=IngensNetworks" class="twtr-user">IngensNetworks</a> IngensBlog | El iPhone 5 ha llegado a Ingens! <a href="https://t.co/6xNokciO" target="_blank" urlentities="[object Object]" rel="nofollow">ingens-networks.com/blog/post/2012…</a>             <em>            <a target="_blank" class="twtr-timestamp" time="Mon Oct 29 22:42:14 +0000 2012" href="https://twitter.com/IngensNetworks/status/263048125046988800">85 days ago</a> ·            <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to=263048125046988800">reply</a> ·             <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id=263048125046988800">retweet</a> ·             <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id=263048125046988800">favorite</a>             </em>           </p>         </div>       </div></div>                  <!-- tweets show here -->                </div>              </div>            </div>            <div class="twtr-ft">              <div><a target="_blank" href="https://twitter.com/"><img alt="" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/widget-bird.png"></a>                <span><a target="_blank" class="twtr-join-conv" style="color:#cc0000" href="https://twitter.com/IngensNetworks">Join the conversation</a></span>              </div>            </div>          </div></div>
+</div>
+    </div>
+</div>
+
+<div class="widget blogroll" id="widget1d349e5a-8983-45df-ad82-1b26c3f1a7f3">
+    
+    
+    <h4>
+        Otros Blogs</h4>
+    
+    <div class="content">
+        <div id="blogroll">
+<ul class="xoxo"><li><a href="http://feeds.feedburner.com/actualidadgoogle"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Actualidad Google"></a><a href="http://www.actualidadgoogle.com/" target="_blank" title="Noticias del sector">Actualidad Google</a></li><li><a href="http://feeds.feedburner.com/Androcode"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Androcode"></a><a href="http://androcode.es/" target="_blank" title="Información Android para desarrolladores de habla hispana" rel="colleague ">Androcode</a></li><li><a href="http://geeks.ms/blogs/MainFeed.aspx"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Geeks.ms"></a><a href="http://geeks.ms/" target="_blank" title="Todo lo que los geeks de Windows y .Net tienen que contar">Geeks.ms</a></li><li><a href="http://feeds.feedburner.com/NSCoders_BCN"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for NSCoder Barcelona"></a><a href="http://bcn.nscoders.org/" target="_blank" title="NSCoder Barcelona">NSCoder Barcelona</a></li><li><a href="http://sev.nscoders.org/feed/"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for NSCoder Sevilla"></a><a href="http://sev.nscoders.org/" target="_blank" title="NSCoder Sevilla">NSCoder Sevilla</a></li><li><a href="http://ffblog.es/feed/"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Schiaffino Group"></a><a href="http://ffblog.es/" target="_blank" title="Comunicación creativa con doble F" rel="colleague ">Schiaffino Group</a></li><li><a href="http://weblogs.asp.net/scottgu/rsscomments.aspx"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for ScottGu's Blog"></a><a href="http://weblogs.asp.net/scottgu/default.aspx" target="_blank" title="Scott Guthrie: Corporate Vice President in the Microsoft Server and Tools Business">ScottGu's Blog</a></li><li><a href="http://stackoverflow.com/feeds"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Stack Overflow"></a><a href="http://stackoverflow.com/" target="_blank" title="Questions and answers for professional and enthusiast programmers.">Stack Overflow</a></li><li><a href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for The Code Project"></a><a href="http://www.codeproject.com/" target="_blank" title="Development resource. A place to meet and exchange ideas." rel="acquaintance ">The Code Project</a></li><li><a href="http://www.tomshardware.com/feeds/rss2/tom-s-hardware-us,18-1.xml"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Tom's Hardware"></a><a href="http://www.tomshardware.com/" target="_blank" title="The authority on tech" rel="acquaintance ">Tom's Hardware</a></li><li><a href="http://www.tecnonews.info/RSS/tecnonews.rss"><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt="RSS feed for Tecno News"></a><a href="http://www.tecnonews.info/" target="_blank" title="Noticias del sector tecnologico internacional">Tecno News</a></li></ul>
+</div>
+
+<a href="http://www.ingens-networks.com/blog/opml.axd" style="display: block; text-align: right" title="Download OPML file">Download OPML file <img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/opml.png" alt="OPML"></a>
+    </div>
+</div>
+</div>
+                                </td>
+                            </tr>                            
+                        </tbody></table>
+                    </td>
+                </tr>
+				<tr><td><img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans_002.png" alt=" " height="10" width="1200"></td></tr>
+				<tr>
+					<td id="downpanel">
+						<div id="widgetzone_be_HORI_WIDGET_ZONE" class="widgetzone">
+<div class="widget recentposts" id="widget50a3f6d8-63b5-41f1-8ee1-83b33d129b46">
+    
+    
+    <h4>
+        Artículos Recientes</h4>
+    
+    <div class="content">
+        <ul class="recentPosts" id="recentPosts"><li><a href="http://www.ingens-networks.com/blog/post/2013/01/08/Windows-Server-2012-Lab-2-Parte-VI-Eliminar-el-DC-anterior-despues-de-una-degradacion-forzosa-en-dominio-de-Windows-Server-2008-Windows-Server-2008-R2.aspx">Windows
+ Server 2012 - Lab 2: Parte VI - Eliminar el DC anterior después de una 
+degradación forzosa en dominio de Windows Server 2008 / Windows Server 
+2008 R2</a><span>Comentarios: 0</span><span>Sin calificación hasta ahora.</span></li><li><a href="http://www.ingens-networks.com/blog/post/2013/01/04/Windows-Server-2012-Lab-2-Parte-V-Degradar-el-DC-anterior-en-dominio-Windows-Server-2008-Windows-Server-2008-R2.aspx">Windows Server 2012 - Lab 2: Parte V - Degradar el DC anterior en dominio Windows Server 2008 / Windows Server 2008 R2</a><span>Comentarios: 0</span><span>Calificación promedio: 5 / 2</span></li><li><a href="http://www.ingens-networks.com/blog/post/2012/12/28/Windows-Server-2012-Lab-2-Parte-IV-Transferencia-de-los-5-roles-maestros-al-nuevo-DC-en-dominio-Windows-Server-2008-Windows-Server-2008-R2.aspx">Windows
+ Server 2012 - Lab 2: Parte IV - Transferencia de los 5 roles maestros 
+al nuevo DC en dominio Windows Server 2008 / Windows Server 2008 R2</a><span>Comentarios: 0</span><span>Calificación promedio: 3 / 2</span></li><li><a href="http://www.ingens-networks.com/blog/post/2012/12/21/Windows-Server-2012-Lab-2-Parte-III-Migracion-del-servicio-DHCP-al-nuevo-DC-en-dominio-Windows-Server-2008-Windows-Server-2008-R2.aspx">Windows
+ Server 2012 - Lab 2: Parte III - Migración del servicio DHCP al nuevo 
+DC en dominio Windows Server 2008 / Windows Server 2008 R2</a><span>Comentarios: 0</span><span>Calificación promedio: 1 / 1</span></li></ul>
+    </div>
+</div>
+
+<div class="widget recentcomments" id="widget6273d8d0-0f8a-4bf8-9cc2-6d9174166b25">
+    
+    
+    <h4>
+        Comentarios Recientes</h4>
+    
+    <div class="content">
+        <ul id="recentComments" class="recentComments"><li><a href="http://www.ingens-networks.com/blog/post/2012/06/04/In-App-Purchases-en-iOS-Parte-2.aspx" class="postTitle">In-App Purchases en iOS # Parte II #</a> (4)<br>Xavi escribió: Hola, fantastico tutorial, muchas gracias. Una pre... <a href="http://www.ingens-networks.com/blog/post/2012/06/04/In-App-Purchases-en-iOS-Parte-2.aspx#id_27979f65-9145-4af7-9a9b-f27091535778" class="moreLink">[Más]</a></li><li><a href="http://www.ingens-networks.com/blog/post/2012/02/06/Error-The-message-received-from-the-server-could-not-be-parsed-%28UpdatePanel%29.aspx" class="postTitle">Error: The message received from the server could not be parsed. (UpdatePanel)</a> (6)<br>enrique souza escribió: Excelente comantario, tenia tiempo con este proble... <a href="http://www.ingens-networks.com/blog/post/2012/02/06/Error-The-message-received-from-the-server-could-not-be-parsed-%28UpdatePanel%29.aspx#id_43c5fde5-34e9-4340-bbfe-cf97b609bf1d" class="moreLink">[Más]</a></li><li><a href="http://www.ingens-networks.com/blog/post/2012/05/30/Introduccion-In-App-Billin-en-Google-Play-con-Android.aspx" class="postTitle">Introducción In-App Billing en Google Play con Android</a> (2)<br>jmanuel.pereira escribió: Comming Soon! Hace menos de una semana que han sac... <a href="http://www.ingens-networks.com/blog/post/2012/05/30/Introduccion-In-App-Billin-en-Google-Play-con-Android.aspx#id_7ddb655d-9c60-471a-807f-caedc1503fb0" class="moreLink">[Más]</a></li><li><a href="http://www.ingens-networks.com/blog/post/2012/05/30/Introduccion-In-App-Billin-en-Google-Play-con-Android.aspx" class="postTitle">Introducción In-App Billing en Google Play con Android</a> (2)<br>Amaia escribió: Hola! Está muy bien en post, para cuando la s... <a href="http://www.ingens-networks.com/blog/post/2012/05/30/Introduccion-In-App-Billin-en-Google-Play-con-Android.aspx#id_2cad7e3b-654f-428e-9873-5ad10aa3a4cb" class="moreLink">[Más]</a></li></ul><a href="http://www.ingens-networks.com/blog/syndication.axd?comments=true">Comment RSS <img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/rssButton.png" alt=""></a>
+    </div>
+</div>
+
+<div class="widget tagcloud" id="widget4737ac7a-aac3-4d7c-9bcd-4622a1ee19c2">
+    
+    
+    <h4>
+        Etiquetas</h4>
+    
+    <div class="content">
+        <ul id="ctl00_widgetContainer4737ac7aaac34d7c9bcd4622a1ee19c2_4737ac7aaac34d7c9bcd4622a1ee19c2_ulTags"><li><a href="http://www.ingens-networks.com/blog/?tag=/NET" class="big" title="Tag: .NET">.NET</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/2012" class="small" title="Tag: 2012">2012</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Active-Directory" class="small" title="Tag: Active Directory">Active Directory</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/AJAX" class="smallest" title="Tag: AJAX">AJAX</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Android" class="biggest" title="Tag: Android">Android</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/app" class="smallest" title="Tag: app">app</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Apple" class="small" title="Tag: Apple">Apple</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/AppStore" class="smallest" title="Tag: AppStore">AppStore</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/ASP" class="smallest" title="Tag: ASP">ASP</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/AutoCompleteExtender" class="smallest" title="Tag: AutoCompleteExtender">AutoCompleteExtender</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Barcelona" class="smallest" title="Tag: Barcelona">Barcelona</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/biometria" class="smallest" title="Tag: biometría">biometría</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/C2DM" class="smallest" title="Tag: C2DM">C2DM</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Cloud" class="small" title="Tag: Cloud">Cloud</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Cloud-Computing" class="smallest" title="Tag: Cloud Computing">Cloud Computing</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Comparativa" class="smallest" title="Tag: Comparativa">Comparativa</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Console-Application" class="smallest" title="Tag: Console Application">Console Application</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Continua" class="smallest" title="Tag: Continua">Continua</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Controlador-Dominio" class="smallest" title="Tag: Controlador Dominio">Controlador Dominio</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Degradacion" class="smallest" title="Tag: Degradacion">Degradacion</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Degradacion" class="smallest" title="Tag: Degradación">Degradación</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/desarrollo" class="small" title="Tag: desarrollo">desarrollo</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/development" class="smallest" title="Tag: development">development</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/DHCP" class="smallest" title="Tag: DHCP">DHCP</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/diseno" class="smallest" title="Tag: diseño">diseño</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Entrega" class="smallest" title="Tag: Entrega">Entrega</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Errores" class="smallest" title="Tag: Errores">Errores</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Evento" class="small" title="Tag: Evento">Evento</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/feria" class="smallest" title="Tag: feria">feria</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Gartner" class="smallest" title="Tag: Gartner">Gartner</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Google" class="small" title="Tag: Google">Google</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/google-glass" class="smallest" title="Tag: google glass">google glass</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Google-IO" class="smallest" title="Tag: Google I/O">Google I/O</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Google-Play" class="smallest" title="Tag: Google Play">Google Play</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Google+" class="smallest" title="Tag: Google+">Google+</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/GoogleTV" class="smallest" title="Tag: GoogleTV">GoogleTV</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/HTML" class="smallest" title="Tag: HTML">HTML</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/IFSEC" class="smallest" title="Tag: IFSEC">IFSEC</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/in" class="smallest" title="Tag: in">in</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Ingens-Networks" class="smallest" title="Tag: Ingens Networks">Ingens Networks</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Innovacion" class="smallest" title="Tag: Innovacion">Innovacion</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Internet" class="smallest" title="Tag: Internet">Internet</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/iOS" class="big" title="Tag: iOS">iOS</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/iPad" class="small" title="Tag: iPad">iPad</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/iPhone" class="small" title="Tag: iPhone">iPhone</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/JavaScript" class="smallest" title="Tag: JavaScript">JavaScript</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/jQuery" class="smallest" title="Tag: jQuery">jQuery</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/JSON" class="smallest" title="Tag: JSON">JSON</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/Key" class="smallest" title="Tag: Key">Key</a> </li><li><a href="http://www.ingens-networks.com/blog/?tag=/KVO" class="smallest" title="Tag: KVO">KVO</a> </li></ul>
+    </div>
+</div>
+</div>
+					</td>
+				</tr>
+                <tr>
+                    <td>
+                        <table class="footertable">
+                            <tbody><tr>
+                                <td class="validators">
+                                    <img src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/trans_002.png" alt=" " height="15" width="160">
+                                </td>
+                                <td>
+                                    <div id="footer">
+                                        Copyright 2010 Ingens Networks SL - Powered by <a href="http://www.dotnetblogengine.net/">BlogEngine.NET</a> 2.5.0.6
+                                    </div>
+                                </td>
+                                <td class="validators">
+                                    <a href="http://www.linkedin.com/company/ingens-networks-sl" target="_blank"><img id="ctl00_Image1" title="Ingens Networks SL en LinkedIn" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/linkedin_small.gif" alt="Ingens Networks SL en LinkedIn" style="border-width:0px;" align="right"></a>
+                                    <a href="http://twitter.com/IngensNetworks" target="_blank"><img id="ctl00_Image5" title="Ingens Networks SL en Twitter" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/twitter_small.gif" alt="Ingens Networks SL en Twitter" style="border-width:0px;" align="right"></a>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_cphBody_CommentView1_RequiredFieldValidator2"), document.getElementById("ctl00_cphBody_CommentView1_RegularExpressionValidator1"), document.getElementById("ctl00_cphBody_CommentView1_RequiredFieldValidator3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_cphBody_CommentView1_RequiredFieldValidator2 = document.all ? document.all["ctl00_cphBody_CommentView1_RequiredFieldValidator2"] : document.getElementById("ctl00_cphBody_CommentView1_RequiredFieldValidator2");
+ctl00_cphBody_CommentView1_RequiredFieldValidator2.controltovalidate = "ctl00_cphBody_CommentView1_txtEmail";
+ctl00_cphBody_CommentView1_RequiredFieldValidator2.errormessage = "Requerido";
+ctl00_cphBody_CommentView1_RequiredFieldValidator2.display = "Dynamic";
+ctl00_cphBody_CommentView1_RequiredFieldValidator2.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_RequiredFieldValidator2.initialvalue = "";
+var ctl00_cphBody_CommentView1_RegularExpressionValidator1 = document.all ? document.all["ctl00_cphBody_CommentView1_RegularExpressionValidator1"] : document.getElementById("ctl00_cphBody_CommentView1_RegularExpressionValidator1");
+ctl00_cphBody_CommentView1_RegularExpressionValidator1.controltovalidate = "ctl00_cphBody_CommentView1_txtEmail";
+ctl00_cphBody_CommentView1_RegularExpressionValidator1.errormessage = "Por favor introduzca un una direccion de correo electrónico válida";
+ctl00_cphBody_CommentView1_RegularExpressionValidator1.display = "Dynamic";
+ctl00_cphBody_CommentView1_RegularExpressionValidator1.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_RegularExpressionValidator1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_RegularExpressionValidator1.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var ctl00_cphBody_CommentView1_RequiredFieldValidator3 = document.all ? document.all["ctl00_cphBody_CommentView1_RequiredFieldValidator3"] : document.getElementById("ctl00_cphBody_CommentView1_RequiredFieldValidator3");
+ctl00_cphBody_CommentView1_RequiredFieldValidator3.controltovalidate = "ctl00_cphBody_CommentView1_txtContent";
+ctl00_cphBody_CommentView1_RequiredFieldValidator3.errormessage = "Requerido";
+ctl00_cphBody_CommentView1_RequiredFieldValidator3.display = "Dynamic";
+ctl00_cphBody_CommentView1_RequiredFieldValidator3.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_RequiredFieldValidator3.initialvalue = "";
+//]]>
+</script>
+
+<div>
+
+	<input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCwLyzMLjCQLV5fejDAK5tPznAwLvqb3IDAL87+7yBQKptJvoAQKG+6YMApy2tJkKAvutxOwJAsaNusUMAsGegdMInEMpXqw3WGd99oIwBCnI9JuPmDY=" type="hidden">
+</div>
+<script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/js_006.axd"></script><script type="text/javascript" src="Consumiento-Web-Services-SOAP-en-Android.aspx_files/res.axd"></script>
+<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-27264779-1']);
+		_gaq.push(['_setDomainName', 'ingens-networks.com']);
+		_gaq.push(['_trackPageview']);
+
+		(function () {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+	</script>
+
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf='/blog/Scripts/syntaxhighlighter/clipboard.swf';
+	SyntaxHighlighter.defaults['gutter'] = true;
+	SyntaxHighlighter.defaults['smart-tabs'] = true;
+	SyntaxHighlighter.defaults['auto-links'] = true;
+	SyntaxHighlighter.defaults['collapse'] = false;
+	SyntaxHighlighter.defaults['light'] = false;
+	SyntaxHighlighter.defaults['tab-size'] = 4;
+	SyntaxHighlighter.defaults['toolbar'] = true;
+	SyntaxHighlighter.defaults['wrap-lines'] = true;
+	SyntaxHighlighter.all();
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+WebForm_InitCallback();
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>  
+
+
+</body></html>

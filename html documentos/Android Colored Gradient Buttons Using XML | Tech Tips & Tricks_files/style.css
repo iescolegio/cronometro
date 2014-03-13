@@ -1,0 +1,134 @@
+/*  
+Theme Name: Mag On Wood
+Theme URI: http://www.wpthemedesigner.com
+Description: Mag On Wood by <a href="http://www.wpthemedesigner.com/>ChiQ Montes</a> 
+Version: 1.0
+Author: ChiQ Montes
+Author URI: hhttp://www.wpthemedesigner.com/
+*/
+
+
+
+body{font:11px Verdana;color:#FFFFFF;margin:0px;padding:0;background:url('images/bg.gif');padding-top:15px;}
+img {margin: 0px; padding:0px;border:0px;}
+#mainpage {width:948px;margin:0 auto;}
+h2 {font: 24px Tahoma;color:#000000;margin:0;padding:0;padding-left:10px;}
+h3 {font: 24px Tahoma;color:#000000;margin:0;padding:0;padding-left:10px;}
+h4 {font: 24px Tahoma;color:#000000;margin:0;padding:0;padding-left:10px;}
+.h2{font-family:Arial, Helvetica, sans-serif;line-height:18px;font-size:12px;color:#312E2E;font-weight:700;}
+a:link, a:visited, a:active{color:#333333;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+input {border:1px solid #303030;vertical-align: middle;}
+#search {float:left;width:948px;height:54px;background:url('images/searchbg.gif') no-repeat;}
+#searchform {float:right;padding-right:36px;padding-top:15px;}
+#search .input {border:0px;background:none;height:18px;width:240px;font:12px Verdana;color:#808080;font-weight:normal;background:none;}
+#header{float:left;height:110px;width:900px;padding:0;margin:0px;padding:0px;background-color:#FFFFFF;}
+#header .title {float:left;padding-top:23px;padding-left:15px;}
+#header .title h1 {margin:0px;font:24px Verdana;color:#000000;font-weight:bold;padding-top:5px;}
+#header .title h1 a {font-weight:bold;color:#000000;}
+#header .title h1 a:hover {text-decoration:none;}
+#header .title h2 {margin:0px;padding:0px;font:12px Verdana;color:#CC0000;padding-top:12px;}
+#header .banner {float:right;padding-top:23px;}
+#main {float:left;width:900px;padding-left:24px;padding-right:24px;background-color:#FFFFFF;}
+#menu {height:30px;width:900px;float:left;background-color:#CC0000;}
+ul.menu{height:30px;line-height:30px;list-style:none;margin:0px;padding:0;}
+ul.menu li{float:left;list-style-type:none;margin:0;}
+ul.menu li a {float:left;font:11px Verdana;color:#FFFFFF;font-weight:bold;text-transform:uppercase;padding-left:15px;padding-right:15px;line-height:30px;border-right:3px solid #FFFFFF;}
+ul.menu li a:hover {text-decoration:none;background-color:#000000;}
+ul.menu li a:visited {color:#FFFFFF;font-weight:bold;}
+#content{font: 12px Verdana;color:#333333;float:left;width:556px;margin:0px;padding:0;overflow:hidden;padding-right:22px;padding-top:10px;}
+.entry{float:left;width:556px;margin:0px;padding:0px;padding-top:15px;}
+.postinfo {float:left;width:556px;float:left;padding-bottom:15px;padding-top:5px;}
+.postinfo h4 {float:left;font: 12px Verdana;color:#808080;margin:0;padding:0;background:url('images/author.gif') no-repeat;padding-left:15px;padding-right:6px;line-height:15px;}
+.postinfo h4 a {text-decoration:none;color:#808080;font-weight:normal;margin:0;}
+.postinfo h4 a:hover {text-decoration:underline;}
+.postinfo h5 {float:left;font:12px Verdana;font-weight:normal;color:#808080;margin:0px;padding:0px;background:url('images/date.gif') no-repeat;padding-left:20px;line-height:15px;}
+.entry h2 {font: 18px Verdana;color:#000000;margin:0px;padding:0px;font-weight:bold;}
+.entry h2 a {text-decoration:none;color:#000000;margin:0;font-weight:bold;}
+.entry h2 a:hover{text-decoration:none;}
+.entry h2 a:visited {color:#000000;font-weight:bold;}
+.entry h3 {font: 18px Verdana;color:#000000;margin:0px;padding:0px;font-weight:bold;}
+.entry p {margin:0px;padding-left:7px;padding-bottom:10px;}
+.postbot {float:left;width:527px;height:21px;background:#EEEEEE;border:1px solid #CCCCCC;padding-top:8px;padding-left:11px;padding-right:16px;}
+.postbot h4 {margin:0px;padding:0px;float:left;font: 12px Verdana;color:#808080;background:url('images/tags.gif') no-repeat;padding-left:22px;}
+.postbot h4 a {text-decoration:none;color:#808080;font-weight:normal;margin:0;}
+.postbot h4 a:hover {text-decoration:underline;}
+.postbot h5 {margin:0px;padding:0px;float:right;font: 12px Verdana;color:#808080;background:url('images/comments.gif') no-repeat;padding-left:22px;}
+.postbot h5 a {text-decoration:none;color:#808080;font-weight:normal;margin:0;}
+.postbot h5 a:hover {text-decoration:underline;}
+#sidebar{float:left;width:322px;margin:0px;padding:0px;font: 11px Verdana;padding-top:25px;}
+.rss {float:left;width:309px;height:71px;background:url('images/rssbg.gif') no-repeat;background-position:100% 0%;border:1px solid #CCCCCC;padding-top:28px;padding-left:11px;margin-bottom:10px;}
+.rss h1 {margin:0px;font:12px Verdana;color:#666666;font-weight:bold;}
+.rss h1 a {color:#666666;font-weight:bold;}
+.rss p {margin:0px;font:12px Verdana;color:#666666;font-weight:normal;padding-top:11px;}
+.rss a {color:#CC0000;font-weight:normal;}
+.ads {float:left;width:322px;border:1px solid #CCCCCC;padding-bottom:18px;margin-bottom:10px;}
+.ads h2 {margin:0px;font:12px Arial;font-weight:bold;color:#FFFFFF;text-transform:uppercase;line-height:30px;background-color:#CC0000;}
+.ads img {float:left;margin-top:17px;margin-left:21px;border:1px solid #000000;}
+.video {float:left;width:322px;border:1px solid #CCCCCC;margin-bottom:10px;}
+.video h2 {margin:0px;font:12px Arial;font-weight:bold;color:#FFFFFF;text-transform:uppercase;line-height:30px;background-color:#CC0000;}
+.video p {margin:0px;padding:0px;padding:8px;text-align:center;}
+.rsidebar{font: 13px  Verdana;color:#303030;float:right;width:152px;padding-left:20px;}
+.rsidebar h2{margin:0px;font:12px Arial;font-weight:bold;color:#FFFFFF;text-transform:uppercase;line-height:30px;background-color:#CC0000;}
+.rsidebar a {font-weight:normal;}
+.rsidebar ul{list-style-type:none;margin:0;padding:0;padding-top:0px;}
+.rsidebar ul li{list-style-type:none;margin:0 0 0px;padding:0;padding-left:0px;}
+.rsidebar ul li ul{list-style-type:square;margin:0;padding:0 0px;background-position:0% 100%;padding-bottom:10px;}
+.rsidebar ul li ul li{list-style-type:none;border:0px none;margin:0;padding-left:12px;border-bottom:1px dashed #DDDDDD;padding-right:12px;}
+.rsidebar ul li ul li a {font:12px Verdana;font-weight:normal;color:#808080;line-height:24px;}
+.rsidebar ul li ul li a:visited {color:#808080;font-weight:normal;}
+.rsidebar ul li ul li a:hover {text-decoration:none;}
+.rsidebar ul li ul li:hover {background-color:#F7F7F7;}
+.rsidebar2{font: 13px  Verdana;color:#303030;float:right;width:149px;}
+.rsidebar2 h2{margin:0px;font:12px Arial;font-weight:bold;color:#FFFFFF;text-transform:uppercase;line-height:30px;background-color:#CC0000;}
+.rsidebar2 a {font-weight:normal;}
+.rsidebar2 ul{list-style-type:none;margin:0;padding:0;padding-top:0px;}
+.rsidebar2 ul li{list-style-type:none;margin:0 0 0px;padding:0;padding-left:0px;}
+.rsidebar2 ul li ul{list-style-type:square;margin:0;padding:0 0px;background-position:0% 100%;padding-bottom:10px;}
+.rsidebar2 ul li ul li{list-style-type:none;border:0px none;margin:0;padding-left:12px;border-bottom:1px dashed #DDDDDD;padding-right:12px;}
+.rsidebar2 ul li ul li a {font:12px Verdana;font-weight:normal;color:#808080;line-height:24px;}
+.rsidebar2 ul li ul li a:visited {color:#808080;font-weight:normal;}
+.rsidebar2 ul li ul li a:hover {text-decoration:none;}
+.rsidebar2 ul li ul li:hover {background-color:#F7F7F7;}
+.navigation{float:left;color:#303030;width:636px;margin:0px;padding:0px;margin-left:13px;margin-right:19px;padding-top:6px;}
+.navigation p {color:#303030;margin:0px;}
+.navigation a:hover {text-decoration:underline;}
+.alignright{float:right;margin-top:10px;}
+.alignleft{float:left;margin-top:10px;}
+.postmetadata{text-align:right;font: 12px  Verdana;color:#600320;margin:0;padding:0px;}
+.postmetadata a {color:#600320}
+.boxcomments{width:554px;}
+#commentform label{display:block;margin:0;padding-top:10px;}
+#commentform input{width:170px;margin:0 5px 0px 0;padding:1px;}
+#commentform textarea{width:400px;margin:0 0 0px;padding:0;}
+#commentform #submit{margin:0 0 0px;}
+#commentform p{margin:0px 0;}
+ol.commentlist{margin:0px;padding:0px;}
+ol.commentlist li{display:block;list-style:none;margin:0px;padding:0px;border:1px dotted #CCCCCC;background:#F7F7F7;margin-bottom:10px;padding-top:5px;}
+ol.commentlist li.commenthead{display:block;list-style:none;margin:0;padding:0px;background:#FFFFFF;border:0px;padding-bottom:10px;}
+ol.commentlist li.commenthead h2{margin:0;}
+ol.tblist{border-top:1px solid #fff;list-style:none;margin:0 0 1px;padding:15px;}
+ol.tblist li{display:block;padding-left:15px;list-style-type:none; margin-left:0; margin-right:0; margin-top:0; margin-bottom:5px;}
+#footer{color:#FFFFFF;clear:both;height:0px;margin:0;padding:0;}
+#footerbox{color:#FFFFFF;margin:0;padding:0;width:900px;margin: 0 auto;}
+#footerbox p {margin:0px;font-size:12px;margin-top:0px;}
+.footer{text-align:center;width:900px;color:#F1DCE3;margin:0 auto;padding:0;}
+.footer a:hover{text-decoration:underline;border:none;}
+.footer a:link, .footer a:active, .footer a:visited {color:#CC0000;border:none;font-weight:normal;}
+.footer p {margin:0px;font:12px Verdana;color:#000000;line-height:35px;}
+#footerclose {float:left;width:948px;height:71px;background:url('images/footerbg.gif') no-repeat;}
+img.alignleft
+{
+float: left;
+}
+ 
+img.alignright
+{
+float: right;
+}
+ 
+img.aligncenter
+{
+display: block;
+margin: 0px auto 0px auto;
+}

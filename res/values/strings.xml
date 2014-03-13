@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cronometro</string>
+       
+    <string name="hello">Hello World, MainComboBox!</string>
+    
+    
+    <string name="prompt">Elige la piscina, estilo y distancia</string>
+    <string name="prompt_Piscina">Elige la piscina</string>
+    <string name="prompt_Estilo">Elige la estilo</string>
+    <string name="prompt_Distancia">Elige la distancia</string>
+    
+    <string-array name="Maestro_array">
+        <item>No</item>
+        <item>Si</item>
+    </string-array> 
+    
+    <string-array name="piscinas_array">
+        <item>25</item>
+        <item>50</item>
+    </string-array>   
+    
+     <string-array name="estilos_array">
+        <item>Libre</item>
+        <item>Braza</item>
+        <item>Espalda</item>
+        <item>Mariposa</item>
+        <item>Estilos</item>
+    </string-array> 
+    
+    <string-array name="distancia_array">
+        <item>25</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>400</item>
+        <item>800</item>
+        <item>1500</item>
+    </string-array> 
+    <string-array name="calles_array">
+        <item>Calle 1</item>
+        <item>Calle 2</item>
+        <item>Calle 3</item>
+        <item>Calle 4</item>
+        <item>Calle 5</item>
+        <item>Calle 6</item>
+        <item>Calle 7</item>
+        <item>Calle 8</item>
+        <item>Calle 9</item>
+    </string-array> 
+    
+    
+    
+    
+ <style name="ButtonText">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_margin">3dp</item>
+    <item name="android:textSize">12dp</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:shadowColor">#000000</item>
+    <item name="android:shadowDx">10</item>
+    <item name="android:shadowDy">11</item>
+    <item name="android:shadowRadius">30</item>
+</style>
+
+ <style name="ComboText">
+    <item name="android:layout_width">fill_parent</item>
+   
+    <item name="android:textColor">#ffffff</item>
+   
+    <item name="android:layout_margin">3dp</item>
+    <item name="android:textSize">5dp</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:shadowColor">#000000</item>
+    <item name="android:shadowDx">10</item>
+    <item name="android:shadowDy">11</item>
+    <item name="android:shadowRadius">30</item>
+</style>
+</resources>

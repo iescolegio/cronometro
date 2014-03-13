@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	android:id="@+id/widget70"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+	android:id="@+id/widget71"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+<TableLayout
+	android:id="@+id/widget81"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+<Spinner
+	android:id="@+id/widget216"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<Spinner
+	android:id="@+id/widget215"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<EditText
+	android:id="@+id/widget183"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="EditText"
+	android:textSize="18sp" />
+<Button
+	android:id="@+id/buttonstart"
+	android:layout_width="480dp"
+	android:layout_height="wrap_content"
+	android:text="Iniciar" />
+<Button
+	android:id="@+id/buttonstop"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Parar" />
+<Button
+	android:id="@+id/buttonreset"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Reset" />
+<TableRow
+	android:id="@+id/widget86"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal">
+<Button
+	android:id="@+id/widget89"
+	android:layout_width="117dp"
+	android:layout_height="wrap_content"
+	android:text="Vuelta" />
+<Button
+	android:id="@+id/widget90"
+	android:layout_width="122dp"
+	android:layout_height="wrap_content"
+	android:text="Vuelta" />
+<Button
+	android:id="@+id/widget91"
+	android:layout_width="109dp"
+	android:layout_height="wrap_content"
+	android:text="Vuelta" />
+<Button
+	android:id="@+id/widget92"
+	android:layout_width="136dp"
+	android:layout_height="wrap_content"
+	android:text="Vuelta" />
+</TableRow>
+<TableRow
+	android:id="@+id/widget86"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal">
+<Button
+	android:id="@+id/widget89"
+	android:layout_width="117dp"
+	android:layout_height="wrap_content"
+	android:text="Calle" />
+<Button
+	android:id="@+id/widget90"
+	android:layout_width="122dp"
+	android:layout_height="wrap_content"
+	android:text="Calle" />
+<Button
+	android:id="@+id/widget91"
+	android:layout_width="109dp"
+	android:layout_height="wrap_content"
+	android:text="Calle" />
+<Button
+	android:id="@+id/widget92"
+	android:layout_width="136dp"
+	android:layout_height="wrap_content"
+	android:text="Calle" />
+</TableRow>
+<Button
+	android:id="@+id/buttonsalir"
+	android:layout_width="480dp"
+	android:layout_height="wrap_content"
+	android:text="Salir" />
+</TableLayout>
+</LinearLayout>
+</ScrollView>
