@@ -1,1 +1,0 @@
-twttr.receiveCount({"count":0,"url":"http:\/\/andyao.github.com\/2011\/12\/05\/pausable-chronometer-widget\/"});
