@@ -1,5 +1,6 @@
 package mga.cronometro;
 
+import static android.R.attr.key;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -12,6 +13,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,6 +53,10 @@ import java.util.regex.Pattern;
 //import org.ksoap2.transport.HttpTransportSE;
 public class MainActivity extends Activity {
 
+    private long TiempoBrazadas = 0;
+    private double ResBrazadas = 0;
+    private SparseArray<Group> groups = new SparseArray<Group>();
+    private String NadadorPrueba = "";
     private boolean ConInternet = false;
     private String GIDPrueba;
     private Context context;
@@ -93,32 +100,14 @@ public class MainActivity extends Activity {
     private int TotalVueltas = -1;
     private MyApp appState;
     private LinearLayout linearLayout01;
-    private TextView txtCalle0;
-    private TextView txtCalle1;
-    private TextView txtCalle2;
-    private TextView txtCalle3;
-    private TextView txtCalle4;
-    private TextView txtCalle5;
-    private TextView txtCalle6;
-    private TextView txtCalle7;
-    private TextView txtCalle8;
-    private TextView txtCalle9;
-    private Button BDetalle0;
-    private Button BDetalle1;
-    private Button BDetalle2;
-    private Button BDetalle3;
-    private Button BDetalle4;
-    private Button BDetalle5;
-    private Button BDetalle6;
-    private Button BDetalle7;
-    private Button BDetalle8;
-    private Button BDetalle9;
     private long lastPause;
     //   private Calendar ahora1;
     //  private long TiempoServidorRemoto;
     private long TimeServidorAhora;
     private SntpClient client;
     List<prueba> ListaCache = new ArrayList<prueba>();
+    private ExpandableListView listView;
+    private MyExpandableListAdapter adapter;
 
     /**
      * Called when the activity is first created.
@@ -131,9 +120,7 @@ public class MainActivity extends Activity {
         context = this;
         appState = ((MyApp) getApplicationContext());
 
-
-
-
+        //createData();
         res = appState.getListaPruebas();
         //   TiempoServidorRemoto=appState.GeTiempoServidorRemoto();
         setContentView(R.layout.cronometronuevo);
@@ -152,32 +139,11 @@ public class MainActivity extends Activity {
         // View view = getWindow().findViewById(R.id.layout01);
         setTitle("Cronómetro. Grupo: - " + NombreGrupo);
 
-        txtCalle0 = (TextView) findViewById(R.id.Calle0);
-        txtCalle1 = (TextView) findViewById(R.id.Calle1);
-        txtCalle2 = (TextView) findViewById(R.id.Calle2);
-        txtCalle3 = (TextView) findViewById(R.id.Calle3);
-        txtCalle4 = (TextView) findViewById(R.id.Calle4);
-        txtCalle5 = (TextView) findViewById(R.id.Calle5);
-        txtCalle6 = (TextView) findViewById(R.id.Calle6);
-        txtCalle7 = (TextView) findViewById(R.id.Calle7);
-        txtCalle8 = (TextView) findViewById(R.id.Calle8);
-        txtCalle9 = (TextView) findViewById(R.id.Calle9);
-
-
-
-        BDetalle0 = (Button) findViewById(R.id.Detalle0);
-        BDetalle1 = (Button) findViewById(R.id.Detalle1);
-        BDetalle2 = (Button) findViewById(R.id.Detalle2);
-        BDetalle3 = (Button) findViewById(R.id.Detalle3);
-        BDetalle4 = (Button) findViewById(R.id.Detalle4);
-        BDetalle5 = (Button) findViewById(R.id.Detalle5);
-        BDetalle6 = (Button) findViewById(R.id.Detalle6);
-        BDetalle7 = (Button) findViewById(R.id.Detalle7);
-        BDetalle8 = (Button) findViewById(R.id.Detalle8);
-        BDetalle9 = (Button) findViewById(R.id.Detalle9);
         LimpiarMarcador();
 
-
+        listView = (ExpandableListView) findViewById(R.id.listView);
+        adapter = new MyExpandableListAdapter(this, groups);
+//        listView.setAdapter(adapter);
 
         ConInternet = verificaConexion(this);
         if (!ConInternet) {
@@ -193,8 +159,6 @@ public class MainActivity extends Activity {
             // final Chronometer myChronometer = (Chronometer)findViewById(R.id.chronometer);
 
             ////final Spinner spinner3 = (Spinner) findViewById(R.id.BuscarCalle);
-
-
 //        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(
 //                this, R.array.calles_array, android.R.layout.simple_spinner_item);
 //        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -205,7 +169,6 @@ public class MainActivity extends Activity {
 
             //// spinner3.setAdapter(adapter3);
             ////spinner3.setOnItemSelectedListener(new MyOnItemSelectedListener());
-
             cmbNadadores = (Spinner) findViewById(R.id.BuscarCalle);
 
             cmbNadadores.setAdapter(dataAdapter3);
@@ -220,7 +183,6 @@ public class MainActivity extends Activity {
             final Button buttonSalir = (Button) findViewById(R.id.buttonsalir);
             //  final EditText TextCalle = (EditText)findViewById(R.id.TextCalle);
 
-
             cmbPruebas = (Spinner) findViewById(R.id.widget216);
             //final TextView text = (TextView) findViewById(R.id.txtDisplay);
 
@@ -229,22 +191,16 @@ public class MainActivity extends Activity {
             linearLayout01.setBackgroundColor(Color.BLACK);
             appState.setPiscina("25");
 
-
 //            Accion = "CargarCompeticiones";
 //            new MainActivity.DownloadTask2().execute("");
 //            pd = ProgressDialog.show(context, "Por favor espere",
 //                    "Cargando Campeonatos.", true, false);
-
-
-
 //       cmbPruebas.setOnClickListener(new spinner.OnClickListener(){
 //           @Override
 //            public void onClick(View v) {
 //               
 //           }
 //       }
-
-
             cmbPruebas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -285,16 +241,10 @@ public class MainActivity extends Activity {
                 }
             });
 
-
-
             buttonStart.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-
-
-
-
 
                     if (cmbPruebas.getSelectedItem().toString().equals("Carge el Campeonato.")) {
                         Msgbox2("Carge primero el campeonato.");
@@ -307,21 +257,13 @@ public class MainActivity extends Activity {
                     listaNadador = itemNadador.GetPrueba().split(" ");
                     SeriePrueba = listaNadador[1];
                     CallePrueba = listaNadador[3];
-                    String NadadorPrueba = "";
-
+                    //String NadadorPrueba = "";
 
                     if (ListaCache.contains(itemNadador)) {
 
                         Msgbox2("Este nadador ya nadó.");
                         return;
                     }
-
-
-
-
-
-
-
 
                     Accion = "Guardar";
                     client = new SntpClient();
@@ -333,18 +275,27 @@ public class MainActivity extends Activity {
                     buttonSalir.setEnabled(false);
                     buttonSalir.setBackgroundResource(R.drawable.btn_yellow);
 
-
-
                     // DB operation
-
                     if (listaNadador.length > 7) {
                         NadadorPrueba = listaNadador[5] + " " + listaNadador[6] + " " + listaNadador[7];
                     } else {
                         NadadorPrueba = listaNadador[5];
                     }
 
+                    if (!TiempoAnterior.equals(mChronometer.getText().toString())) {
 
+                        String TiempoTotal = mChronometer.getText().toString();
+                        long TTotal = dateParseRegExp(TiempoTotal);
+                        long TAnterior = dateParseRegExp(TiempoAnterior);
+                        long TiempoParcial = TTotal - TAnterior;
+                        Integer Parcial = (Vueltas + 1) * 2 * Integer.parseInt(appState.getPiscina());
+                        String TiempoMarca;
+                        TiempoMarca = String.valueOf(Parcial) + "-" + TiempoTotal + "-" + TimetoText(TiempoParcial);
+                        TiempoMarca += "-" + ResBrazadas;
 
+                        createDataCrono(0, NadadorPrueba, TiempoMarca);
+                        listView.setAdapter(adapter);
+                    }
 
                     IdPrueba = item.GetId(); //String.valueOf(item);
                     SW.Pruebas sw = new SW.Pruebas();
@@ -353,7 +304,7 @@ public class MainActivity extends Activity {
                         if (appState.getMaestro().equals("Si")) {
                             //   ahora1 = Calendar.getInstance();
                             mChronometer.start(0);
-                            if (client.requestTime("0.es.pool.ntp.org", 30000)) {
+                            if (client.requestTime("0.es.pool.ntp.org", 300)) {
                                 // if (appState.getClientInit()) {
 
                                 TimeServidorAhora = client.getNtpTime() - client.getRoundTripTime();
@@ -362,10 +313,6 @@ public class MainActivity extends Activity {
                             }
 
                             long TiempoLocal = TimeServidorAhora;//ahora1.getTimeInMillis();
-
-
-
-
 
                             //mChronometer.start(0);
                             sw.SetPruebaInicio("" + (TiempoLocal), IdPrueba, SeriePrueba, NombreGrupo);
@@ -376,12 +323,11 @@ public class MainActivity extends Activity {
                             String TiempoInicio = sw.GetTiempoPrueba(IdPrueba, SeriePrueba, NombreGrupo);
                             //     ahora1 = Calendar.getInstance();
 
-                            if (client.requestTime("0.es.pool.ntp.org", 30000)) {
+                            if (client.requestTime("0.es.pool.ntp.org", 300)) {
 //                            if (appState.getClientInit()) {
 
                                 TimeServidorAhora = client.getNtpTime() - client.getRoundTripTime();
                                 //                              TimeServidorAhora = appState.getClient().getNtpTime() - appState.getClient().getRoundTripTime();
-
 
                             }
                             long TiempoLocal = TimeServidorAhora;//ahora1.getTimeInMillis(); 
@@ -395,16 +341,9 @@ public class MainActivity extends Activity {
                                 mChronometer.start(0);
                             }
 
-
-
-
                             Vueltas = 0;
 
-
-
-
                         }
-
 
                         String[] lista;
                         String Estilos = cmbPruebas.getSelectedItem().toString();
@@ -434,15 +373,12 @@ public class MainActivity extends Activity {
                         // Accion="Guardar";
                         new DownloadTask2().execute("");
 
-
-
                         pd = ProgressDialog.show(context, "Por favor espere",
                                 "Guardando datos.", true, false);
                     }
 
                 }
             });
-
 
             buttonLlegada.setOnClickListener(new Button.OnClickListener() {
                 @Override
@@ -452,12 +388,8 @@ public class MainActivity extends Activity {
 //                    if  buttonSalir.getEnabled {
 //                        
 //                    }
-
-
                     // Accion = "Llegada";
-
                     Accion = buttonLlegada.getText().toString();
-
 
                     LimpiarMarcador();
                     new DownloadTask2().execute("");
@@ -480,10 +412,8 @@ public class MainActivity extends Activity {
                 }
             });
 
-
             // int item = cmbPruebas.getSelectedItemPosition();
             // p=item;
-
         }
     }
 
@@ -506,12 +436,7 @@ public class MainActivity extends Activity {
                     }
                 }
 
-
-
-
-
                 // Campeonato = "2";
-
                 SW.Pruebas sw = new SW.Pruebas();
                 appState.setListaPruebas(sw.GetPruebas(Campeonato));
             } else if (Accion.equals("CargarNadador")) {
@@ -523,7 +448,6 @@ public class MainActivity extends Activity {
 //	               
                 SW.Pruebas sw = new SW.Pruebas();
                 appState.setListaCampeonatos(sw.GetCampeonatos("PONTEVEDRA"));
-
 
             } else if (Accion.equals("Guardar")) {
                 if (Vueltas == appState.getTotalVueltas() - 1) {
@@ -540,12 +464,8 @@ public class MainActivity extends Activity {
 //                CalleString = sp3.getSelectedItem().toString();
 //                String[] Calle;
 //                Calle = CalleString.split(" ");
-
-
                 long TTotal = dateParseRegExp(TiempoTotal);
                 long TAnterior = dateParseRegExp(TiempoAnterior);
-
-
 
                 //  long TiempoParcial=dateTotal.getTime()-dateAnterior.getTime();
                 long TiempoParcial = TTotal - TAnterior;
@@ -553,12 +473,11 @@ public class MainActivity extends Activity {
                 String TiempoMarca;
                 Integer Parcial = Vueltas * 2 * Integer.parseInt(appState.getPiscina());
 
-
                 TiempoMarca = "'" + String.valueOf(Parcial) + "-" + TiempoTotal + "-" + TimetoText(TiempoParcial) + "'";
 
                 sw.SetCrono(String.valueOf(Vueltas), CallePrueba, TiempoMarca, IdPrueba, NombreGrupo, SeriePrueba);
-                TiempoAnterior = TiempoTotal;
 
+                TiempoAnterior = TiempoTotal;
 
             } else if (Accion.equals("Parciales")) {
 
@@ -566,14 +485,12 @@ public class MainActivity extends Activity {
                 ResParcial.clear();
                 ResParcial.addAll(sw.GetCronoPrueba(IdPrueba, NombreGrupo, SeriePrueba));
 
-
 //                        
             } else if (Accion.equals("Clasificacion")) {
 
                 SW.Pruebas sw = new SW.Pruebas();
                 ResParcial.clear();
                 ResParcial.addAll(sw.GetCronoPruebaFinal(IdPrueba, NombreGrupo));
-
 
 //                        
             }
@@ -589,7 +506,7 @@ public class MainActivity extends Activity {
             if (Accion.equals("Cargar")) {
                 dataAdapter.clear();
                 res = appState.getListaPruebas();
-               
+
                 dataAdapter.addAll(res);
                 cmbPruebas.setAdapter(dataAdapter);
             } else if (Accion.equals("CargarNadador")) {
@@ -608,52 +525,62 @@ public class MainActivity extends Activity {
                     Vueltas = -1;
                 }
 
-
-
             } else if (Accion.equals("Llegada") || Accion.equals("Parciales") || Accion.equals("Clasificacion")) {
+                Group group;
                 for (int i = 0; i < ResParcial.size(); i++) {
-                    if (i == 0) {
-                        txtCalle0.setText(" 1º " + ResParcial.get(i).toString());
-                        BDetalle0.setVisibility(0);
-                    }
-                    if (i == 1) {
-                        txtCalle1.setText(" 2º " + ResParcial.get(i).toString());
-                        BDetalle1.setVisibility(0);
-                    }
-                    if (i == 2) {
-                        txtCalle2.setText(" 3º " + ResParcial.get(i).toString());
-                        BDetalle2.setVisibility(0);
-                    }
-                    if (i == 3) {
-                        txtCalle3.setText(" 4º " + ResParcial.get(i).toString());
-                        BDetalle3.setVisibility(0);
-                    }
-                    if (i == 4) {
-                        txtCalle4.setText(" 5º " + ResParcial.get(i).toString());
-                        BDetalle4.setVisibility(0);
-                    }
-                    if (i == 5) {
-                        txtCalle5.setText(" 6º " + ResParcial.get(i).toString());
-                        BDetalle5.setVisibility(0);
-                    }
-                    if (i == 6) {
-                        txtCalle6.setText(" 7º " + ResParcial.get(i).toString());
-                        BDetalle6.setVisibility(0);
-                    }
-                    if (i == 7) {
-                        txtCalle7.setText(" 8º " + ResParcial.get(i).toString());
-                        BDetalle7.setVisibility(0);
-                    }
-                    if (i == 8) {
-                        txtCalle8.setText(" 9º " + ResParcial.get(i).toString());
-                        BDetalle8.setVisibility(0);
-                    }
-                    if (i == 9) {
-                        txtCalle9.setText("10º " + ResParcial.get(i).toString());
-                        BDetalle9.setVisibility(0);
-                    }
+
+
+                    String[] listaNadador;
+
+                    listaNadador = ResParcial.get(i).toString().split(" ");
+
+
+                    createDataCrono(i, "Antonio" + i, listaNadador[0] + "-34.5");
+
+
+//                    if (i == 0) {
+//                        txtCalle0.setText(" 1º " + ResParcial.get(i).toString());
+//                        BDetalle0.setVisibility(0);
+//                    }
+//                    if (i == 1) {
+//                        txtCalle1.setText(" 2º " + ResParcial.get(i).toString());
+//                        BDetalle1.setVisibility(0);
+//                    }
+//                    if (i == 2) {
+//                        txtCalle2.setText(" 3º " + ResParcial.get(i).toString());
+//                        BDetalle2.setVisibility(0);
+//                    }
+//                    if (i == 3) {
+//                        txtCalle3.setText(" 4º " + ResParcial.get(i).toString());
+//                        BDetalle3.setVisibility(0);
+//                    }
+//                    if (i == 4) {
+//                        txtCalle4.setText(" 5º " + ResParcial.get(i).toString());
+//                        BDetalle4.setVisibility(0);
+//                    }
+//                    if (i == 5) {
+//                        txtCalle5.setText(" 6º " + ResParcial.get(i).toString());
+//                        BDetalle5.setVisibility(0);
+//                    }
+//                    if (i == 6) {
+//                        txtCalle6.setText(" 7º " + ResParcial.get(i).toString());
+//                        BDetalle6.setVisibility(0);
+//                    }
+//                    if (i == 7) {
+//                        txtCalle7.setText(" 8º " + ResParcial.get(i).toString());
+//                        BDetalle7.setVisibility(0);
+//                    }
+//                    if (i == 8) {
+//                        txtCalle8.setText(" 9º " + ResParcial.get(i).toString());
+//                        BDetalle8.setVisibility(0);
+//                    }
+//                    if (i == 9) {
+//                        txtCalle9.setText("10º " + ResParcial.get(i).toString());
+//                        BDetalle9.setVisibility(0);
+//                    }
                 }
             }
+            listView.setAdapter(adapter);
             super.onPostExecute(result);
         }
     }
@@ -669,7 +596,6 @@ public class MainActivity extends Activity {
 //        menu.add(Menu.NONE, MNU_OPC1, Menu.NONE, "Opcion1")
 //                .setIcon(android.R.drawable.ic_menu_preferences);
 
-
         SubMenu smnuMaestro = menu.addSubMenu(Menu.NONE, MNU_OPC1, Menu.NONE, "Configuración")
                 .setIcon(android.R.drawable.ic_menu_agenda);
 
@@ -683,11 +609,8 @@ public class MainActivity extends Activity {
         smnuMaestro.add(GRUPO_MENU_1, SMNU_OPC1_MAESTRO, Menu.NONE, "Crono Salida");
         smnuMaestro.add(GRUPO_MENU_1, SMNU_OPC2_MAESTRO, Menu.NONE, "Crono Calle");
 
-
-
         smnu.add(GRUPO_MENU_1, SMNU_OPC1, Menu.NONE, "25 Metros");
         smnu.add(GRUPO_MENU_1, SMNU_OPC2, Menu.NONE, "50 Metros");
-
 
         ListCompeticiones = appState.getListaCampeonatos();
 
@@ -695,14 +618,9 @@ public class MainActivity extends Activity {
             smnuCamp.add(GRUPO_MENU_2, SMNUCAM_OPC1, Menu.NONE, ListCompeticiones.get(i).GetCompeticion());
         }
 
-
         //smnuCamp.add(GRUPO_MENU_2, SMNUCAM_OPC2, Menu.NONE, "Promesas do Lerez");
-
         smnuMaestro.setGroupCheckable(GRUPO_MENU_2, true, true);
         smnuMaestro.setGroupCheckable(GRUPO_MENU_1, true, true);
-
-
-
 
         smnu.setGroupCheckable(GRUPO_MENU_2, true, true);
 
@@ -718,13 +636,11 @@ public class MainActivity extends Activity {
 
         }
 
-
         if (appState.getPiscina().contains("25")) {
             smnu.getItem(0).setChecked(true);
         } else {
             smnu.getItem(1).setChecked(true);
         }
-
 
         //Marcamos la opción seleccionada actualmente
 //        if (opcionSeleccionada == 1) {
@@ -747,7 +663,6 @@ public class MainActivity extends Activity {
 
             //...
             //Omito el resto de opciones por simplicidad
-
             case SMNU_OPC1:
                 opcionSeleccionada = 1;
                 appState.setPiscina("25");
@@ -769,7 +684,6 @@ public class MainActivity extends Activity {
                 item.setChecked(true);
                 return true;
 
-
             case SMNU_OPC2_MAESTRO:
 
                 appState.setMaestro("No");
@@ -779,15 +693,11 @@ public class MainActivity extends Activity {
                 return true;
             case SMNU_OPC3_MAESTRO:
 
-
                 ObtenerGrupo();
 
                 return true;
 
-
             case SMNUCAM_OPC1:
-
-
 
                 Campeonato = item.getTitle().toString();
 
@@ -798,11 +708,6 @@ public class MainActivity extends Activity {
 
 //                dataAdapter = new ArrayAdapter<prueba>(this, android.R.layout.simple_spinner_item, res);
 //                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-
-
-
                 opcionSeleccionada = 1;
                 item.setChecked(true);
                 return true;
@@ -811,7 +716,6 @@ public class MainActivity extends Activity {
                 opcionSeleccionada = 2;
                 item.setChecked(true);
                 return true;
-
 
         }
         return false;
@@ -838,7 +742,8 @@ public class MainActivity extends Activity {
                 return true;
             case KeyEvent.KEYCODE_VOLUME_DOWN:
                 if (action == KeyEvent.ACTION_DOWN) {
-                    buttonStart.performClick();
+                    //buttonStart.performClick();
+                    CalcularBrazadas();
                     //TODO
                 }
                 return true;
@@ -908,7 +813,6 @@ public class MainActivity extends Activity {
 
         //  int hours = (int)(timeElapsed / (3600 * 1000));
         //   int remaining = (int)(timeElapsed % (3600 * 1000));
-
         int minutes = (int) (timeElapsed / (60 * 1000));
         int remaining = (int) (timeElapsed % (60 * 1000));
 
@@ -922,7 +826,6 @@ public class MainActivity extends Activity {
 //                if (hours > 0) {
 //                 text += df.format(hours) + ":";
 //                }
-
         text += df.format(minutes) + ":";
         text += df.format(seconds) + ":";
         text += df.format(milliseconds);
@@ -932,29 +835,28 @@ public class MainActivity extends Activity {
     }
 
     private void LimpiarMarcador() {
-
-        txtCalle0.setText("");
-        txtCalle1.setText("");
-        txtCalle2.setText("");
-        txtCalle3.setText("");
-        txtCalle4.setText("");
-        txtCalle5.setText("");
-        txtCalle6.setText("");
-        txtCalle7.setText("");
-        txtCalle8.setText("");
-        txtCalle9.setText("");
-
-        BDetalle0.setVisibility(View.INVISIBLE);
-        BDetalle1.setVisibility(View.INVISIBLE);
-        BDetalle2.setVisibility(View.INVISIBLE);
-        BDetalle3.setVisibility(View.INVISIBLE);
-        BDetalle4.setVisibility(View.INVISIBLE);
-        BDetalle5.setVisibility(View.INVISIBLE);
-        BDetalle6.setVisibility(View.INVISIBLE);
-        BDetalle7.setVisibility(View.INVISIBLE);
-        BDetalle8.setVisibility(View.INVISIBLE);
-        BDetalle9.setVisibility(View.INVISIBLE);
-
+        groups.clear();
+//        txtCalle0.setText("");
+//        txtCalle1.setText("");
+//        txtCalle2.setText("");
+//        txtCalle3.setText("");
+//        txtCalle4.setText("");
+//        txtCalle5.setText("");
+//        txtCalle6.setText("");
+//        txtCalle7.setText("");
+//        txtCalle8.setText("");
+//        txtCalle9.setText("");
+//
+//        BDetalle0.setVisibility(View.INVISIBLE);
+//        BDetalle1.setVisibility(View.INVISIBLE);
+//        BDetalle2.setVisibility(View.INVISIBLE);
+//        BDetalle3.setVisibility(View.INVISIBLE);
+//        BDetalle4.setVisibility(View.INVISIBLE);
+//        BDetalle5.setVisibility(View.INVISIBLE);
+//        BDetalle6.setVisibility(View.INVISIBLE);
+//        BDetalle7.setVisibility(View.INVISIBLE);
+//        BDetalle8.setVisibility(View.INVISIBLE);
+//        BDetalle9.setVisibility(View.INVISIBLE);
     }
 
     public static boolean verificaConexion(Context ctx) {
@@ -987,7 +889,7 @@ public class MainActivity extends Activity {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // String value = 
                 NombreGrupo = input.getText().toString();
-                setTitle("Cronómetro. Grupo: - " + NombreGrupo );
+                setTitle("Cronómetro. Grupo: - " + NombreGrupo);
                 // Do something with value!
             }
         });
@@ -1029,5 +931,64 @@ public class MainActivity extends Activity {
         });
         //  alertDialog.setButton(message, null);
         alertDialog.show();
+    }
+
+    public void createDataCrono(int IDNadador, String Nadador, String Tiempo) {
+        Group group;
+        if (groups.size() > 0) {
+            for (int i = 0; i < groups.size(); i++) {
+                int key = groups.keyAt(i);
+                // get the object by the key.
+                Group obj = groups.get(key);
+
+                if (obj.nombre.equals(Nadador)) {
+                    obj.tiempo = Tiempo;
+                    obj.nombre = Nadador;
+                    obj.children.add(Tiempo);
+                    return;
+                }
+            }
+        }
+
+        group = new Group(Nadador, Tiempo);
+        group.children.add(Tiempo);
+        groups.append(IDNadador, group);
+
+
+    }
+
+    public void CalcularBrazadas() {
+
+        if (TiempoBrazadas == 0) {
+            ResBrazadas = 0;
+            TiempoBrazadas = dateParseRegExp(mChronometer.getText().toString());
+        } else {
+            long TiempoBrazadaAux = dateParseRegExp(mChronometer.getText().toString());
+            long aux = TiempoBrazadaAux - TiempoBrazadas;
+            // TimetoText(aux);
+            ResBrazadas = (double) (3 * 60000) / aux;
+            ResBrazadas = roundTwoDecimals(ResBrazadas);
+            TiempoBrazadas = 0;
+        }
+
+    }
+
+    double roundTwoDecimals(double d) {
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(d));
+    }
+
+    public void createData() {
+        Group group;
+
+        group = new Group("Martinez Antonio", "01:10:40");
+        group.children.add("50 00:29:2 Barazadas 39");
+        group.children.add("100 01:10:40 Barazadas 29");
+        groups.append(0, group);
+
+        group = new Group("Gómez Martinez", "01:10:25");
+        group.children.add("50 00:30:21 Barazadas 39");
+        group.children.add("100 01:10:4 Barazadas 50");
+        groups.append(1, group);
     }
 }

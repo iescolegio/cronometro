@@ -118,7 +118,7 @@ private static final String TAG = "Chronometer";
         int seconds = (int)(remaining / 1000);
         remaining = (int)(remaining % (1000));
         
-        int milliseconds = (int)(((int)timeElapsed % 1000) / 10);
+        int milliseconds = (int)(((int)timeElapsed % 1000) / 100);
         
         String text = "";
         
@@ -128,6 +128,7 @@ private static final String TAG = "Chronometer";
         
         text += df.format(minutes) + ":";
         text += df.format(seconds) + ":";
+       // text += Integer.toString(milliseconds);
         text += df.format(milliseconds);
        // text += df.format(Integer.toString(milliseconds));
         

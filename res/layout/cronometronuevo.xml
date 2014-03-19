@@ -12,7 +12,8 @@
 <TableLayout
 	android:id="@+id/widget81"
 	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
+	
+         android:layout_height="507dp"
 	android:orientation="vertical"
    
         android:stretchColumns="1"
@@ -75,163 +76,18 @@
         android:layout_weight=".50"
 	android:text="Salir" />  
         
- </TableRow>
+ </TableRow>           
+    
+    <TableRow >  
+     <ExpandableListView
+        android:id="@+id/listView"
+      
+        android:layout_width="500dip"
+        android:layout_weight=".90"
 
-
-
-  <TableRow>            
-<TextView
-	android:id="@+id/Calle0"
-	android:textStyle="bold"
-	android:text="Calle 0"
-        
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle0"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" /> 
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle1"
-	
-	android:text="Calle 1"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle1"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" /> 
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle2"
-	android:textStyle="bold"
-	android:text="Calle 2"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle2"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" />  
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle3"
-	
-	android:text="Calle 3"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle3"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" />  
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle4"
-	android:textStyle="bold"
-	android:text="Calle 4"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle4"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" /> 
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle5"
-	
-	android:text="Calle 5"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle5"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" /> 
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle6"
-	android:textStyle="bold"
-	android:text="Calle 6"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle6"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" />  
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle7"
-	
-	android:text="Calle 7"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle7"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" />  
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle8"
-	android:textStyle="bold"
-	android:text="Calle 8"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle8"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" /> 
- </TableRow>
-  <TableRow>
-<TextView
-	android:id="@+id/Calle9"
-	
-	android:text="Calle 9"
-	android:layout_width="0dip"
-        android:layout_weight=".80" />
-<Button
-	android:id="@+id/Detalle9"
-        android:background="@drawable/btn_blue"
-        style="@style/ButtonText"
-        android:layout_width="0dip"
-        android:layout_weight=".18" 
-    	android:text="Detalle" /> 
- </TableRow>
-
-
+     >
+  </ExpandableListView>
+   </TableRow>   
 </TableLayout>
 
 </LinearLayout>

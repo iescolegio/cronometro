@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 //import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.PowerManager;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -44,7 +45,7 @@ import java.util.regex.Pattern;
 
 public class FrmCronometro extends Activity {
     //private static Pattern pattern = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})");
-
+ PowerManager.WakeLock wakeLock;
     private static final int MNU_OPC1 = 1;
     private static final int MNU_OPC2 = 2;
     private static final int MNU_OPC3 = 3;
@@ -69,7 +70,7 @@ public class FrmCronometro extends Activity {
     private Spinner cmbPruebas;
     private Chronometer mChronometer;
     private int Vueltas = -1;
-    private String TiempoAnterior = "00:00:00";
+    private String TiempoAnterior = "00:00:0";
     private int TotalVueltas = -1;
     private MyApp appState;
     private TextView txtCalle0;
@@ -97,6 +98,7 @@ public class FrmCronometro extends Activity {
     //  private long TiempoServidorRemoto;
     private long TimeServidorAhora;
     private SntpClient client;
+    
 
     /**
      * Called when the activity is first created.
@@ -104,8 +106,12 @@ public class FrmCronometro extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         //super.onCreate(savedInstanceState);
+       
         super.onCreate(icicle);
-
+        
+           
+        
+                
         context = this;
         appState = ((MyApp) getApplicationContext());
 
@@ -144,29 +150,29 @@ public class FrmCronometro extends Activity {
         //  final EditText TextCalle = (EditText)findViewById(R.id.TextCalle);
 
 
-        txtCalle0 = (TextView) findViewById(R.id.Calle0);
-        txtCalle1 = (TextView) findViewById(R.id.Calle1);
-        txtCalle2 = (TextView) findViewById(R.id.Calle2);
-        txtCalle3 = (TextView) findViewById(R.id.Calle3);
-        txtCalle4 = (TextView) findViewById(R.id.Calle4);
-        txtCalle5 = (TextView) findViewById(R.id.Calle5);
-        txtCalle6 = (TextView) findViewById(R.id.Calle6);
-        txtCalle7 = (TextView) findViewById(R.id.Calle7);
-        txtCalle8 = (TextView) findViewById(R.id.Calle8);
-        txtCalle9 = (TextView) findViewById(R.id.Calle9);
-
-
-
-        BDetalle0 = (Button) findViewById(R.id.Detalle0);
-        BDetalle1 = (Button) findViewById(R.id.Detalle1);
-        BDetalle2 = (Button) findViewById(R.id.Detalle2);
-        BDetalle3 = (Button) findViewById(R.id.Detalle3);
-        BDetalle4 = (Button) findViewById(R.id.Detalle4);
-        BDetalle5 = (Button) findViewById(R.id.Detalle5);
-        BDetalle6 = (Button) findViewById(R.id.Detalle6);
-        BDetalle7 = (Button) findViewById(R.id.Detalle7);
-        BDetalle8 = (Button) findViewById(R.id.Detalle8);
-        BDetalle9 = (Button) findViewById(R.id.Detalle9);
+//        txtCalle0 = (TextView) findViewById(R.id.Calle0);
+//        txtCalle1 = (TextView) findViewById(R.id.Calle1);
+//        txtCalle2 = (TextView) findViewById(R.id.Calle2);
+//        txtCalle3 = (TextView) findViewById(R.id.Calle3);
+//        txtCalle4 = (TextView) findViewById(R.id.Calle4);
+//        txtCalle5 = (TextView) findViewById(R.id.Calle5);
+//        txtCalle6 = (TextView) findViewById(R.id.Calle6);
+//        txtCalle7 = (TextView) findViewById(R.id.Calle7);
+//        txtCalle8 = (TextView) findViewById(R.id.Calle8);
+//        txtCalle9 = (TextView) findViewById(R.id.Calle9);
+//
+//
+//
+//        BDetalle0 = (Button) findViewById(R.id.Detalle0);
+//        BDetalle1 = (Button) findViewById(R.id.Detalle1);
+//        BDetalle2 = (Button) findViewById(R.id.Detalle2);
+//        BDetalle3 = (Button) findViewById(R.id.Detalle3);
+//        BDetalle4 = (Button) findViewById(R.id.Detalle4);
+//        BDetalle5 = (Button) findViewById(R.id.Detalle5);
+//        BDetalle6 = (Button) findViewById(R.id.Detalle6);
+//        BDetalle7 = (Button) findViewById(R.id.Detalle7);
+//        BDetalle8 = (Button) findViewById(R.id.Detalle8);
+//        BDetalle9 = (Button) findViewById(R.id.Detalle9);
 
         cmbPruebas = (Spinner) findViewById(R.id.widget216);
         //final TextView text = (TextView) findViewById(R.id.txtDisplay);
@@ -175,8 +181,9 @@ public class FrmCronometro extends Activity {
 
         LimpiarMarcador();
         
+       
         
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         
 //       cmbPruebas.setOnClickListener(new spinner.OnClickListener(){
 //           @Override
@@ -209,6 +216,14 @@ public class FrmCronometro extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                
+                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		wakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK,	"My wakelook");
+		wakeLock.acquire();
+                
+                
+                
+                
                 Accion = "Guardar";
                 client = new SntpClient();
                 buttonSalir.setEnabled(false);
@@ -217,11 +232,11 @@ public class FrmCronometro extends Activity {
                 IdPrueba = item.GetId(); //String.valueOf(item);
                 SW.Pruebas sw = new SW.Pruebas();
                 if (Vueltas == -1) {
-                    TiempoAnterior = "00:00:00";
+                    TiempoAnterior = "00:00:0";
                     if (appState.getMaestro().equals("Si")) {
                         //   ahora1 = Calendar.getInstance();
 
-                        if (client.requestTime("0.es.pool.ntp.org", 30000)) {
+                        if (client.requestTime("0.es.pool.ntp.org", 3000)) {
 
                             TimeServidorAhora = client.getNtpTime() - client.getRoundTripTime();
 
@@ -239,7 +254,7 @@ public class FrmCronometro extends Activity {
                         String TiempoInicio = sw.GetTiempoPrueba(IdPrueba, "6","General");
                         //     ahora1 = Calendar.getInstance();
 
-                        if (client.requestTime("0.es.pool.ntp.org", 30000)) {
+                        if (client.requestTime("0.es.pool.ntp.org", 3000)) {
 
                             TimeServidorAhora = client.getNtpTime() - client.getRoundTripTime();
 
@@ -317,6 +332,7 @@ public class FrmCronometro extends Activity {
             public void onClick(View v) {
 
 
+		//mWakeLock.release();
                 finish();
 
             }
